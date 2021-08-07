@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_web">
+
+    <fragment
+        android:id="@+id/navigation_web"
+        android:name="com.marcusrunge.stjohannisuelzen.ui.web.WebFragment"
+        android:label="@string/title_web"
+        tools:layout="@layout/web_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_counseling"
+        android:name="com.marcusrunge.stjohannisuelzen.ui.counseling.CounselingFragment"
+        android:label="@string/title_counseling"
+        tools:layout="@layout/counseling_fragment" />
+</navigation>
