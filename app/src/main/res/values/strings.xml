@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">St. Johannis Uelzen</string>
-    <string name="title_web">Web</string>
+    <string name="app_name" translatable="false">St. Johannis Uelzen</string>
+    <string name="title_web">Dashboard</string>
     <string name="title_counseling">Counseling</string>
 </resources>

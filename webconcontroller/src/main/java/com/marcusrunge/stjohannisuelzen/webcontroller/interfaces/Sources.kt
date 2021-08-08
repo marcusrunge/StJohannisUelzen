@@ -1,5 +1,5 @@
 package com.marcusrunge.stjohannisuelzen.webcontroller.interfaces
 
-interface WebController {
-    val sources: Sources
+interface Sources {
+    val endpointUrl: String?
 }
