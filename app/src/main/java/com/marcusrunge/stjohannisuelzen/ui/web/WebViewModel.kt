@@ -6,6 +6,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class WebViewModel @Inject constructor(val webController: WebController): ViewModel() {
-    // TODO: Implement the ViewModel
+class WebViewModel @Inject constructor(val webController: WebController) : ViewModel() {
+    init {
+
+    }
 }

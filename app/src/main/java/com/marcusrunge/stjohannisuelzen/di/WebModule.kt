@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object WebModule {
     @Provides
-    fun provideWebController() : WebController = WebControllerFactoryImpl.create()
+    fun provideWebController(): WebController = WebControllerFactoryImpl.create()
 }
