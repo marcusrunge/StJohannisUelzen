@@ -4,7 +4,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 
 object BindingUtils {
     @BindingAdapter("endpointUrl")

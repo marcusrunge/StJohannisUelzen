@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.marcusrunge.stjohannisuelzen.R
-import com.marcusrunge.stjohannisuelzen.databinding.CounselingFragmentBinding
 import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 

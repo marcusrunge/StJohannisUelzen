@@ -1,9 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.di
 
-import com.marcusrunge.stjohannisuelzen.core.implementation.CoreFactoryImpl
+import com.marcusrunge.stjohannisuelzen.core.implementation.core.CoreFactoryImpl
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
-import com.marcusrunge.stjohannisuelzen.webcontroller.implementation.WebControllerFactoryImpl
-import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.WebController
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.marcusrunge.stjohannisuelzen.core.implementation
+package com.marcusrunge.stjohannisuelzen.core.implementation.core
 
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.CoreFactory
