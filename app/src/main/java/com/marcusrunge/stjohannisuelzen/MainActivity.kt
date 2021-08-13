@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        val navController = findNavController(R.id.nav_host_fragment_main_activity)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_web, R.id.navigation_header_container
+                R.id.navigation_web, R.id.navigation_counseling
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

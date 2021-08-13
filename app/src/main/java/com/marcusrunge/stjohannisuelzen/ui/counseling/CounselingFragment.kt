@@ -14,21 +14,27 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CounselingFragment : Fragment() {
 
-    private lateinit var viewDataBinding: CounselingFragmentBinding
+    private var _binding: CounselingFragmentBinding? = null
     private val viewModel by viewModels<CounselingViewModel>()
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.counseling_fragment, container, false)
-        return viewDataBinding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.viewmodel = viewModel
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this.viewLifecycleOwner
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

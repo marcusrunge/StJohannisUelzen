@@ -7,11 +7,11 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="com.marcusrunge.stjohannisuelzen.ui.web.WebFragment"
-        android:label="web_fragment"
+        android:label="@string/title_web"
         tools:layout="@layout/web_fragment" />
     <fragment
         android:id="@+id/counselingFragment"
         android:name="com.marcusrunge.stjohannisuelzen.ui.counseling.CounselingFragment"
-        android:label="counseling_fragment"
+        android:label="@string/title_counseling"
         tools:layout="@layout/counseling_fragment" />
 </navigation>

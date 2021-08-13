@@ -8,26 +8,33 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.marcusrunge.stjohannisuelzen.R
+import com.marcusrunge.stjohannisuelzen.databinding.CounselingFragmentBinding
 import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WebFragment : Fragment() {
 
-    private lateinit var viewDataBinding: WebFragmentBinding
+    private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding = DataBindingUtil.inflate(inflater, R.layout.web_fragment, container, false)
-        return viewDataBinding.root
+        _binding = DataBindingUtil.inflate(inflater, R.layout.web_fragment, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.viewmodel = viewModel
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this.viewLifecycleOwner
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
