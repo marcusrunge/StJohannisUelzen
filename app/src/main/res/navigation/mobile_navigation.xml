@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/webFragment">
+    app:startDestination="@id/navigation_web">
     <fragment
-        android:id="@+id/webFragment"
+        android:id="@+id/navigation_web"
         android:name="com.marcusrunge.stjohannisuelzen.ui.web.WebFragment"
         android:label="@string/title_web"
         tools:layout="@layout/web_fragment" />
     <fragment
-        android:id="@+id/counselingFragment"
+        android:id="@+id/navigation_counseling"
         android:name="com.marcusrunge.stjohannisuelzen.ui.counseling.CounselingFragment"
         android:label="@string/title_counseling"
         tools:layout="@layout/counseling_fragment" />
