@@ -5,7 +5,7 @@ import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.Sources
 
 internal class SourcesImpl(webControllerBase: WebControllerBase) : Sources {
 
-    companion object {
+    internal companion object {
         var sources: Sources? = null
         fun create(webControllerBase: WebControllerBase): Sources = when {
             sources != null -> sources!!

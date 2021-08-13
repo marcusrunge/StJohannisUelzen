@@ -13,6 +13,5 @@ class WebControllerFactoryImpl {
                 webController!!
             }
         }
-
     }
 }
