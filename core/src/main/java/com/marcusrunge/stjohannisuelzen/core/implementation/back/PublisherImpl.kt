@@ -16,12 +16,13 @@ internal class PublisherImpl(val backBase: BackBase) : Publisher {
         }
     }
 
-    override fun onBack() {
+    override fun onBack(callback: (() -> Unit)?) {
         for (weakRef in backBase.onBackSubscribers) {
             try {
                 weakRef.get()?.onBack()
             } catch (e: Exception) {
             }
         }
+        callback?.invoke()
     }
 }

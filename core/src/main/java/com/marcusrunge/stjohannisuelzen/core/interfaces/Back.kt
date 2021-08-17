@@ -11,7 +11,7 @@ interface Subscriber {
 }
 
 interface Publisher {
-    fun onBack()
+    fun onBack(callback: (() -> Unit)?)
 }
 
 interface OnBackSubscriber {
