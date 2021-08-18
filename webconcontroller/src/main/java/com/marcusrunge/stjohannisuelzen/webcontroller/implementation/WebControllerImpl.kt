@@ -7,5 +7,6 @@ internal class WebControllerImpl : WebControllerBase() {
 
     init {
         _sources = SourcesImpl.create(this)
+        _control = ControlImpl.create(this)
     }
 }
