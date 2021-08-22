@@ -15,13 +15,8 @@ class WebViewModel @Inject constructor(private val webController: WebController,
     OnBackSubscriber {
 
     private val _endpointUrl = MutableLiveData(webController.sources.endpointUrl!!)
-
     val endpointUrl: LiveData<String> = _endpointUrl
-    lateinit var goBack: LiveData<(() -> Unit)?>
-    var canGoBack: LiveData<Boolean> = MutableLiveData()
-        set(value) {
-            webController.control.canGoBack = value.value!!
-        }
+
 
     init {
         core.back.subscriber.add(this)
