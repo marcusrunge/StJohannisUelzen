@@ -23,6 +23,9 @@ internal class PublisherImpl(val backBase: BackBase) : Publisher {
             } catch (e: Exception) {
             }
         }
-        callback?.invoke()
+        if (!(backBase.coreBase.webController.control.isWebViewActive && backBase.coreBase.webController.control.canGoBack))
+            callback?.invoke()
+        else
+            backBase.coreBase.webController.control.goBack()
     }
 }

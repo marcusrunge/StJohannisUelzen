@@ -12,5 +12,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object WebModule {
     @Provides
+    @Singleton
     fun provideWebController(): WebController = WebControllerFactoryImpl.create()
 }

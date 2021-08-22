@@ -1,17 +1,18 @@
 package com.marcusrunge.stjohannisuelzen.core.implementation.back
 
 import com.marcusrunge.stjohannisuelzen.core.bases.BackBase
+import com.marcusrunge.stjohannisuelzen.core.bases.CoreBase
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Back
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Publisher
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Subscriber
 
-internal class BackImpl : BackBase() {
+internal class BackImpl(coreBase: CoreBase) : BackBase(coreBase) {
     internal companion object {
         var back: Back? = null
-        fun create(): Back = when {
+        fun create(coreBase: CoreBase): Back = when {
             back != null -> back!!
             else -> {
-                back = BackImpl()
+                back = BackImpl(coreBase)
                 back!!
             }
         }

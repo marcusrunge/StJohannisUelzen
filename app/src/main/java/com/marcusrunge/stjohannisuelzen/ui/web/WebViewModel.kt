@@ -5,27 +5,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnBackSubscriber
+import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.WebController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class WebViewModel @Inject constructor(val core: Core) :
-    ViewModel(),
-    OnBackSubscriber {
+    ViewModel(), OnWebGoBackSubscriber {
 
     private val _endpointUrl = MutableLiveData(core.webController.sources.endpointUrl!!)
     val endpointUrl: LiveData<String> = _endpointUrl
 
     init {
-        core.back.subscriber.add(this)
-    }
-
-    override fun onBack() {
+        core.webController.control.addOnWebGoBackSubscriber(this)
+        core.webController.control.isWebViewActive=true
     }
 
     override fun onCleared() {
-        core.back.subscriber.remove(this)
+        core.webController.control.removeOnWebGoBackSubscriber(this)
+        core.webController.control.isWebViewActive=false
         super.onCleared()
+    }
+
+    override fun onWebGoBack() {
+        TODO("Not yet implemented")
     }
 }

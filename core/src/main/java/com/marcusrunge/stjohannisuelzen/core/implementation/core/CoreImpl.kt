@@ -6,7 +6,7 @@ import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.WebController
 
 internal class CoreImpl(webController:WebController) : CoreBase() {
     init {
-        _back = BackImpl.create()
+        _back = BackImpl.create(this)
         _webController = webController
     }
 }

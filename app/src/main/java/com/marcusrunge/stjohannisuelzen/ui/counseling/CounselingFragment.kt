@@ -35,6 +35,7 @@ class CounselingFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModelStore.clear()
         _binding = null
     }
 }

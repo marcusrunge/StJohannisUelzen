@@ -13,5 +13,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object CoreModule {
     @Provides
+    @Singleton
     fun provideCore(webController: WebController): Core = CoreFactoryImpl.create(webController)
 }

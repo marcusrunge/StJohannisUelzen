@@ -23,6 +23,7 @@ internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
         mutableListOf()
 
     override var canGoBack: Boolean = false
+    override var isWebViewActive: Boolean = false
 
     override fun goBack() {
         if(canGoBack) {
