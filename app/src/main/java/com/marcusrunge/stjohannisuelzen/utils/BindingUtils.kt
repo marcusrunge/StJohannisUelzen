@@ -7,8 +7,10 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
+import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
+import com.marcusrunge.stjohannisuelzen.core.interfaces.OnBackSubscriber
 
-object BindingUtils {
+object BindingUtils{
     @BindingAdapter("endpointUrl")
     @JvmStatic
     fun setEndpointUrl(view: WebView, endpointUrl: LiveData<String>) {

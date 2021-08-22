@@ -10,20 +10,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class WebViewModel @Inject constructor(private val webController: WebController, val core: Core) :
+class WebViewModel @Inject constructor(val core: Core) :
     ViewModel(),
     OnBackSubscriber {
 
-    private val _endpointUrl = MutableLiveData(webController.sources.endpointUrl!!)
+    private val _endpointUrl = MutableLiveData(core.webController.sources.endpointUrl!!)
     val endpointUrl: LiveData<String> = _endpointUrl
-
 
     init {
         core.back.subscriber.add(this)
     }
 
     override fun onBack() {
-        webController.control.goBack()
     }
 
     override fun onCleared() {
