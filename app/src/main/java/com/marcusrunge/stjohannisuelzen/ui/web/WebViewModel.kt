@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
-import com.marcusrunge.stjohannisuelzen.core.interfaces.OnBackSubscriber
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
-import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.WebController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -19,12 +17,12 @@ class WebViewModel @Inject constructor(val core: Core) :
 
     init {
         core.webController.control.addOnWebGoBackSubscriber(this)
-        core.webController.control.isWebViewActive=true
+        core.webController.control.isWebViewActive = true
     }
 
     override fun onCleared() {
         core.webController.control.removeOnWebGoBackSubscriber(this)
-        core.webController.control.isWebViewActive=false
+        core.webController.control.isWebViewActive = false
         super.onCleared()
     }
 
