@@ -13,7 +13,9 @@ class WebViewModel @Inject constructor(val core: Core) :
     ViewModel(), OnWebGoBackSubscriber {
 
     private val _endpointUrl = MutableLiveData(core.webController.sources.endpointUrl!!)
+    private val _canGoBack = MutableLiveData<(Boolean)->Unit>()
     val endpointUrl: LiveData<String> = _endpointUrl
+    val canGoBack: LiveData<(Boolean)->Unit> = _canGoBack
 
     init {
         core.webController.control.addOnWebGoBackSubscriber(this)
@@ -27,6 +29,9 @@ class WebViewModel @Inject constructor(val core: Core) :
     }
 
     override fun onWebGoBack() {
+        _canGoBack.value = {
+            core.webController.control.canGoBack = it
+        }
         TODO("Not yet implemented")
     }
 }
