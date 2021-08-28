@@ -15,16 +15,4 @@ object BindingUtils {
             view.loadUrl(it)
         }
     }
-
-    @BindingAdapter("canGoBack")
-    @JvmStatic
-    fun setCanGoBack(view: WebView, canGoBack: LiveData<(Boolean)->Unit>) {
-        canGoBack.value?.invoke(view.canGoBack())
-    }
-
-    @BindingAdapter("goDirection")
-    @JvmStatic
-    fun setGoDirection(view: WebView, goDirection: LiveData<(Unit)-> Direction>) {
-        goDirection.value?.invoke(view.goBack())
-    }
 }

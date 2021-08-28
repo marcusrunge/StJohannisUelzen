@@ -2,8 +2,9 @@ package com.marcusrunge.stjohannisuelzen.webcontroller.implementation
 
 import com.marcusrunge.stjohannisuelzen.webcontroller.bases.WebControllerBase
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.Control
+import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebCanGoBackRequestSubscriber
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
-import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.Sources
+import com.sun.org.apache.xpath.internal.operations.Bool
 import java.lang.ref.WeakReference
 
 internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
@@ -21,18 +22,24 @@ internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
 
     val onWebGoBackSubscribers: MutableList<WeakReference<OnWebGoBackSubscriber>> =
         mutableListOf()
+    private var onWebCanGoBackRequestSubscriber: OnWebCanGoBackRequestSubscriber? = null
 
-    override var canGoBack: Boolean = false
     override var isWebViewActive: Boolean = false
 
     override fun goBack() {
-        if(canGoBack) {
-            for (weakRef in onWebGoBackSubscribers) {
-                try {
-                    weakRef.get()?.onWebGoBack()
-                } catch (e: Exception) {
-                }
+        for (weakRef in onWebGoBackSubscribers) {
+            try {
+                weakRef.get()?.onWebGoBack()
+            } catch (e: Exception) {
             }
+        }
+    }
+
+    override fun requestCanGoBack():Boolean {
+        return try {
+            onWebCanGoBackRequestSubscriber?.onWebCanGoBackRequest()!!
+        } catch (e: Exception) {
+            false
         }
     }
 
@@ -49,5 +56,13 @@ internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
                 iterator.remove()
             }
         }
+    }
+
+    override fun setOnWebCanGoBackRequestSubscriber(onWebCanGoBackRequestSubscriber: OnWebCanGoBackRequestSubscriber) {
+        this.onWebCanGoBackRequestSubscriber = onWebCanGoBackRequestSubscriber
+    }
+
+    override fun removeOnWebCanGoBackRequestSubscriber() {
+        this.onWebCanGoBackRequestSubscriber = null
     }
 }
