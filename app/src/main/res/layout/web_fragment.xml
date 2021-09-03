@@ -20,8 +20,8 @@
         <WebView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:endpointUrl="@{viewmodel.endpointUrl}"
-            app:canGoBack="@{viewmodel.canGoBack}"/>
+            app:canGoBack="@{viewmodel.canGoBack}"
+            app:endpointUrl="@{viewmodel.endpointUrl}" />
 
     </FrameLayout>
 </layout>

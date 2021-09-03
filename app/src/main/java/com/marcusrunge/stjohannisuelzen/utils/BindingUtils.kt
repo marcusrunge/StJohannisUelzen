@@ -4,7 +4,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
-import com.marcusrunge.stjohannisuelzen.webcontroller.enums.Direction
 
 object BindingUtils {
     @BindingAdapter("endpointUrl")

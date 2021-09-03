@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
+import com.marcusrunge.stjohannisuelzen.interfaces.OnCanGoBackChangedListener
 import com.marcusrunge.stjohannisuelzen.webcontroller.enums.Direction
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebCanGoBackRequestSubscriber
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
@@ -12,11 +13,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WebViewModel @Inject constructor(val core: Core) :
-    ViewModel(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubscriber {
+    ViewModel(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubscriber,
+    OnCanGoBackChangedListener {
 
     private val _endpointUrl = MutableLiveData(core.webController.sources.endpointUrl!!)
-    private val _canGoBack = MutableLiveData<(Boolean)->Unit>()
-    private val _goDirection = MutableLiveData<(Boolean)-> Direction>()
+    private val _canGoBack = MutableLiveData<(Boolean) -> Unit>()
+    private val _goDirection = MutableLiveData<(Boolean) -> Direction>()
 
     val endpointUrl: LiveData<String> = _endpointUrl
 
@@ -38,6 +40,10 @@ class WebViewModel @Inject constructor(val core: Core) :
     }
 
     override fun onWebCanGoBackRequest(): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun OnCanGoBack(canGoBack: Boolean) {
         TODO("Not yet implemented")
     }
 }
