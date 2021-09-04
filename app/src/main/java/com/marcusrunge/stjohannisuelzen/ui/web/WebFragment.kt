@@ -14,6 +14,7 @@ import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebCanGoBackRequestSubscriber
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubscriber {
@@ -21,7 +22,8 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
     private val binding get() = _binding!!
-    private lateinit var core: Core
+    @Inject
+    lateinit var core: Core
     private lateinit var stjohannisuelzen_webview: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
