@@ -4,7 +4,6 @@ import com.marcusrunge.stjohannisuelzen.webcontroller.bases.WebControllerBase
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.Control
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebCanGoBackRequestSubscriber
 import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
-import com.sun.org.apache.xpath.internal.operations.Bool
 import java.lang.ref.WeakReference
 
 internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
