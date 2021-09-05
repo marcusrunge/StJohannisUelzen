@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class WebViewModel @Inject constructor(private val core: Core) :
+class WebViewModel @Inject constructor(core: Core) :
     ViewModel() {
 
     private val _endpointUrl = MutableLiveData(core.webController.sources.endpointUrl!!)

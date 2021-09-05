@@ -15,5 +15,5 @@ interface Publisher {
 }
 
 interface OnBackSubscriber {
-    fun onBack()
+    fun onBack():Boolean
 }

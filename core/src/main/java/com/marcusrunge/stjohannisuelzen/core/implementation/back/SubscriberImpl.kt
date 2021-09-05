@@ -5,7 +5,7 @@ import com.marcusrunge.stjohannisuelzen.core.interfaces.OnBackSubscriber
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Subscriber
 import java.lang.ref.WeakReference
 
-internal class SubscriberImpl(val backBase: BackBase) : Subscriber {
+internal class SubscriberImpl(private val backBase: BackBase) : Subscriber {
 
     internal companion object {
         var subscriber: Subscriber? = null

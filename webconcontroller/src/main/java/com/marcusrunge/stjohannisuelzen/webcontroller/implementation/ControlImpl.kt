@@ -19,7 +19,7 @@ internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
         }
     }
 
-    val onWebGoBackSubscribers: MutableList<WeakReference<OnWebGoBackSubscriber>> =
+    private val onWebGoBackSubscribers: MutableList<WeakReference<OnWebGoBackSubscriber>> =
         mutableListOf()
     private var onWebCanGoBackRequestSubscriber: OnWebCanGoBackRequestSubscriber? = null
 

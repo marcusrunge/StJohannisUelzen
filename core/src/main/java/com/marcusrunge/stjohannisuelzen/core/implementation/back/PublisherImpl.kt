@@ -3,10 +3,10 @@ package com.marcusrunge.stjohannisuelzen.core.implementation.back
 import com.marcusrunge.stjohannisuelzen.core.bases.BackBase
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Publisher
 
-internal class PublisherImpl(val backBase: BackBase) : Publisher {
+internal class PublisherImpl(private val backBase: BackBase) : Publisher {
 
     internal companion object {
-        var publisher: Publisher? = null
+        private var publisher: Publisher? = null
         fun create(backBase: BackBase): Publisher = when {
             publisher != null -> publisher!!
             else -> {
@@ -17,15 +17,16 @@ internal class PublisherImpl(val backBase: BackBase) : Publisher {
     }
 
     override fun onBack(callback: (() -> Unit)?) {
-        for (weakRef in backBase.onBackSubscribers) {
-            try {
-                weakRef.get()?.onBack()
-            } catch (e: Exception) {
+        if (!(backBase.coreBase.webController.control.isWebViewActive && backBase.coreBase.webController.control.requestCanGoBack())) {
+            var handled: Boolean = false
+            for (weakRef in backBase.onBackSubscribers) {
+                try {
+                    if (weakRef.get()?.onBack() == true) handled = true
+                } catch (e: Exception) {
+                }
             }
-        }
-        if (!(backBase.coreBase.webController.control.isWebViewActive && backBase.coreBase.webController.control.requestCanGoBack()))
-            callback?.invoke()
-        else
+            if (!handled) callback?.invoke()
+        } else
             backBase.coreBase.webController.control.goBack()
     }
 }
