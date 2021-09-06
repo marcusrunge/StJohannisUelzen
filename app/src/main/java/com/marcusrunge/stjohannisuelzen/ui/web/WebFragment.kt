@@ -22,6 +22,7 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
     private val binding get() = _binding!!
+
     @Inject
     lateinit var core: Core
     private lateinit var stjohannisuelzen_webview: WebView
