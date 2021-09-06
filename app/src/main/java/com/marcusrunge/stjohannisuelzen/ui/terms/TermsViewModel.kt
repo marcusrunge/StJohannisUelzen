@@ -1,4 +1,4 @@
-package com.marcusrunge.stjohannisuelzen.ui.privacy
+package com.marcusrunge.stjohannisuelzen.ui.terms
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -10,8 +10,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class PrivacyViewModel @Inject constructor(@ApplicationContext context: Context) : ViewModel() {
-    private val _endpointUrl = MutableLiveData(context.getString(R.string.html_privacy))
+class TermsViewModel @Inject constructor(@ApplicationContext context: Context) : ViewModel() {
+    private val _endpointUrl = MutableLiveData(context.getString(R.string.html_terms))
 
     val endpointUrl: LiveData<String> = _endpointUrl
 }

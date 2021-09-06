@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.counseling.CounselingFragment">
 
@@ -9,17 +10,18 @@
 
         <variable
             name="viewmodel"
-            type="com.marcusrunge.stjohannisuelzen.ui.eula.EulaViewModel" />
+            type="com.marcusrunge.stjohannisuelzen.ui.terms.TermsViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <WebView
+            android:id="@+id/terms_webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello" />
+            app:endpointUrl="@{viewmodel.endpointUrl}" />
 
     </FrameLayout>
 </layout>

@@ -65,8 +65,8 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, OssLicensesMenuActivity::class.java))
                 true
             }
-            R.id.navigation_eula -> {
-                navController.navigate(R.id.navigation_eula)
+            R.id.navigation_terms -> {
+                navController.navigate(R.id.navigation_terms)
                 true
             }
             else -> super.onOptionsItemSelected(item)

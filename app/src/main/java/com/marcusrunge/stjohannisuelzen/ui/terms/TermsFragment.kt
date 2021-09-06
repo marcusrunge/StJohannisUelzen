@@ -1,4 +1,4 @@
-package com.marcusrunge.stjohannisuelzen.ui.eula
+package com.marcusrunge.stjohannisuelzen.ui.terms
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +8,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.marcusrunge.stjohannisuelzen.R
-import com.marcusrunge.stjohannisuelzen.databinding.EulaFragmentBinding
+import com.marcusrunge.stjohannisuelzen.databinding.TermsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EulaFragment : Fragment() {
+class TermsFragment : Fragment() {
 
-    private var _binding: EulaFragmentBinding? = null
-    private val viewModel by viewModels<EulaViewModel>()
+    private var _binding: TermsFragmentBinding? = null
+    private val viewModel by viewModels<TermsViewModel>()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class EulaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding =
-            DataBindingUtil.inflate(inflater, R.layout.eula_fragment, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.terms_fragment, container, false)
         return binding.root
     }
 
