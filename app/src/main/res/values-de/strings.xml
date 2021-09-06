@@ -7,4 +7,7 @@
     <string name="title_settings">Einstellungen</string>
     <string name="title_eula">Endbenutzervereinbarung</string>
     <string name="title_licenses">Lizenzen</string>
+    <string name="eula_text">EULA</string>
+    <string name="privacy_text">PRIVACY</string>
+    <string name="custom_license_title">Open-Source-Lizenzen</string>
 </resources>

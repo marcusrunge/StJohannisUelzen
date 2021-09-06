@@ -1,5 +1,6 @@
 package com.marcusrunge.stjohannisuelzen
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -10,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        OssLicensesMenuActivity.setActivityTitle(getString(R.string.custom_license_title))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.navigation_licenses -> {
-                navController.navigate(R.id.navigation_licenses)
+                startActivity(Intent(this, OssLicensesMenuActivity::class.java))
                 true
             }
             R.id.navigation_eula -> {

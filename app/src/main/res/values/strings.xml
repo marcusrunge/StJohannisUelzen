@@ -21,4 +21,7 @@
     <string name="title_eula">Enduser Agreement</string>
     <string name="title_settings">Settings</string>
     <string name="title_privacy">Privacy</string>
+    <string name="eula_text">EULA</string>
+    <string name="privacy_text">PRIVACY</string>
+    <string name="custom_license_title">Open source licenses</string>
 </resources>
