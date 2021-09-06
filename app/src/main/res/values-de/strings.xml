@@ -3,4 +3,8 @@
     <string name="title_web">Übersicht</string>
     <string name="title_counseling">Seelsorge</string>
     <string name="title_media">Medien</string>
+    <string name="title_privacy">Datenschutz</string>
+    <string name="title_settings">Einstellungen</string>
+    <string name="title_eula">Endbenutzervereinbarung</string>
+    <string name="title_licenses">Lizenzen</string>
 </resources>

@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:title="@string/title_settings" />
+    <item
+        android:id="@+id/navigation_eula"
+        android:title="@string/title_eula" />
+    <item
+        android:id="@+id/navigation_licenses"
+        android:title="@string/title_licenses" />
+    <item
+        android:id="@+id/navigation_privacy"
+        android:title="@string/title_privacy" />
+</menu>

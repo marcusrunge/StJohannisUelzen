@@ -17,24 +17,24 @@
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.marcusrunge.stjohannisuelzen.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="@string/title_settings" />
     <fragment
         android:id="@+id/navigation_licenses"
         android:name="com.marcusrunge.stjohannisuelzen.ui.licenses.LicensesFragment"
-        android:label="licenses_fragment"
+        android:label="@string/title_licenses"
         tools:layout="@layout/licenses_fragment" />
     <fragment
         android:id="@+id/navigation_eula"
         android:name="com.marcusrunge.stjohannisuelzen.ui.eula.EulaFragment"
-        android:label="eula_fragment"
+        android:label="@string/title_eula"
         tools:layout="@layout/eula_fragment" />
     <fragment
         android:id="@+id/navigation_privacy"
         android:name="com.marcusrunge.stjohannisuelzen.ui.privacy.PrivacyFragment"
-        android:label="privacy_fragment"
+        android:label="@string/title_privacy"
         tools:layout="@layout/privacy_fragment" />
     <fragment
         android:id="@+id/navigation_media"
         android:name="com.marcusrunge.stjohannisuelzen.ui.media.MediaFragment"
-        android:label="MediaFragment" />
+        android:label="@string/title_media" />
 </navigation>

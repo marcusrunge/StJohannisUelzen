@@ -23,7 +23,7 @@ class MediaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding =
-            DataBindingUtil.inflate(inflater, R.layout.licenses_fragment, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.media_fragment, container, false)
         return binding.root
     }
 

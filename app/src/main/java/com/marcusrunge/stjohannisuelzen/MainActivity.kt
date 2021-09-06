@@ -1,7 +1,11 @@
 package com.marcusrunge.stjohannisuelzen
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -16,6 +20,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: MainActivityBinding
+    private lateinit var navController: NavController
 
     @Inject
     lateinit var core: Core
@@ -27,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_main_activity)
+        navController = findNavController(R.id.nav_host_fragment_main_activity)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_web, R.id.navigation_media, R.id.navigation_counseling
@@ -35,6 +40,34 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.options_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.navigation_settings -> {
+                navController.navigate(R.id.navigation_settings)
+                true
+            }
+            R.id.navigation_privacy -> {
+                navController.navigate(R.id.navigation_privacy)
+                true
+            }
+            R.id.navigation_licenses -> {
+                navController.navigate(R.id.navigation_licenses)
+                true
+            }
+            R.id.navigation_eula -> {
+                navController.navigate(R.id.navigation_eula)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onBackPressed() {
