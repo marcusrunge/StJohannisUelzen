@@ -7,6 +7,11 @@
         android:title="@string/title_web" />
 
     <item
+        android:id="@+id/navigation_media"
+        android:icon="@drawable/baseline_live_tv_24"
+        android:title="@string/title_media" />
+
+    <item
         android:id="@+id/navigation_counseling"
         android:icon="@drawable/baseline_question_answer_24"
         android:title="@string/title_counseling" />

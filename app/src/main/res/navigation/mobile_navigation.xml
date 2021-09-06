@@ -33,4 +33,8 @@
         android:name="com.marcusrunge.stjohannisuelzen.ui.privacy.PrivacyFragment"
         android:label="privacy_fragment"
         tools:layout="@layout/privacy_fragment" />
+    <fragment
+        android:id="@+id/navigation_media"
+        android:name="com.marcusrunge.stjohannisuelzen.ui.media.MediaFragment"
+        android:label="MediaFragment" />
 </navigation>

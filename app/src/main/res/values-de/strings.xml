@@ -2,4 +2,5 @@
 <resources>
     <string name="title_web">Übersicht</string>
     <string name="title_counseling">Seelsorge</string>
+    <string name="title_media">Medien</string>
 </resources>
