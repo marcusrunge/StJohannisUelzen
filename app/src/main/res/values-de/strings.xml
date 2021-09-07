@@ -10,4 +10,6 @@
     <string name="title_terms">Geschäftsbedingungen</string>
     <string name="html_terms">"file:///android_asset/terms_de.html"</string>
     <string name="html_privacy">"file:///android_asset/privacy_de.html"</string>
+    <string name="category_general">Allgemein</string>
+    <string name="theme_header">Design</string>
 </resources>
