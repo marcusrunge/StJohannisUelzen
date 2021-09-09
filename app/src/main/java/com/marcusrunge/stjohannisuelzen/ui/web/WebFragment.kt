@@ -1,5 +1,6 @@
 package com.marcusrunge.stjohannisuelzen.ui.web
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,10 @@ import android.webkit.WebView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
+import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
+import androidx.webkit.WebViewFeature
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
@@ -47,6 +52,7 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
         stjohannisuelzen_webview = view.findViewById(R.id.stjohannisuelzen_webview)
+        setTheme()
     }
 
     override fun onDestroyView() {
@@ -68,5 +74,21 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
 
     override fun onWebCanGoBackRequest(): Boolean {
         return stjohannisuelzen_webview.canGoBack()
+    }
+
+    private fun setTheme(){
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+            when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    WebSettingsCompat.setForceDark(stjohannisuelzen_webview.settings, FORCE_DARK_ON)
+                }
+                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                    WebSettingsCompat.setForceDark(stjohannisuelzen_webview.settings, FORCE_DARK_OFF)
+                }
+                else -> {
+                    //
+                }
+            }
+        }
     }
 }

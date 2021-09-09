@@ -5,7 +5,7 @@
         <ListPreference
             android:entries="@array/theme_entries"
             android:entryValues="@array/theme_values"
-            android:key="dropdown"
+            android:key="@string/key_theme"
             android:title="@string/theme_header"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>

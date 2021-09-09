@@ -1,32 +1,43 @@
 package com.marcusrunge.stjohannisuelzen.ui.settings
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import com.marcusrunge.stjohannisuelzen.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingsFragment : PreferenceFragmentCompat() {
+class SettingsFragment : PreferenceFragmentCompat(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        PreferenceManager.getDefaultSharedPreferences(context)
+            .registerOnSharedPreferenceChangeListener(this)
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        /*Preference.OnPreferenceChangeListener { preference, newValue ->
-            when (newValue) {
-                getString(R.string.l) -> {
-                    updateTheme(AppCompatDelegate.MODE_NIGHT_YES)
-                }
-                getString(R.string.pf_light_off) -> {
-                    updateTheme(AppCompatDelegate.MODE_NIGHT_NO)
-                }
-                else -> {
-                    if (BuildCompat.isAtLeastQ()) {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                    } else {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-                    }
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        key?.let {
+            if (it == getString(R.string.key_theme)) sharedPreferences?.let { preferences ->
+                val themeValues = resources.getStringArray(R.array.theme_values)
+                when (preferences.getString(it, themeValues[0])) {
+                    themeValues[0] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    themeValues[1] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    themeValues[2] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
             }
-            true
-        }*/
+        }
+    }
+
+    override fun onDestroy() {
+        PreferenceManager.getDefaultSharedPreferences(context)
+            .unregisterOnSharedPreferenceChangeListener(this)
+        super.onDestroy()
     }
 }

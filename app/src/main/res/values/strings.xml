@@ -14,4 +14,5 @@
     <string name="category_general">General</string>
     <string name="theme_header">Theme</string>
     <string name="url_stjohannis_uelzen" translatable="false">https://st-johannis-uelzen.wir-e.de/</string>
+    <string name="key_theme">theme</string>
 </resources>
