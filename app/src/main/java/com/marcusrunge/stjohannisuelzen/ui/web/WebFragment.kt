@@ -76,14 +76,17 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
         return stjohannisuelzen_webview.canGoBack()
     }
 
-    private fun setTheme(){
+    private fun setTheme() {
         if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
                 Configuration.UI_MODE_NIGHT_YES -> {
                     WebSettingsCompat.setForceDark(stjohannisuelzen_webview.settings, FORCE_DARK_ON)
                 }
                 Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> {
-                    WebSettingsCompat.setForceDark(stjohannisuelzen_webview.settings, FORCE_DARK_OFF)
+                    WebSettingsCompat.setForceDark(
+                        stjohannisuelzen_webview.settings,
+                        FORCE_DARK_OFF
+                    )
                 }
                 else -> {
                     //
