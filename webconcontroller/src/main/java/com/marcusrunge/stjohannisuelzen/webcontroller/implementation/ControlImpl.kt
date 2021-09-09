@@ -34,7 +34,7 @@ internal class ControlImpl(webControllerBase: WebControllerBase) : Control {
         }
     }
 
-    override fun requestCanGoBack():Boolean {
+    override fun requestCanGoBack(): Boolean {
         return try {
             onWebCanGoBackRequestSubscriber?.onWebCanGoBackRequest()!!
         } catch (e: Exception) {

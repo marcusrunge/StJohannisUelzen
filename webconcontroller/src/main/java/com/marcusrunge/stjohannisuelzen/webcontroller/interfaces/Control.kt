@@ -1,9 +1,9 @@
 package com.marcusrunge.stjohannisuelzen.webcontroller.interfaces
 
 interface Control {
-    var isWebViewActive:Boolean
+    var isWebViewActive: Boolean
     fun goBack()
-    fun requestCanGoBack():Boolean
+    fun requestCanGoBack(): Boolean
     fun addOnWebGoBackSubscriber(onWebGoBackSubscriber: OnWebGoBackSubscriber)
     fun removeOnWebGoBackSubscriber(onWebGoBackSubscriber: OnWebGoBackSubscriber)
     fun setOnWebCanGoBackRequestSubscriber(onWebCanGoBackRequestSubscriber: OnWebCanGoBackRequestSubscriber)
@@ -15,5 +15,5 @@ interface OnWebGoBackSubscriber {
 }
 
 interface OnWebCanGoBackRequestSubscriber {
-    fun onWebCanGoBackRequest():Boolean
+    fun onWebCanGoBackRequest(): Boolean
 }
