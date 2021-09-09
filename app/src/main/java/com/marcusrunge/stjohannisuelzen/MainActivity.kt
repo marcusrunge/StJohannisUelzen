@@ -21,7 +21,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: MainActivityBinding
-    //private lateinit var navController: NavController
 
     @Inject
     lateinit var core: Core
@@ -37,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        //navController = findNavController(R.id.nav_host_fragment_main_activity)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_web, R.id.navigation_media, R.id.navigation_counseling
@@ -72,6 +70,10 @@ class MainActivity : AppCompatActivity() {
                 navigation.navController.navigate(R.id.navigation_terms)
                 true
             }
+            //TODO: -> {
+            // navigation.navigateBack()
+            // true
+            // }
             else -> super.onOptionsItemSelected(item)
         }
     }
