@@ -70,10 +70,10 @@ class MainActivity : AppCompatActivity() {
                 navigation.navController.navigate(R.id.navigation_terms)
                 true
             }
-            //TODO: -> {
-            // navigation.navigateBack()
-            // true
-            // }
+            android.R.id.home -> {
+                navigation.navigateBack()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
