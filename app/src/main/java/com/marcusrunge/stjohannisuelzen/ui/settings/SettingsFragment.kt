@@ -2,14 +2,11 @@ package com.marcusrunge.stjohannisuelzen.ui.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.marcusrunge.stjohannisuelzen.R
-import com.marcusrunge.stjohannisuelzen.interfaces.Navigation
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat(),

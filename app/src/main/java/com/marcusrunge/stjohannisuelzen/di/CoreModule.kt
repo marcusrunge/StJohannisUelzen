@@ -2,7 +2,6 @@ package com.marcusrunge.stjohannisuelzen.di
 
 import com.marcusrunge.stjohannisuelzen.core.implementation.core.CoreFactoryImpl
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
-import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.WebController
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,5 +13,5 @@ import javax.inject.Singleton
 object CoreModule {
     @Provides
     @Singleton
-    fun provideCore(webController: WebController): Core = CoreFactoryImpl.create(webController)
+    fun provideCore(): Core = CoreFactoryImpl.create()
 }

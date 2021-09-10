@@ -7,5 +7,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "St. Johannis Uelzen"
 include ':app'
-include ':webconcontroller'
 include ':core'

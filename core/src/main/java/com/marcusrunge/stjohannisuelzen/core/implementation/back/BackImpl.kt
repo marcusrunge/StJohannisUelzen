@@ -2,9 +2,9 @@ package com.marcusrunge.stjohannisuelzen.core.implementation.back
 
 import com.marcusrunge.stjohannisuelzen.core.bases.BackBase
 import com.marcusrunge.stjohannisuelzen.core.bases.CoreBase
-import com.marcusrunge.stjohannisuelzen.core.interfaces.Back
-import com.marcusrunge.stjohannisuelzen.core.interfaces.Publisher
-import com.marcusrunge.stjohannisuelzen.core.interfaces.Subscriber
+import com.marcusrunge.stjohannisuelzen.core.implementation.app.AppImpl
+import com.marcusrunge.stjohannisuelzen.core.implementation.web.WebImpl
+import com.marcusrunge.stjohannisuelzen.core.interfaces.*
 
 internal class BackImpl(coreBase: CoreBase) : BackBase(coreBase) {
     internal companion object {
@@ -19,12 +19,12 @@ internal class BackImpl(coreBase: CoreBase) : BackBase(coreBase) {
     }
 
     init {
-        _publisher = PublisherImpl.create(this)
-        _subscriber = SubscriberImpl.create(this)
+        _app = AppImpl.create(this)
+        _web =WebImpl.create(this)
     }
 
-    override val subscriber: Subscriber
-        get() = _subscriber
-    override val publisher: Publisher
-        get() = _publisher
+    override val app: App
+        get() = _app
+    override val web: Web
+        get() = _web
 }

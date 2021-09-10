@@ -15,14 +15,14 @@ import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
 import androidx.webkit.WebViewFeature
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
+import com.marcusrunge.stjohannisuelzen.core.interfaces.OnCanGoBackRequestedListener
+import com.marcusrunge.stjohannisuelzen.core.interfaces.OnGoBackRequestedListener
 import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
-import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebCanGoBackRequestSubscriber
-import com.marcusrunge.stjohannisuelzen.webcontroller.interfaces.OnWebGoBackSubscriber
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubscriber {
+class Fragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener {
 
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
@@ -34,9 +34,9 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        core.webController.control.isWebViewActive = true
-        core.webController.control.addOnWebGoBackSubscriber(this)
-        core.webController.control.setOnWebCanGoBackRequestSubscriber(this)
+        core.back.web.isWebViewActive = true
+        core.back.web.setOnGoBackRequestedListener(this)
+        core.back.web.setOnWebCanGoBackRequestedListener(this)
     }
 
     override fun onCreateView(
@@ -63,16 +63,16 @@ class WebFragment : Fragment(), OnWebGoBackSubscriber, OnWebCanGoBackRequestSubs
 
     override fun onDestroy() {
         super.onDestroy()
-        core.webController.control.isWebViewActive = false
-        core.webController.control.removeOnWebGoBackSubscriber(this)
-        core.webController.control.removeOnWebCanGoBackRequestSubscriber()
+        core.back.web.isWebViewActive = false
+        core.back.web.removeOnGoBackRequestedListener()
+        core.back.web.removeOnCanGoBackRequestedListener()
     }
 
-    override fun onWebGoBack() {
+    override fun onGoBackRequested() {
         stjohannisuelzen_webview.goBack()
     }
 
-    override fun onWebCanGoBackRequest(): Boolean {
+    override fun onCanGoBackRequested(): Boolean {
         return stjohannisuelzen_webview.canGoBack()
     }
 

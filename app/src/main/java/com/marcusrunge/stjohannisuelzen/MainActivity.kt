@@ -79,6 +79,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        core.back.publisher.onBack { super.onBackPressed() }
+        core.back.app.onBackPressed { super.onBackPressed() }
     }
 }
