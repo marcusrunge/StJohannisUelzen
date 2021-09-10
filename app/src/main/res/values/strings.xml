@@ -14,5 +14,7 @@
     <string name="category_general">General</string>
     <string name="theme_header">Theme</string>
     <string name="url_stjohannis_uelzen" translatable="false">https://st-johannis-uelzen.wir-e.de/</string>
-    <string name="key_theme">theme</string>
+    <string name="key_theme" translatable="false">theme</string>
+    <string name="information_intro">Developed by</string>
+    <string name="information_outro">for and on behalf of\nparish St. Johannis Uelzen</string>
 </resources>

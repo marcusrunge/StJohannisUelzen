@@ -12,4 +12,6 @@
     <string name="html_privacy">"file:///android_asset/privacy_de.html"</string>
     <string name="category_general">Allgemein</string>
     <string name="theme_header">Design</string>
+    <string name="information_intro">Entwickelt von</string>
+    <string name="information_outro">für und im Namen der\nPfarrei St. Johannis Uelzen</string>
 </resources>

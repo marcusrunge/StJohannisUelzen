@@ -9,4 +9,8 @@
             android:title="@string/theme_header"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
+    <PreferenceCategory app:title="Information">
+        <Preference
+            android:layout="@layout/preference_information"/>
+    </PreferenceCategory>
 </PreferenceScreen>
