@@ -2,10 +2,10 @@ package com.marcusrunge.stjohannisuelzen.ui.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.marcusrunge.stjohannisuelzen.R
+import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,10 +26,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
         key?.let {
             if (it == getString(R.string.key_theme)) sharedPreferences?.let { preferences ->
                 val themeValues = resources.getStringArray(R.array.theme_values)
-                when (preferences.getString(it, themeValues[0])) {
-                    themeValues[0] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                    themeValues[1] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    themeValues[2] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                preferences.getString(it, themeValues[0])?.let { theme ->
+                    ThemeUtils.setTheme(themeValues, theme)
                 }
             }
         }

@@ -1,20 +1,24 @@
 package com.marcusrunge.stjohannisuelzen
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
+import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,6 +33,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
+        val themeValues = resources.getStringArray(R.array.theme_values)
+        val theme = sharedPref.getString(getString(R.string.key_theme), themeValues[0])
+        if (theme != null) {
+            ThemeUtils.setTheme(themeValues, theme)
+        }
+
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
