@@ -7,5 +7,5 @@ interface App {
 }
 
 interface OnBackPressedListener {
-    fun onBackPressed():Boolean
+    fun onBackPressed(): Boolean
 }

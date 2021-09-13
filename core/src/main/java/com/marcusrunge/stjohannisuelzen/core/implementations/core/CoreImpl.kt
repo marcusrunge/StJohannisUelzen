@@ -1,7 +1,7 @@
-package com.marcusrunge.stjohannisuelzen.core.implementation.core
+package com.marcusrunge.stjohannisuelzen.core.implementations.core
 
 import com.marcusrunge.stjohannisuelzen.core.bases.CoreBase
-import com.marcusrunge.stjohannisuelzen.core.implementation.back.BackImpl
+import com.marcusrunge.stjohannisuelzen.core.implementations.back.BackImpl
 
 internal class CoreImpl() : CoreBase() {
     init {

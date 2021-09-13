@@ -1,4 +1,4 @@
-package com.marcusrunge.stjohannisuelzen.core.implementation.app
+package com.marcusrunge.stjohannisuelzen.core.implementations.app
 
 import com.marcusrunge.stjohannisuelzen.core.bases.BackBase
 import com.marcusrunge.stjohannisuelzen.core.interfaces.App

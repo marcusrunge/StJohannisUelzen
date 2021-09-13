@@ -1,7 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.di
 
-import com.marcusrunge.stjohannisuelzen.core.implementations.core.CoreFactoryImpl
-import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
+import com.marcusrunge.stjohannisuelzen.apiconnect.implementations.ApiConnectFactoryImpl
+import com.marcusrunge.stjohannisuelzen.apiconnect.interfaces.ApiConnect
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,8 +10,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CoreModule {
+object ApiConnectModule {
     @Provides
     @Singleton
-    fun provideCore(): Core = CoreFactoryImpl.create()
+    fun provideApiConnect(): ApiConnect = ApiConnectFactoryImpl.create()
 }

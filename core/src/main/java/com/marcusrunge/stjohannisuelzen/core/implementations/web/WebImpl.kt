@@ -1,4 +1,4 @@
-package com.marcusrunge.stjohannisuelzen.core.implementation.web
+package com.marcusrunge.stjohannisuelzen.core.implementations.web
 
 import com.marcusrunge.stjohannisuelzen.core.bases.BackBase
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnCanGoBackRequestedListener

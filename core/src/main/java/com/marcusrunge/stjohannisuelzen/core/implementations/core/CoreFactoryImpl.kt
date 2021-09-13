@@ -1,14 +1,14 @@
-package com.marcusrunge.stjohannisuelzen.core.implementation.core
+package com.marcusrunge.stjohannisuelzen.core.implementations.core
 
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.CoreFactory
 
 class CoreFactoryImpl {
-    companion object : CoreFactory{
-        private var core : Core? = null
+    companion object : CoreFactory {
+        private var core: Core? = null
         override fun create(): Core = when {
             core != null -> core!!
-            else ->{
+            else -> {
                 core = CoreImpl()
                 core!!
             }
