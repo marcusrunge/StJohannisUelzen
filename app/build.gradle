@@ -18,7 +18,7 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
-        buildConfigField "String", "YOUTUBE_DATA_API_KEY",localProperties['youTubeDataAPI_key']
+        buildConfigField "String", "YOUTUBE_DATA_API_KEY", localProperties['youTubeDataAPI_key']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
