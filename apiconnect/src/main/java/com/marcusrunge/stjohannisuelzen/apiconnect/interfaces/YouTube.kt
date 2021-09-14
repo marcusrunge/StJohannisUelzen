@@ -6,5 +6,5 @@ interface YouTube {
     suspend fun getYoutubeSearchList(
         key: String?,
         channelId: String?
-    ): Result<YoutubeSearchListResponse>
+    ): YoutubeSearchListResponse?
 }
