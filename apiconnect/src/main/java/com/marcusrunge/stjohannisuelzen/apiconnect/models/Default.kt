@@ -1,3 +1,5 @@
+package com.marcusrunge.stjohannisuelzen.apiconnect.models
+
 import com.google.gson.annotations.SerializedName
 
 /*

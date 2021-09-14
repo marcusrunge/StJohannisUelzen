@@ -1,3 +1,5 @@
+package com.marcusrunge.stjohannisuelzen.apiconnect.models
+
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -12,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Json4Kotlin_Base(
+data class YoutubeSearchListResponse(
 
     @SerializedName("kind") val kind: String,
     @SerializedName("etag") val etag: String,

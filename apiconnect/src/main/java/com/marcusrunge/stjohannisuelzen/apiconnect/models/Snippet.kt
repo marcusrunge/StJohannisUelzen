@@ -1,4 +1,5 @@
 import com.google.gson.annotations.SerializedName
+import com.marcusrunge.stjohannisuelzen.apiconnect.models.Thumbnails
 
 /*
 Copyright (c) 2021 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,12 +15,12 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 data class Snippet(
 
-    @SerializedName("publishedAt") val publishedAt: String,
-    @SerializedName("channelId") val channelId: String,
-    @SerializedName("title") val title: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("thumbnails") val thumbnails: Thumbnails,
-    @SerializedName("channelTitle") val channelTitle: String,
-    @SerializedName("liveBroadcastContent") val liveBroadcastContent: String,
-    @SerializedName("publishTime") val publishTime: String
+	@SerializedName("publishedAt") val publishedAt: String,
+	@SerializedName("channelId") val channelId: String,
+	@SerializedName("title") val title: String,
+	@SerializedName("description") val description: String,
+	@SerializedName("thumbnails") val thumbnails: Thumbnails,
+	@SerializedName("channelTitle") val channelTitle: String,
+	@SerializedName("liveBroadcastContent") val liveBroadcastContent: String,
+	@SerializedName("publishTime") val publishTime: String
 )
