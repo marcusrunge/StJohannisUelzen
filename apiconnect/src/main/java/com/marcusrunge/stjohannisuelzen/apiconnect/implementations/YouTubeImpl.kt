@@ -1,13 +1,12 @@
 package com.marcusrunge.stjohannisuelzen.apiconnect.implementations
 
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.marcusrunge.stjohannisuelzen.apiconnect.bases.ApiConnectBase
 import com.marcusrunge.stjohannisuelzen.apiconnect.interfaces.YouTube
-import com.marcusrunge.stjohannisuelzen.apiconnect.models.YoutubeSearchListResponse
+import com.marcusrunge.stjohannisuelzen.apiconnect.models.YoutubeSearchList
 
 internal class YouTubeImpl(private val apiConnectBase: ApiConnectBase) : YouTube {
     companion object {
@@ -23,23 +22,23 @@ internal class YouTubeImpl(private val apiConnectBase: ApiConnectBase) : YouTube
 
     override suspend fun getYoutubeSearchList(
         key: String?,
-        channelId: String?
-    ): YoutubeSearchListResponse? {
-        try {
-            val requestQueue = Volley.newRequestQueue(apiConnectBase.context)
-            val url ="https://www.googleapis.com/youtube/v3/search?key=$key&channelId=$channelId&part=snippet,id&order=date"
-            val stringRequest = StringRequest(Request.Method.GET, url,
-                { response ->
-                    // TODO: Do something with the response
-                },
-                { error ->
-                    // TODO: Handle error
-                 })
-            // Add the request to the RequestQueue.
-            requestQueue.add(stringRequest)
-        } catch (e: Exception) {
-            // TODO: Handle exception
-        }
-        return null
+        channelId: String?,
+        onSuccess: ((youtubeSearchList: YoutubeSearchList) -> Unit)?,
+        onError: ((message: String?) -> Unit)?
+    ) {
+        val requestQueue = Volley.newRequestQueue(apiConnectBase.context)
+        val url =
+            "https://www.googleapis.com/youtube/v3/search?key=$key&channelId=$channelId&part=snippet,id&order=date"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                var gson = Gson()
+                val youtubeSearchList = gson.fromJson(response, YoutubeSearchList::class.java)
+                onSuccess?.invoke(youtubeSearchList)
+            },
+            { error ->
+                onError?.invoke(error.message)
+            })
+        requestQueue.add(stringRequest)
     }
 }
