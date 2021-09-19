@@ -24,7 +24,7 @@ class MediaFragment : Fragment() {
     private var _binding: MediaFragmentBinding? = null
     private val viewModel by viewModels<MediaViewModel>()
     private val binding get() = _binding!!
-    private var youTubePlayer:YouTubePlayer? = null
+    private var youTubePlayer: YouTubePlayer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +49,7 @@ class MediaFragment : Fragment() {
                     p1: YouTubePlayer?,
                     p2: Boolean
                 ) {
-                    youTubePlayer=p1
+                    youTubePlayer = p1
                 }
 
                 override fun onInitializationFailure(
@@ -59,7 +59,7 @@ class MediaFragment : Fragment() {
                     Toast.makeText(context, p1?.name, Toast.LENGTH_LONG).show()
                 }
             })
-        viewModel.liveVideoId.observe(viewLifecycleOwner){
+        viewModel.liveVideoId.observe(viewLifecycleOwner) {
             youTubePlayer?.cueVideo(it)
         }
     }

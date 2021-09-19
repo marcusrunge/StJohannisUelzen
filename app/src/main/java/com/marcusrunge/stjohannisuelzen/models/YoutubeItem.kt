@@ -4,7 +4,11 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 
-data class YoutubeItem(private var _title: String?, private var _thumbnailUrl: String?, private var _videoId: String?): BaseObservable(){
+data class YoutubeItem(
+    private var _title: String?,
+    private var _thumbnailUrl: String?,
+    private var _videoId: String?
+) : BaseObservable() {
     @get:Bindable
     var title: String?
         get() = _title

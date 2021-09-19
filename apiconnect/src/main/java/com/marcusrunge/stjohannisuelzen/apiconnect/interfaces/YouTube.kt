@@ -6,7 +6,7 @@ interface YouTube {
     suspend fun getYoutubeSearchList(
         key: String?,
         channelId: String?,
-        onSuccess: ((youtubeSearchList: YoutubeSearchList)->Unit)?,
-        onError:((message:String?)->Unit)?
+        onSuccess: ((youtubeSearchList: YoutubeSearchList) -> Unit)?,
+        onError: ((message: String?) -> Unit)?
     )
 }

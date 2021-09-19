@@ -15,5 +15,6 @@ import javax.inject.Singleton
 object ApiConnectModule {
     @Provides
     @Singleton
-    fun provideApiConnect(@ApplicationContext context: Context?): ApiConnect = ApiConnectFactoryImpl.create(context)
+    fun provideApiConnect(@ApplicationContext context: Context?): ApiConnect =
+        ApiConnectFactoryImpl.create(context)
 }

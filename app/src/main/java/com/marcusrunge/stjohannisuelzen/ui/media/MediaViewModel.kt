@@ -11,7 +11,6 @@ import com.marcusrunge.stjohannisuelzen.BuildConfig
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.adapter.YoutubeRecyclerViewAdapter
 import com.marcusrunge.stjohannisuelzen.apiconnect.interfaces.ApiConnect
-import com.marcusrunge.stjohannisuelzen.apiconnect.models.Items
 import com.marcusrunge.stjohannisuelzen.apiconnect.models.YoutubeSearchList
 import com.marcusrunge.stjohannisuelzen.bases.ViewModelBase
 import com.marcusrunge.stjohannisuelzen.models.YoutubeItem
@@ -36,7 +35,7 @@ class MediaViewModel @Inject constructor(
     @get:Bindable
     var youtubeRecyclerViewAdapter: YoutubeRecyclerViewAdapter? =
         YoutubeRecyclerViewAdapter(youtubeItems) {
-            liveVideoId.value=it
+            liveVideoId.value = it
         }
         set(value) {
             field = value
@@ -70,9 +69,15 @@ class MediaViewModel @Inject constructor(
         when (inputMessage.arg1) {
             YOUTUBE_SEARCHLIST -> {
                 (inputMessage.obj as YoutubeSearchList).items.forEach {
-                    youtubeItems.add(YoutubeItem(it.snippet.title, it.snippet.thumbnails.default.url, it.id.videoId))
+                    youtubeItems.add(
+                        YoutubeItem(
+                            it.snippet.title,
+                            it.snippet.thumbnails.default.url,
+                            it.id.videoId
+                        )
+                    )
                 }
-                if(youtubeItems.size>0)liveVideoId.value= youtubeItems[0].videoId
+                if (youtubeItems.size > 0) liveVideoId.value = youtubeItems[0].videoId
                 youtubeRecyclerViewAdapter?.notifyDataSetChanged()
             }
             ERROR -> {

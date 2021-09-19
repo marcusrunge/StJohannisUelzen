@@ -7,7 +7,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.marcusrunge.stjohannisuelzen.R
-import com.marcusrunge.stjohannisuelzen.apiconnect.models.Items
 import com.marcusrunge.stjohannisuelzen.models.YoutubeItem
 
 class YoutubeRecyclerViewAdapter(

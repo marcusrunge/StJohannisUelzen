@@ -17,8 +17,8 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 data class Items(
 
-	@SerializedName("kind") val kind: String,
-	@SerializedName("etag") val etag: String,
-	@SerializedName("id") val id: Id,
-	@SerializedName("snippet") val snippet: Snippet
+    @SerializedName("kind") val kind: String,
+    @SerializedName("etag") val etag: String,
+    @SerializedName("id") val id: Id,
+    @SerializedName("snippet") val snippet: Snippet
 )
