@@ -32,8 +32,9 @@ internal class YouTubeImpl(private val apiConnectBase: ApiConnectBase) : YouTube
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
-                var gson = Gson()
+                val gson = Gson()
                 val youtubeSearchList = gson.fromJson(response, YoutubeSearchList::class.java)
+                youtubeSearchList.items
                 onSuccess?.invoke(youtubeSearchList)
             },
             { error ->
