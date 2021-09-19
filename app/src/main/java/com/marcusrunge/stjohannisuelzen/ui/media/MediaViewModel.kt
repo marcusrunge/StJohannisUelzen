@@ -5,6 +5,7 @@ import android.os.Message
 import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.marcusrunge.stjohannisuelzen.BuildConfig
 import com.marcusrunge.stjohannisuelzen.R
@@ -30,11 +31,12 @@ class MediaViewModel @Inject constructor(
     }
 
     private val youtubeItems: MutableList<YoutubeItem> = mutableListOf()
+    val liveVideoId = MutableLiveData<String>()
 
     @get:Bindable
     var youtubeRecyclerViewAdapter: YoutubeRecyclerViewAdapter? =
         YoutubeRecyclerViewAdapter(youtubeItems) {
-            //TODO: Load video on click
+            liveVideoId.value=it
         }
         set(value) {
             field = value
@@ -70,6 +72,7 @@ class MediaViewModel @Inject constructor(
                 (inputMessage.obj as YoutubeSearchList).items.forEach {
                     youtubeItems.add(YoutubeItem(it.snippet.title, it.snippet.thumbnails.default.url, it.id.videoId))
                 }
+                if(youtubeItems.size>0)liveVideoId.value= youtubeItems[0].videoId
                 youtubeRecyclerViewAdapter?.notifyDataSetChanged()
             }
             ERROR -> {
