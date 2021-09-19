@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="items"
-            type="com.marcusrunge.stjohannisuelzen.apiconnect.models.Items" />
+            name="item"
+            type="com.marcusrunge.stjohannisuelzen.models.YoutubeItem" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/thumb_imageview"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -32,8 +32,8 @@
             <TextView
                 android:id="@+id/title_textview"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="@{items.snippet.title}"
+                android:layout_height="match_parent"
+                android:text="@{item.title}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/thumb_imageview"

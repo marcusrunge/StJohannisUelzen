@@ -2,6 +2,7 @@ package com.marcusrunge.stjohannisuelzen.ui.media
 
 import android.content.Context
 import android.os.Message
+import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.viewModelScope
@@ -10,7 +11,9 @@ import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.adapter.YoutubeRecyclerViewAdapter
 import com.marcusrunge.stjohannisuelzen.apiconnect.interfaces.ApiConnect
 import com.marcusrunge.stjohannisuelzen.apiconnect.models.Items
+import com.marcusrunge.stjohannisuelzen.apiconnect.models.YoutubeSearchList
 import com.marcusrunge.stjohannisuelzen.bases.ViewModelBase
+import com.marcusrunge.stjohannisuelzen.models.YoutubeItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -18,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MediaViewModel @Inject constructor(
-    @ApplicationContext context: Context,
+    @ApplicationContext val context: Context,
     private val apiConnect: ApiConnect
 ) : ViewModelBase() {
     companion object {
@@ -26,7 +29,7 @@ class MediaViewModel @Inject constructor(
         private const val ERROR = 2
     }
 
-    private val youtubeItems: MutableList<Items> = mutableListOf()
+    private val youtubeItems: MutableList<YoutubeItem> = mutableListOf()
 
     @get:Bindable
     var youtubeRecyclerViewAdapter: YoutubeRecyclerViewAdapter? =
@@ -64,12 +67,13 @@ class MediaViewModel @Inject constructor(
     override fun updateView(inputMessage: Message) {
         when (inputMessage.arg1) {
             YOUTUBE_SEARCHLIST -> {
-                (inputMessage.obj as List<Items>).forEach {
-                    youtubeItems.add(it)
+                (inputMessage.obj as YoutubeSearchList).items.forEach {
+                    youtubeItems.add(YoutubeItem(it.snippet.title, it.snippet.thumbnails.default.url, it.id.videoId))
                 }
+                youtubeRecyclerViewAdapter?.notifyDataSetChanged()
             }
             ERROR -> {
-                //TODO: Show error
+                Toast.makeText(context, (inputMessage.obj as String?), Toast.LENGTH_LONG).show()
             }
         }
     }
