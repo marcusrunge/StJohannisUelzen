@@ -14,6 +14,7 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -53,5 +54,17 @@ object BindingUtils {
             )!!
         )
         recyclerView.addItemDecoration(divider)
+    }
+
+    @BindingAdapter("setOnRefreshListener")
+    @JvmStatic
+    fun bindOnRefreshListener(view: SwipeRefreshLayout, listener: SwipeRefreshLayout.OnRefreshListener?) {
+        view.setOnRefreshListener(listener)
+    }
+
+    @BindingAdapter("setIsRefreshing")
+    @JvmStatic
+    fun bindIsRefreshing(view: SwipeRefreshLayout, isRefreshing: Boolean) {
+        view.isRefreshing=isRefreshing
     }
 }

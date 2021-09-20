@@ -7,6 +7,7 @@ import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.marcusrunge.stjohannisuelzen.BuildConfig
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.adapter.YoutubeRecyclerViewAdapter
@@ -23,13 +24,14 @@ import javax.inject.Inject
 class MediaViewModel @Inject constructor(
     @ApplicationContext val context: Context,
     private val apiConnect: ApiConnect
-) : ViewModelBase() {
+) : ViewModelBase(), SwipeRefreshLayout.OnRefreshListener {
     companion object {
         private const val YOUTUBE_SEARCHLIST = 1
         private const val ERROR = 2
     }
 
     private val youtubeItems: MutableList<YoutubeItem> = mutableListOf()
+    private var _isRefreshing: Boolean = true
     val liveVideoId = MutableLiveData<String>()
 
     @get:Bindable
@@ -42,7 +44,47 @@ class MediaViewModel @Inject constructor(
             notifyPropertyChanged(BR.youtubeRecyclerViewAdapter)
         }
 
+    @get:Bindable
+    var isRefreshing: Boolean
+        get() = _isRefreshing
+        set(value) {
+            _isRefreshing = value
+            notifyPropertyChanged(BR.refreshing)
+        }
+
     init {
+        getYoutubeSearchList()
+    }
+
+    override fun updateView(inputMessage: Message) {
+        when (inputMessage.arg1) {
+            YOUTUBE_SEARCHLIST -> {
+                (inputMessage.obj as YoutubeSearchList).items.forEach {
+                    youtubeItems.add(
+                        YoutubeItem(
+                            it.snippet.title,
+                            it.snippet.thumbnails.default.url,
+                            it.id.videoId
+                        )
+                    )
+                }
+                if (youtubeItems.size > 0) liveVideoId.value = youtubeItems[0].videoId
+                youtubeRecyclerViewAdapter?.notifyDataSetChanged()
+                isRefreshing=false
+            }
+            ERROR -> {
+                Toast.makeText(context, (inputMessage.obj as String?), Toast.LENGTH_LONG).show()
+                isRefreshing=false
+            }
+        }
+    }
+
+    override fun onRefresh() {
+        isRefreshing=true
+        getYoutubeSearchList()
+    }
+
+    private fun getYoutubeSearchList(){
         viewModelScope.launch {
             apiConnect.youTube.getYoutubeSearchList(
                 BuildConfig.YOUTUBE_DATA_API_KEY,
@@ -62,27 +104,6 @@ class MediaViewModel @Inject constructor(
                     handler.sendMessage(message)
                 }
             )
-        }
-    }
-
-    override fun updateView(inputMessage: Message) {
-        when (inputMessage.arg1) {
-            YOUTUBE_SEARCHLIST -> {
-                (inputMessage.obj as YoutubeSearchList).items.forEach {
-                    youtubeItems.add(
-                        YoutubeItem(
-                            it.snippet.title,
-                            it.snippet.thumbnails.default.url,
-                            it.id.videoId
-                        )
-                    )
-                }
-                if (youtubeItems.size > 0) liveVideoId.value = youtubeItems[0].videoId
-                youtubeRecyclerViewAdapter?.notifyDataSetChanged()
-            }
-            ERROR -> {
-                Toast.makeText(context, (inputMessage.obj as String?), Toast.LENGTH_LONG).show()
-            }
         }
     }
 }

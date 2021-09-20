@@ -25,12 +25,18 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/youtubeitem_recyclerview"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:setIsRefreshing="@{viewmodel.isRefreshing}"
+            app:setOnRefreshListener="@{viewmodel}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/youtube_fragment"
-            app:setAdapter="@{viewmodel.youtubeRecyclerViewAdapter}" />
+            app:layout_constraintTop_toBottomOf="@+id/youtube_fragment">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:setAdapter="@{viewmodel.youtubeRecyclerViewAdapter}" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
