@@ -15,14 +15,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/youtube_fragment"
             android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/youtubeitem_recyclerview"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
