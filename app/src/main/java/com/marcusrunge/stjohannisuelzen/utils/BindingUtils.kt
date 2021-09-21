@@ -1,33 +1,27 @@
 package com.marcusrunge.stjohannisuelzen.utils
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.net.URL
 
 object BindingUtils {
     @BindingAdapter("endpointUrl")
     @JvmStatic
     fun setEndpointUrl(view: WebView, endpointUrl: String) {
-            view.webViewClient = WebViewClient()
-            view.loadUrl(endpointUrl)
+        view.webViewClient = WebViewClient()
+        view.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        view.settings.loadsImagesAutomatically = true
+        view.settings.javaScriptEnabled = true
+        view.loadUrl(endpointUrl)
     }
 
     @BindingAdapter("imageUrl")
@@ -56,13 +50,16 @@ object BindingUtils {
 
     @BindingAdapter("setOnRefreshListener")
     @JvmStatic
-    fun bindOnRefreshListener(view: SwipeRefreshLayout, listener: SwipeRefreshLayout.OnRefreshListener?) {
+    fun bindOnRefreshListener(
+        view: SwipeRefreshLayout,
+        listener: SwipeRefreshLayout.OnRefreshListener?
+    ) {
         view.setOnRefreshListener(listener)
     }
 
     @BindingAdapter("setIsRefreshing")
     @JvmStatic
     fun bindIsRefreshing(view: SwipeRefreshLayout, isRefreshing: Boolean) {
-        view.isRefreshing=isRefreshing
+        view.isRefreshing = isRefreshing
     }
 }

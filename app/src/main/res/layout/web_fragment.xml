@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.web.Fragment">
+    tools:context=".ui.web.WebViewFragment">
 
     <data>
 
@@ -13,7 +13,8 @@
             type="com.marcusrunge.stjohannisuelzen.ui.web.WebViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/stjohannisuelzen_webview_swiperefreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -23,5 +24,5 @@
             android:layout_height="match_parent"
             app:endpointUrl="@{viewmodel.endpointUrl}" />
 
-    </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

@@ -6,7 +6,7 @@
     app:startDestination="@id/navigation_web">
     <fragment
         android:id="@+id/navigation_web"
-        android:name="com.marcusrunge.stjohannisuelzen.ui.web.Fragment"
+        android:name="com.marcusrunge.stjohannisuelzen.ui.web.WebViewFragment"
         android:label="@string/title_web"
         tools:layout="@layout/web_fragment" />
     <fragment

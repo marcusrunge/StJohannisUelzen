@@ -70,21 +70,21 @@ class MediaViewModel @Inject constructor(
                 }
                 if (youtubeItems.size > 0) liveVideoId.value = youtubeItems[0].videoId
                 youtubeRecyclerViewAdapter?.notifyDataSetChanged()
-                isRefreshing=false
+                isRefreshing = false
             }
             ERROR -> {
                 Toast.makeText(context, (inputMessage.obj as String?), Toast.LENGTH_LONG).show()
-                isRefreshing=false
+                isRefreshing = false
             }
         }
     }
 
     override fun onRefresh() {
-        isRefreshing=true
+        isRefreshing = true
         getYoutubeSearchList()
     }
 
-    private fun getYoutubeSearchList(){
+    private fun getYoutubeSearchList() {
         viewModelScope.launch {
             apiConnect.youTube.getYoutubeSearchList(
                 BuildConfig.YOUTUBE_DATA_API_KEY,

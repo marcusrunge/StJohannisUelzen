@@ -9,6 +9,7 @@ import android.webkit.WebView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
@@ -22,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class Fragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener {
+class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener {
 
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
@@ -30,7 +31,8 @@ class Fragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedList
 
     @Inject
     lateinit var core: Core
-    private lateinit var stjohannisuelzen_webview: WebView
+    private lateinit var stJohannisUelzenWebview: WebView
+    private lateinit var stJohannisUelzenWebviewSwipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +53,13 @@ class Fragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedList
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
-        stjohannisuelzen_webview = view.findViewById(R.id.stjohannisuelzen_webview)
+        stJohannisUelzenWebview = view.findViewById(R.id.stjohannisuelzen_webview)
+        stJohannisUelzenWebviewSwipeRefreshLayout =
+            view.findViewById(R.id.stjohannisuelzen_webview_swiperefreshlayout)
+        stJohannisUelzenWebviewSwipeRefreshLayout.setOnRefreshListener {
+            stJohannisUelzenWebview.reload()
+            stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
+        }
         setTheme()
     }
 
@@ -69,22 +77,22 @@ class Fragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedList
     }
 
     override fun onGoBackRequested() {
-        stjohannisuelzen_webview.goBack()
+        stJohannisUelzenWebview.goBack()
     }
 
     override fun onCanGoBackRequested(): Boolean {
-        return stjohannisuelzen_webview.canGoBack()
+        return stJohannisUelzenWebview.canGoBack()
     }
 
     private fun setTheme() {
         if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
                 Configuration.UI_MODE_NIGHT_YES -> {
-                    WebSettingsCompat.setForceDark(stjohannisuelzen_webview.settings, FORCE_DARK_ON)
+                    WebSettingsCompat.setForceDark(stJohannisUelzenWebview.settings, FORCE_DARK_ON)
                 }
                 Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> {
                     WebSettingsCompat.setForceDark(
-                        stjohannisuelzen_webview.settings,
+                        stJohannisUelzenWebview.settings,
                         FORCE_DARK_OFF
                     )
                 }
