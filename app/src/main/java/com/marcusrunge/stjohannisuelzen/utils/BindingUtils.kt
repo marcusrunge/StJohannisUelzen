@@ -25,11 +25,9 @@ import java.net.URL
 object BindingUtils {
     @BindingAdapter("endpointUrl")
     @JvmStatic
-    fun setEndpointUrl(view: WebView, endpointUrl: LiveData<String>) {
-        endpointUrl.value?.let {
+    fun setEndpointUrl(view: WebView, endpointUrl: String) {
             view.webViewClient = WebViewClient()
-            view.loadUrl(it)
-        }
+            view.loadUrl(endpointUrl)
     }
 
     @BindingAdapter("imageUrl")

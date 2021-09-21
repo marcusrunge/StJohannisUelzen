@@ -1,6 +1,8 @@
 package com.marcusrunge.stjohannisuelzen.ui.web
 
 import android.content.Context
+import androidx.databinding.Bindable
+import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,10 +12,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class WebViewModel @Inject constructor(@ApplicationContext context: Context) :
+class WebViewModel @Inject constructor(@ApplicationContext private val context: Context) :
     ViewModel() {
 
-    private val _endpointUrl = MutableLiveData(context.getString(R.string.url_stjohannis_uelzen))
-
-    val endpointUrl: LiveData<String> = _endpointUrl
+    @get:Bindable
+    val endpointUrl
+        get() = context.getString(R.string.url_stjohannis_uelzen)
 }
