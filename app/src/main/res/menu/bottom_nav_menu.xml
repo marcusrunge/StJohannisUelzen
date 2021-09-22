@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/navigation_web"
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@drawable/ic_home_black"
         android:title="@string/title_web" />
 
     <item
         android:id="@+id/navigation_media"
-        android:icon="@drawable/baseline_live_tv_24"
+        android:icon="@drawable/ic_live_tv_black"
         android:title="@string/title_media" />
 
-    <item
+    <!--<item
         android:id="@+id/navigation_counseling"
-        android:icon="@drawable/baseline_question_answer_24"
-        android:title="@string/title_counseling" />
+        android:icon="@drawable/ic_chat_black"
+        android:title="@string/title_counseling" />-->
 
 </menu>
