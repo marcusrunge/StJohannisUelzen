@@ -18,4 +18,23 @@
     <string name="information_intro">Developed by</string>
     <string name="information_outro">for and on behalf of\nparish St. Johannis Uelzen</string>
     <string name="youtube_channel" translatable="false">UC1M10W3W1vJ5KNxXensEM1w</string>
+    <string name="solution">Solution</string>
+    <string name="thoughts">Thoughts</string>
+    <string name="meditations">Meditations</string>
+    <string name="sermon">Sermon</string>
+    <string name="review">Review</string>
+    <string name="groups">Groups</string>
+    <string name="happy_hour">Happy Hour</string>
+    <string name="gallery">Gallery</string>
+    <string name="mission">Mission</string>
+    <string name="history">History</string>
+    <string name="hygiene">Hygiene</string>
+    <string name="confirmands">Confirmands</string>
+    <string name="children">Children</string>
+    <string name="environment">Environment</string>
+    <string name="foundation">Foundation</string>
+    <string name="volunteering">Volunteering</string>
+    <string name="board">Board</string>
+    <string name="donations">Donations</string>
+    <string name="newsletter">Newsletter</string>
 </resources>

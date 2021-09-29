@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -54,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         OssLicensesMenuActivity.setActivityTitle(getString(R.string.custom_license_title))
+        supportActionBar?.setCustomView(R.layout.web_actions)
+        supportActionBar?.displayOptions =
+            (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
