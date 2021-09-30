@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -13,13 +14,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.marcusrunge.stjohannisuelzen.adapter.LinkButtonsRecyclerViewAdapter
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
+import com.marcusrunge.stjohannisuelzen.models.LinkButton
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -55,7 +61,15 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         OssLicensesMenuActivity.setActivityTitle(getString(R.string.custom_license_title))
-        supportActionBar?.setCustomView(R.layout.web_actions)
+        val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
+        val linkbuttonsRecyclerview =
+            linkbuttonsLayout.findViewById<RecyclerView>(R.id.linkbuttons_recyclerview)
+        val linkButtons = arrayOf(LinkButton("TEXT", "URL"))
+        val linkButtonsRecyclerViewAdapter = LinkButtonsRecyclerViewAdapter(linkButtons, null)
+        linkbuttonsRecyclerview.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        linkbuttonsRecyclerview.adapter = linkButtonsRecyclerViewAdapter
+        supportActionBar?.customView = linkbuttonsLayout
         supportActionBar?.displayOptions =
             (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
     }
