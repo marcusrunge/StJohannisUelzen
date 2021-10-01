@@ -108,6 +108,10 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
     }
 
     override fun onRequestNavigateTo(url: String) {
-        stJohannisUelzenWebview.loadUrl(url)
+        if(::stJohannisUelzenWebview.isInitialized) {
+            //stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = true
+            stJohannisUelzenWebview.loadUrl(url)
+            //stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
+        }
     }
 }

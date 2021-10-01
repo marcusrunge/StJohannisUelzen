@@ -4,5 +4,8 @@
     android:id="@+id/linkbuttons_tabLayout"
     android:layout_width="wrap_content"
     android:layout_height="?attr/actionBarSize"
+    app:tabIndicatorColor="@color/cstm_tabs_icon_color_selector"
     app:tabMaxWidth="396dp"
-    app:tabMode="scrollable" />
+    app:tabMode="scrollable"
+    app:tabRippleColor="@color/cstm_tabs_icon_color_selector"
+    app:tabTextColor="@color/cstm_tabs_icon_color_selector" />
