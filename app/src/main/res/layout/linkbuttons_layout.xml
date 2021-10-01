@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.tabs.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linkbuttons_tabLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/actionBarSize"
+    app:tabIndicatorColor="@color/cstm_tabs_icon_color_selector"
+    app:tabMaxWidth="396dp"
+    app:tabMode="scrollable"
+    app:tabRippleColor="@color/cstm_tabs_icon_color_selector"
+    app:tabTextColor="@color/cstm_tabs_icon_color_selector" />

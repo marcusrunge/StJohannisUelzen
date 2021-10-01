@@ -18,12 +18,14 @@ import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnCanGoBackRequestedListener
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnGoBackRequestedListener
+import com.marcusrunge.stjohannisuelzen.core.interfaces.OnRequestNavigateToListener
 import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener {
+class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener,
+    OnRequestNavigateToListener {
 
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
@@ -39,6 +41,7 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         core.back.web.isWebViewActive = true
         core.back.web.setOnGoBackRequestedListener(this)
         core.back.web.setOnWebCanGoBackRequestedListener(this)
+        core.webNavigation.setOnRequestNavigateToListener(this)
     }
 
     override fun onCreateView(
@@ -74,6 +77,7 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         core.back.web.isWebViewActive = false
         core.back.web.removeOnGoBackRequestedListener()
         core.back.web.removeOnCanGoBackRequestedListener()
+        core.webNavigation.removeOnRequestNavigateToListener()
     }
 
     override fun onGoBackRequested() {
@@ -100,6 +104,14 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
                     //
                 }
             }
+        }
+    }
+
+    override fun onRequestNavigateTo(url: String) {
+        if(::stJohannisUelzenWebview.isInitialized) {
+            //stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = true
+            stJohannisUelzenWebview.loadUrl(url)
+            //stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
         }
     }
 }

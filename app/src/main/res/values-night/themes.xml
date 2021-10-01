@@ -13,5 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/gray7</item>
+        <item name="stateSelectedColor">?attr/colorPrimary</item>
+        <item name="stateUnselectedColor">#B3FFFFFF</item>
     </style>
 </resources>
