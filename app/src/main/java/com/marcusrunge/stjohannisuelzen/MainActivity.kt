@@ -32,6 +32,28 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     private lateinit var binding: MainActivityBinding
     private lateinit var navController: NavController
+    private lateinit var tabLayout: TabLayout
+    private val linkButtons = arrayOf(
+        LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
+        LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
+        LinkButton(getString(R.string.meditations), getString(R.string.url_meditations)),
+        LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
+        LinkButton(getString(R.string.review), getString(R.string.url_review)),
+        LinkButton(getString(R.string.groups), getString(R.string.url_groups)),
+        LinkButton(getString(R.string.happy_hour), getString(R.string.url_happy_hour)),
+        LinkButton(getString(R.string.gallery), getString(R.string.url_gallery)),
+        LinkButton(getString(R.string.mission), getString(R.string.url_mission)),
+        LinkButton(getString(R.string.history), getString(R.string.url_history)),
+        LinkButton(getString(R.string.hygiene), getString(R.string.url_hygiene)),
+        LinkButton(getString(R.string.confirmands), getString(R.string.url_confirmands)),
+        LinkButton(getString(R.string.children), getString(R.string.url_children)),
+        LinkButton(getString(R.string.environment), getString(R.string.url_environment)),
+        LinkButton(getString(R.string.foundation), getString(R.string.url_foundation)),
+        LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
+        LinkButton(getString(R.string.board), getString(R.string.url_board)),
+        LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
+        LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
+    )
 
     @Inject
     lateinit var core: Core
@@ -115,44 +137,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
     }
 
-    override fun onDestroy() {
-        navController.removeOnDestinationChangedListener(this)
-        super.onDestroy()
-    }
-
-    private fun setLinkButtonsActionBar() {
-        val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
-        val linkButtons = arrayOf(
-            LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
-            LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
-            LinkButton(getString(R.string.meditations), getString(R.string.url_meditations)),
-            LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
-            LinkButton(getString(R.string.review), getString(R.string.url_review)),
-            LinkButton(getString(R.string.groups), getString(R.string.url_groups)),
-            LinkButton(getString(R.string.happy_hour), getString(R.string.url_happy_hour)),
-            LinkButton(getString(R.string.gallery), getString(R.string.url_gallery)),
-            LinkButton(getString(R.string.mission), getString(R.string.url_mission)),
-            LinkButton(getString(R.string.history), getString(R.string.url_history)),
-            LinkButton(getString(R.string.hygiene), getString(R.string.url_hygiene)),
-            LinkButton(getString(R.string.confirmands), getString(R.string.url_confirmands)),
-            LinkButton(getString(R.string.children), getString(R.string.url_children)),
-            LinkButton(getString(R.string.environment), getString(R.string.url_environment)),
-            LinkButton(getString(R.string.foundation), getString(R.string.url_foundation)),
-            LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
-            LinkButton(getString(R.string.board), getString(R.string.url_board)),
-            LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
-            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
-        )
-        val tabLayout= linkbuttonsLayout.findViewById<TabLayout>(R.id.linkbuttons_tabLayout)
-        linkButtons.forEach {
-            tabLayout.addTab(tabLayout.newTab().setText(it.text).setTag(it.url))
-        }
-        tabLayout.addOnTabSelectedListener(this)
-        supportActionBar?.customView = linkbuttonsLayout
-        supportActionBar?.displayOptions =
-            (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
-    }
-
     override fun onTabSelected(tab: TabLayout.Tab?) {
         core.webNavigation.requestNavigateTo(
             tab?.tag as String
@@ -165,5 +149,34 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     override fun onTabReselected(tab: TabLayout.Tab?) {
         //TODO("Not yet implemented")
+    }
+
+    override fun onDestroy() {
+        navController.removeOnDestinationChangedListener(this)
+        super.onDestroy()
+    }
+
+    private fun setLinkButtonsActionBar() {
+        val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
+
+        tabLayout = linkbuttonsLayout.findViewById<TabLayout>(R.id.linkbuttons_tabLayout)
+        linkButtons.forEach {
+            tabLayout.addTab(tabLayout.newTab().setText(it.text).setTag(it.url))
+        }
+        tabLayout.addOnTabSelectedListener(this)
+        supportActionBar?.customView = linkbuttonsLayout
+        supportActionBar?.displayOptions =
+            (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
+    }
+
+    private fun selectTab(url: String) {
+        if (::tabLayout.isInitialized) {
+            for (i in linkButtons.indices) {
+                if (linkButtons[i].equals(url)) {
+                    tabLayout.getTabAt(i)?.select()
+                    break
+                }
+            }
+        }
     }
 }
