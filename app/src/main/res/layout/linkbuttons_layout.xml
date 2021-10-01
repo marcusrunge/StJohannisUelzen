@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linkbuttons_recyclerview"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize" />
+<com.google.android.material.tabs.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linkbuttons_tabLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/actionBarSize"
+    app:tabMaxWidth="396dp"
+    app:tabMode="scrollable" />

@@ -15,11 +15,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.marcusrunge.stjohannisuelzen.adapter.LinkButtonsRecyclerViewAdapter
+import com.google.android.material.tabs.TabLayout
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
@@ -29,7 +27,8 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener,
+    TabLayout.OnTabSelectedListener {
 
     private lateinit var binding: MainActivityBinding
     private lateinit var navController: NavController
@@ -123,8 +122,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     private fun setLinkButtonsActionBar() {
         val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
-        val linkbuttonsRecyclerview =
-            linkbuttonsLayout.findViewById<RecyclerView>(R.id.linkbuttons_recyclerview)
         val linkButtons = arrayOf(
             LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
             LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
@@ -146,16 +143,27 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
             LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
         )
-        val linkButtonsRecyclerViewAdapter = LinkButtonsRecyclerViewAdapter(linkButtons) {
-            core.webNavigation.requestNavigateTo(
-                it
-            )
+        val tabLayout= linkbuttonsLayout.findViewById<TabLayout>(R.id.linkbuttons_tabLayout)
+        linkButtons.forEach {
+            tabLayout.addTab(tabLayout.newTab().setText(it.text).setTag(it.url))
         }
-        linkbuttonsRecyclerview.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        linkbuttonsRecyclerview.adapter = linkButtonsRecyclerViewAdapter
+        tabLayout.addOnTabSelectedListener(this)
         supportActionBar?.customView = linkbuttonsLayout
         supportActionBar?.displayOptions =
             (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
+    }
+
+    override fun onTabSelected(tab: TabLayout.Tab?) {
+        core.webNavigation.requestNavigateTo(
+            tab?.tag as String
+        )
+    }
+
+    override fun onTabUnselected(tab: TabLayout.Tab?) {
+        //TODO("Not yet implemented")
+    }
+
+    override fun onTabReselected(tab: TabLayout.Tab?) {
+        //TODO("Not yet implemented")
     }
 }
