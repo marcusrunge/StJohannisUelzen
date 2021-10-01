@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -28,7 +29,7 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
     private lateinit var binding: MainActivityBinding
     private lateinit var navController: NavController
@@ -61,17 +62,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         OssLicensesMenuActivity.setActivityTitle(getString(R.string.custom_license_title))
-        val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
-        val linkbuttonsRecyclerview =
-            linkbuttonsLayout.findViewById<RecyclerView>(R.id.linkbuttons_recyclerview)
-        val linkButtons = arrayOf(LinkButton("TEXT", "URL"))
-        val linkButtonsRecyclerViewAdapter = LinkButtonsRecyclerViewAdapter(linkButtons, null)
-        linkbuttonsRecyclerview.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        linkbuttonsRecyclerview.adapter = linkButtonsRecyclerViewAdapter
-        supportActionBar?.customView = linkbuttonsLayout
-        supportActionBar?.displayOptions =
-            (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
+        navController.addOnDestinationChangedListener(this)
+        setLinkButtonsActionBar()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -108,5 +100,57 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         core.back.app.onBackPressed { super.onBackPressed() }
+    }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        if (destination.id == R.id.navigation_web) {
+            setLinkButtonsActionBar()
+        } else {
+            supportActionBar?.setDisplayShowCustomEnabled(false)
+            supportActionBar?.setDisplayShowTitleEnabled(true)
+            supportActionBar?.title = destination.label
+        }
+    }
+
+    private fun setLinkButtonsActionBar() {
+        val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
+        val linkbuttonsRecyclerview =
+            linkbuttonsLayout.findViewById<RecyclerView>(R.id.linkbuttons_recyclerview)
+        val linkButtons = arrayOf(
+            LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
+            LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
+            LinkButton(getString(R.string.meditations), getString(R.string.url_meditations)),
+            LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
+            LinkButton(getString(R.string.review), getString(R.string.url_review)),
+            LinkButton(getString(R.string.groups), getString(R.string.url_groups)),
+            LinkButton(getString(R.string.happy_hour), getString(R.string.url_happy_hour)),
+            LinkButton(getString(R.string.gallery), getString(R.string.url_gallery)),
+            LinkButton(getString(R.string.mission), getString(R.string.url_mission)),
+            LinkButton(getString(R.string.history), getString(R.string.url_history)),
+            LinkButton(getString(R.string.hygiene), getString(R.string.url_hygiene)),
+            LinkButton(getString(R.string.confirmands), getString(R.string.url_confirmands)),
+            LinkButton(getString(R.string.children), getString(R.string.url_children)),
+            LinkButton(getString(R.string.environment), getString(R.string.url_environment)),
+            LinkButton(getString(R.string.foundation), getString(R.string.url_foundation)),
+            LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
+            LinkButton(getString(R.string.board), getString(R.string.url_board)),
+            LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
+            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
+        )
+        val linkButtonsRecyclerViewAdapter = LinkButtonsRecyclerViewAdapter(linkButtons) {
+            core.webNavigation.requestNavigateTo(
+                it
+            )
+        }
+        linkbuttonsRecyclerview.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        linkbuttonsRecyclerview.adapter = linkButtonsRecyclerViewAdapter
+        supportActionBar?.customView = linkbuttonsLayout
+        supportActionBar?.displayOptions =
+            (ActionBar.DISPLAY_SHOW_CUSTOM or ActionBar.DISPLAY_SHOW_HOME)
     }
 }

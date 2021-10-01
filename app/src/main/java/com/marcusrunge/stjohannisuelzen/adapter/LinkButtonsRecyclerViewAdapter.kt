@@ -25,7 +25,7 @@ class LinkButtonsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val linkButton = linkButtons[position]
         holder.button.text = linkButton.text
-        holder.itemView.setOnClickListener {
+        holder.button.setOnClickListener {
             onClicked?.invoke(linkButton.url)
         }
     }

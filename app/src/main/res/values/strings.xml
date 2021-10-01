@@ -37,4 +37,23 @@
     <string name="board">Board</string>
     <string name="donations">Donations</string>
     <string name="newsletter">Newsletter</string>
+    <string name="url_solution" translatable="false">https://st-johannis-uelzen.wir-e.de/tageslosung</string>
+    <string name="url_thoughts" translatable="false">https://st-johannis-uelzen.wir-e.de/gedanken-fuer-den-tag</string>
+    <string name="url_meditations" translatable="false">https://st-johannis-uelzen.wir-e.de/kreuzwegmeditationen-in-zeiten-von-corona-2021</string>
+    <string name="url_sermon" translatable="false">https://st-johannis-uelzen.wir-e.de/predigten</string>
+    <string name="url_review" translatable="false">https://st-johannis-uelzen.wir-e.de/rueckblick-auf-das-coronajahr-ein-stueck-gemeindechronik</string>
+    <string name="url_groups" translatable="false">https://st-johannis-uelzen.wir-e.de/gemeinde</string>
+    <string name="url_happy_hour" translatable="false">https://st-johannis-uelzen.wir-e.de/happy-hour</string>
+    <string name="url_gallery" translatable="false">https://st-johannis-uelzen.wir-e.de/bilder-und-filmgalerie</string>
+    <string name="url_mission" translatable="false">https://st-johannis-uelzen.wir-e.de/leitbild</string>
+    <string name="url_history" translatable="false">https://st-johannis-uelzen.wir-e.de/geschichte-der-gemeinde-20f82b32-c851-4719-80b8-5921dcc75dac</string>
+    <string name="url_hygiene" translatable="false">https://st-johannis-uelzen.wir-e.de/hygienekonzept-fuer-das-gemeindezentrum-st-johannis</string>
+    <string name="url_confirmands" translatable="false">https://st-johannis-uelzen.wir-e.de/konfirmandenarbeit</string>
+    <string name="url_children" translatable="false">https://st-johannis-uelzen.wir-e.de/die-johannisbeeren</string>
+    <string name="url_environment" translatable="false">https://st-johannis-uelzen.wir-e.de/gruener-hahn</string>
+    <string name="url_foundation" translatable="false">https://st-johannis-uelzen.wir-e.de/gemeindestiftung-glauben-miteinder-leben</string>
+    <string name="url_volunteering" translatable="false">https://st-johannis-uelzen.wir-e.de/ehrenamtliche-mitarbeit</string>
+    <string name="url_board" translatable="false">https://st-johannis-uelzen.wir-e.de/kirchenvorstand</string>
+    <string name="url_donations" translatable="false">https://st-johannis-uelzen.wir-e.de/spendenkonto-st-johannis</string>
+    <string name="url_newsletter" translatable="false">https://st-johannis-uelzen.wir-e.de/rundbrief</string>
 </resources>
