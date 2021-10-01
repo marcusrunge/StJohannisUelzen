@@ -116,6 +116,11 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
     }
 
+    override fun onDestroy() {
+        navController.removeOnDestinationChangedListener(this)
+        super.onDestroy()
+    }
+
     private fun setLinkButtonsActionBar() {
         val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
         val linkbuttonsRecyclerview =
