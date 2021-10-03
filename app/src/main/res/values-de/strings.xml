@@ -14,4 +14,24 @@
     <string name="theme_header">Design</string>
     <string name="information_intro">Entwickelt von</string>
     <string name="information_outro">für und im Namen der\nPfarrei St. Johannis Uelzen</string>
+    <string name="current">Aktuelles</string>
+    <string name="thoughts">Gedanken</string>
+    <string name="solution">Losung</string>
+    <string name="meditations">Meditationen</string>
+    <string name="sermon">Predigt</string>
+    <string name="review">Rückblick</string>
+    <string name="groups">Gruppen</string>
+    <string name="happy_hour">Happy Hour</string>
+    <string name="gallery">Gallerie</string>
+    <string name="mission">Leitbild</string>
+    <string name="history">Geschichte</string>
+    <string name="hygiene">Hygiene</string>
+    <string name="confirmands">Konfirmanden</string>
+    <string name="children">Kinder</string>
+    <string name="environment">Umwelt</string>
+    <string name="foundation">Stiftung</string>
+    <string name="volunteering">Ehrenamt</string>
+    <string name="board">Vorstand</string>
+    <string name="donations">Spenden</string>
+    <string name="newsletter">Rundbrief</string>
 </resources>

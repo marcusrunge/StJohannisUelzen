@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:elevation="@dimen/cardview_default_elevation"
         android:minHeight="?attr/minTouchTargetSize"
-        app:cardElevation="1dp"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="4dp"
+        app:cardElevation="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

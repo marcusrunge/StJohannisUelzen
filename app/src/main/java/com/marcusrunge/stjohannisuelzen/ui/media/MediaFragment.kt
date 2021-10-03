@@ -60,7 +60,10 @@ class MediaFragment : Fragment() {
                 }
             })
         viewModel.liveVideoId.observe(viewLifecycleOwner) {
-            youTubePlayer?.cueVideo(it)
+            try {
+                youTubePlayer?.cueVideo(it)
+            } catch (e: IllegalStateException) {
+            }
         }
     }
 
@@ -68,5 +71,6 @@ class MediaFragment : Fragment() {
         super.onDestroyView()
         viewModelStore.clear()
         _binding = null
+        youTubePlayer = null
     }
 }
