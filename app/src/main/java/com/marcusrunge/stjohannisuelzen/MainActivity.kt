@@ -65,7 +65,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         OssLicensesMenuActivity.setActivityTitle(getString(R.string.custom_license_title))
         createLinkButtonsArray()
         navController.addOnDestinationChangedListener(this)
-        setLinkButtonsActionBar()
+        if (navController.currentDestination?.id == R.id.navigation_web)
+            setLinkButtonsActionBar()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -75,28 +76,31 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.navigation_settings -> {
-                navController.navigate(R.id.navigation_settings)
-                true
+        when (item.itemId) {
+            navController.currentDestination?.id -> return false
+            else -> return when (item.itemId) {
+                R.id.navigation_settings -> {
+                    navController.navigate(R.id.navigation_settings)
+                    true
+                }
+                R.id.navigation_privacy -> {
+                    navController.navigate(R.id.navigation_privacy)
+                    true
+                }
+                R.id.navigation_licenses -> {
+                    startActivity(Intent(this, OssLicensesMenuActivity::class.java))
+                    true
+                }
+                R.id.navigation_terms -> {
+                    navController.navigate(R.id.navigation_terms)
+                    true
+                }
+                android.R.id.home -> {
+                    navController.popBackStack()
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
             }
-            R.id.navigation_privacy -> {
-                navController.navigate(R.id.navigation_privacy)
-                true
-            }
-            R.id.navigation_licenses -> {
-                startActivity(Intent(this, OssLicensesMenuActivity::class.java))
-                true
-            }
-            R.id.navigation_terms -> {
-                navController.navigate(R.id.navigation_terms)
-                true
-            }
-            android.R.id.home -> {
-                navController.popBackStack()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 
