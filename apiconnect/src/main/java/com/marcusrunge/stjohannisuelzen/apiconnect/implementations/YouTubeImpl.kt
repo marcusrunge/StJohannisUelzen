@@ -28,7 +28,7 @@ internal class YouTubeImpl(private val apiConnectBase: ApiConnectBase) : YouTube
     ) {
         val requestQueue = Volley.newRequestQueue(apiConnectBase.context)
         val url =
-            "https://www.googleapis.com/youtube/v3/search?key=$key&channelId=$channelId&part=snippet,id&order=date"
+            "https://www.googleapis.com/youtube/v3/search?key=$key&channelId=$channelId&part=snippet,id&order=date&maxResults=500"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
