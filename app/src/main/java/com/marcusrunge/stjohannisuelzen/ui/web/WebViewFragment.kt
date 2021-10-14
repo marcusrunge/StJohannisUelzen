@@ -38,7 +38,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        core.back.web.isWebViewActive = true
         core.back.web.setOnGoBackRequestedListener(this)
         core.back.web.setOnWebCanGoBackRequestedListener(this)
         core.webNavigation.setOnRequestNavigateToListener(this)
@@ -74,7 +73,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
 
     override fun onDestroy() {
         super.onDestroy()
-        core.back.web.isWebViewActive = false
         core.back.web.removeOnGoBackRequestedListener()
         core.back.web.removeOnCanGoBackRequestedListener()
         core.webNavigation.removeOnRequestNavigateToListener()
