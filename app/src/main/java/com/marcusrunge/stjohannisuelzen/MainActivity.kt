@@ -114,8 +114,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         arguments: Bundle?
     ) {
         if (destination.id == R.id.navigation_web) {
+            core.back.web.isWebViewActive = true
             setLinkButtonsActionBar()
         } else {
+            core.back.web.isWebViewActive = false
             supportActionBar?.setDisplayShowCustomEnabled(false)
             supportActionBar?.setDisplayShowTitleEnabled(true)
             supportActionBar?.title = destination.label
