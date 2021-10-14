@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_web, R.id.navigation_media, R.id.navigation_counseling
+                R.id.navigation_web, R.id.navigation_media
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

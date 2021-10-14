@@ -10,11 +10,6 @@
         android:label="@string/title_web"
         tools:layout="@layout/web_fragment" />
     <fragment
-        android:id="@+id/navigation_counseling"
-        android:name="com.marcusrunge.stjohannisuelzen.ui.counseling.CounselingFragment"
-        android:label="@string/title_counseling"
-        tools:layout="@layout/counseling_fragment" />
-    <fragment
         android:id="@+id/navigation_settings"
         android:name="com.marcusrunge.stjohannisuelzen.ui.settings.SettingsFragment"
         android:label="@string/title_settings" />
