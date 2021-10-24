@@ -4,7 +4,7 @@ import com.marcusrunge.stjohannisuelzen.dailymotto.bases.DailyMottoBase
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Advice
 import java.util.*
 
-internal class AdviceImpl(dailyMottoBase: DailyMottoBase) : Advice {
+internal class AdviceImpl(private val dailyMottoBase: DailyMottoBase) : Advice {
     companion object {
         private var advise: Advice? = null
         fun create(dailyMottoBase: DailyMottoBase): Advice = when {
