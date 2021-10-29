@@ -17,7 +17,7 @@
         android:id="@+id/version_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1.0.2"
+        android:text="1.0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/application_name_text" />
 
@@ -96,7 +96,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="github.com/marcusrunge/StJohannisUelzen"
+        android:autoLink="web"
+        android:text="https://github.com/marcusrunge/StJohannisUelzen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/projecturl_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

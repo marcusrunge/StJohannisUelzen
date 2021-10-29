@@ -21,23 +21,20 @@
     <string name="current">Current</string>
     <string name="solution">Solution</string>
     <string name="thoughts">Thoughts</string>
-    <string name="meditations">Meditations</string>
     <string name="sermon">Sermon</string>
-    <string name="review">Review</string>
     <string name="groups">Groups</string>
     <string name="happy_hour">Happy Hour</string>
     <string name="gallery">Gallery</string>
     <string name="mission">Mission</string>
     <string name="history">History</string>
-    <string name="hygiene">Hygiene</string>
     <string name="confirmands">Confirmands</string>
-    <string name="children">Children</string>
     <string name="environment">Environment</string>
     <string name="foundation">Foundation</string>
     <string name="volunteering">Volunteering</string>
     <string name="board">Board</string>
     <string name="donations">Donations</string>
     <string name="newsletter">Newsletter</string>
+    <string name="worshipservices">Worshipservices</string>
     <string name="url_solution" translatable="false">https://st-johannis-uelzen.wir-e.de/tageslosung</string>
     <string name="url_thoughts" translatable="false">https://st-johannis-uelzen.wir-e.de/gedanken-fuer-den-tag</string>
     <string name="url_meditations" translatable="false">https://st-johannis-uelzen.wir-e.de/kreuzwegmeditationen-in-zeiten-von-corona-2021</string>
@@ -57,5 +54,6 @@
     <string name="url_board" translatable="false">https://st-johannis-uelzen.wir-e.de/kirchenvorstand</string>
     <string name="url_donations" translatable="false">https://st-johannis-uelzen.wir-e.de/spendenkonto-st-johannis</string>
     <string name="url_newsletter" translatable="false">https://st-johannis-uelzen.wir-e.de/rundbrief</string>
+    <string name="url_worshipservices" translatable="false">gottesdienste.kirche-uelzen.de</string>
     <string name="information_projecturl">Project URL:</string>
 </resources>
