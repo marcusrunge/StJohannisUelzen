@@ -13,8 +13,10 @@
     <string name="custom_license_title">Open source licenses</string>
     <string name="category_general">General</string>
     <string name="theme_header">Theme</string>
+    <string name="pushnotifications_header">Push Notifications</string>
     <string name="url_stjohannis_uelzen" translatable="false">https://st-johannis-uelzen.wir-e.de/</string>
     <string name="key_theme" translatable="false">theme</string>
+    <string name="key_pushnotifications" translatable="false">pushnotifications</string>
     <string name="information_intro">Developed by</string>
     <string name="information_outro">for and on behalf of\nparish St. Johannis Uelzen</string>
     <string name="youtube_channel" translatable="false">UC1M10W3W1vJ5KNxXensEM1w</string>
@@ -60,4 +62,6 @@
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
 </resources>

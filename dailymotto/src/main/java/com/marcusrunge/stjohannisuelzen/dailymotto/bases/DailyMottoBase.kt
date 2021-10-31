@@ -14,11 +14,11 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
     protected lateinit var _advice: Advice
     protected lateinit var _motto: Motto
 
+    internal val DailyMottos = mutableListOf<Losungen?>()
+
     init {
         loadDailyMottos()
     }
-
-    internal val DailyMottos = mutableListOf<Losungen?>()
 
     private fun loadDailyMottos(){
         val parser = context?.resources?.getXml(R.xml.losungen)

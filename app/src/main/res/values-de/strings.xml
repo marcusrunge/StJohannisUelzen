@@ -12,6 +12,7 @@
     <string name="html_privacy">"file:///android_asset/privacy_de.html"</string>
     <string name="category_general">Allgemein</string>
     <string name="theme_header">Design</string>
+    <string name="pushnotifications_header">Kurzmitteilungen</string>
     <string name="information_intro">Entwickelt von</string>
     <string name="information_outro">für und im Namen der\nPfarrei St. Johannis Uelzen</string>
     <string name="current">Aktuelles</string>
@@ -32,4 +33,6 @@
     <string name="newsletter">Rundbrief</string>
     <string name="worshipservices">Gottesdienste</string>
     <string name="information_projecturl">Projekt URL:</string>
+    <string name="on">An</string>
+    <string name="off">Aus</string>
 </resources>
