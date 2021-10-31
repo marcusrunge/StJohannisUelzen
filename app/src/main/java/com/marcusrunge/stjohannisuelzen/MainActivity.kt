@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     lateinit var core: Core
 
     //Test only
-    @Inject
-    lateinit var dailyMotto: DailyMotto
+    /*@Inject
+    lateinit var dailyMotto: DailyMotto*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
