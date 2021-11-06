@@ -4,11 +4,18 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.widget.RemoteViews
+import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Implementation of App Widget functionality.
  */
+@AndroidEntryPoint
 class DailyMottoWidget : AppWidgetProvider() {
+    @Inject
+    lateinit var dailyMotto: DailyMotto
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -34,11 +41,6 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int
 ) {
-    val widgetText = context.getString(R.string.appwidget_text)
-    // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
-    views.setTextViewText(R.id.appwidget_text, widgetText)
-
-    // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
 }

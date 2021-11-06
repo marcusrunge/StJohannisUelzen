@@ -2,10 +2,10 @@ package com.marcusrunge.stjohannisuelzen.dailymotto.interfaces
 
 import java.util.*
 
-interface Advice {
+interface Inspiration {
     /**
      * Gets the advise from daily motto
      * @param date the date of the advise
      */
-    fun get(date: Date): String?
+    suspend fun get(date: Date): Pair<String?, String?>?
 }

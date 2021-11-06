@@ -2,18 +2,18 @@ package com.marcusrunge.stjohannisuelzen.dailymotto.bases
 
 import android.content.Context
 import com.marcusrunge.stjohannisuelzen.dailymotto.R
-import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Advice
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
-import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Motto
+import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Inspiration
+import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Quote
 import com.marcusrunge.stjohannisuelzen.dailymotto.models.Losungen
 import kotlinx.coroutines.*
 import org.xmlpull.v1.XmlPullParser
 
 internal abstract class DailyMottoBase(internal val context: Context?) : DailyMotto {
-    protected lateinit var _advice: Advice
-    protected lateinit var _motto: Motto
+    protected lateinit var _inspiration: Inspiration
+    protected lateinit var _quote: Quote
 
-    internal val dailyMottos : Deferred<MutableList<Losungen?>> = loadDailyMottos()
+    internal val dailyMottos: Deferred<MutableList<Losungen?>> = loadDailyMottos()
 
     @OptIn(DelicateCoroutinesApi::class)
     private fun loadDailyMottos() =

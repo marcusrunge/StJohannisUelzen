@@ -2,13 +2,14 @@ package com.marcusrunge.stjohannisuelzen.dailymotto.interfaces
 
 interface DailyMotto {
     /**
-     * Gets the advise instance
-     * @see Advice
+     * Gets the inspiration instance
+     * @see Inspiration
      */
-    val advice: Advice
+    val inspiration: Inspiration
+
     /**
-     * Gets the motto instance
-     * @see Motto
+     * Gets the quote instance
+     * @see Quote
      */
-    val motto: Motto
+    val quote: Quote
 }

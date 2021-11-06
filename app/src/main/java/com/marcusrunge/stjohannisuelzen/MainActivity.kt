@@ -24,6 +24,10 @@ import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 
@@ -38,10 +42,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     @Inject
     lateinit var core: Core
-
-    //Test only
-    /*@Inject
-    lateinit var dailyMotto: DailyMotto*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
