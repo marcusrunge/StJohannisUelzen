@@ -16,12 +16,4 @@
         <item name="stateSelectedColor">@color/purple_200</item>
         <item name="stateUnselectedColor">@color/white</item>
     </style>
-
-    <style name="Theme.StJohannisUelzen.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
-        <item name="appWidgetRadius">8dp</item>
-        <item name="appWidgetPadding">4dp</item>
-        <item name="appWidgetInnerRadius">4dp</item>
-    </style>
-
-    <style name="Theme.StJohannisUelzen.AppWidgetContainer" parent="Theme.StJohannisUelzen.AppWidgetContainerParent" />
 </resources>

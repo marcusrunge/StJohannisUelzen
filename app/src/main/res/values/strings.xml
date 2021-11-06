@@ -58,10 +58,6 @@
     <string name="url_newsletter" translatable="false">https://st-johannis-uelzen.wir-e.de/rundbrief</string>
     <string name="url_worshipservices" translatable="false">gottesdienste.kirche-uelzen.de</string>
     <string name="information_projecturl">Project URL:</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="configure">Configure</string>
-    <string name="add_widget">Add widget</string>
-    <string name="app_widget_description">This is an app widget description</string>
     <string name="on">On</string>
     <string name="off">Off</string>
 </resources>
