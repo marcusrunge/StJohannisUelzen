@@ -3,6 +3,7 @@ package com.marcusrunge.stjohannisuelzen.dailymotto.implementations
 import com.marcusrunge.stjohannisuelzen.dailymotto.bases.DailyMottoBase
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Inspiration
 import com.marcusrunge.stjohannisuelzen.dailymotto.utils.DateUtil
+import com.marcusrunge.stjohannisuelzen.dailymotto.utils.StringUtil.Companion.normalize
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,7 +24,7 @@ internal class InspirationImpl(private val dailyMottoBase: DailyMottoBase) : Ins
         dailyMottos.forEach {
             val itDate: Date = SimpleDateFormat("yyyy-MM-dd").parse(it?.Datum)
             if (itDate == DateUtil.removeTime(date))
-                return Pair(it?.Lehrtext, it?.Lehrtextvers)
+                return Pair(it?.Lehrtext?.normalize(), it?.Lehrtextvers)
         }
         return null
     }

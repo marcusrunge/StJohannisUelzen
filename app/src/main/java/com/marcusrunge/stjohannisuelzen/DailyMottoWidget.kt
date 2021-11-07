@@ -11,6 +11,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+
+import android.content.Intent
+
+
+
 
 /**
  * Implementation of App Widget functionality.
@@ -49,12 +56,16 @@ class DailyMottoWidget : AppWidgetProvider() {
         val quote = dailyMotto.quote.getAsync(Calendar.getInstance().time)
         val inspiration = dailyMotto.inspiration.getAsync(Calendar.getInstance().time)
         val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
+        val intent = Intent(context, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, FLAG_IMMUTABLE)
         views.apply {
             setTextViewText(R.id.appwidget_quote, quote?.first)
             setTextViewText(R.id.appwidget_quoteverse, quote?.second)
-            setTextViewText(R.id.appwidget_inspiration, inspiration?.first?.trimIndent())
+            setTextViewText(R.id.appwidget_inspiration, inspiration?.first)
             setTextViewText(R.id.appwidget_inspirationverse, inspiration?.second)
+            setOnClickPendingIntent(R.id.appwidget_root, pendingIntent)
         }
+
         appWidgetManager.updateAppWidget(appWidgetId, views)
     }
 }
