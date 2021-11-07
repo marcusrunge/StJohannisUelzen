@@ -61,4 +61,8 @@
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="app_widget_description">Daily Motto</string>
+    <string name="appwidget_previewquote" translatable="false">Ihr sollt nicht stehlen noch lügen noch betrügerisch handeln einer mit dem andern.</string>
+    <string name="appwidget_previewquoteverse" translatable="false">3. Mose 19,11</string>
+    <string name="appwidget_previewinspiration" translatable="false">Seid allesamt gleich gesinnt, mitleidig, brüderlich, barmherzig, demütig. Vergeltet nicht Böses mit Bösem oder Scheltwort mit Scheltwort, sondern segnet vielmehr, weil ihr dazu berufen seid, auf dass ihr Segen erbt.</string>
+    <string name="appwidget_previewinspirationverse" translatable="false">1. Petrus 3,8-9</string>
 </resources>

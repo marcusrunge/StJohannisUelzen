@@ -54,7 +54,7 @@
             android:layout_below="@id/appwidget_titledivider"
             android:layout_marginHorizontal="16dp"
             android:textColor="?android:attr/textColorPrimary"
-            android:text="Ihr sollt nicht stehlen noch lügen noch betrügerisch handeln einer mit dem andern."/>
+            android:text="@string/appwidget_previewquote"/>
 
         <TextView
             android:id="@+id/appwidget_quoteverse"
@@ -64,7 +64,7 @@
             android:layout_marginHorizontal="16dp"
             android:textColor="?android:attr/textColorPrimary"
             android:textStyle="italic"
-            android:text="3. Mose 19,11"/>
+            android:text="@string/appwidget_previewquoteverse"/>
 
         <LinearLayout
             android:id="@+id/appwidget_mottodivider"
@@ -85,7 +85,7 @@
             android:layout_below="@id/appwidget_mottodivider"
             android:layout_marginHorizontal="16dp"
             android:textColor="?android:attr/textColorPrimary"
-            android:text="Seid allesamt gleich gesinnt, mitleidig, brüderlich, barmherzig, demütig. Vergeltet nicht Böses mit Bösem oder Scheltwort mit Scheltwort, sondern segnet vielmehr, weil ihr dazu berufen seid, auf dass ihr Segen erbt."/>
+            android:text="@string/appwidget_previewinspiration"/>
 
         <TextView
             android:id="@+id/appwidget_inspirationverse"
@@ -95,6 +95,6 @@
             android:layout_marginHorizontal="16dp"
             android:textColor="?android:attr/textColorPrimary"
             android:textStyle="italic"
-            android:text="1. Petrus 3,8-9"/>
+            android:text="@string/appwidget_previewinspirationverse"/>
     </RelativeLayout>
 </LinearLayout>
