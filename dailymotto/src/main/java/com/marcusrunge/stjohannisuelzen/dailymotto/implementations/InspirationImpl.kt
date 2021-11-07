@@ -18,7 +18,7 @@ internal class InspirationImpl(private val dailyMottoBase: DailyMottoBase) : Ins
         }
     }
 
-    override suspend fun get(date: Date): Pair<String?, String?>? {
+    override suspend fun getAsync(date: Date): Pair<String?, String?>? {
         val dailyMottos = dailyMottoBase.dailyMottos.await()
         dailyMottos.forEach {
             val itDate: Date = SimpleDateFormat("yyyy-MM-dd").parse(it?.Datum)

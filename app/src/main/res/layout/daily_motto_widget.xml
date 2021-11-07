@@ -1,36 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Widget.StJohannisUelzen.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.StJohannisUelzen.AppWidgetContainer">
 
-    <TextView
-        android:id="@+id/appwidget_quote"
+    <RelativeLayout
         style="@style/Widget.StJohannisUelzen.AppWidget.InnerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"/>
-    <TextView
-        android:id="@+id/appwidget_quoteverse"
-        style="@style/Widget.StJohannisUelzen.AppWidget.InnerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_below="@id/appwidget_quote"
-        android:textStyle="italic" />
-    <TextView
-        android:id="@+id/appwidget_inspiration"
-        style="@style/Widget.StJohannisUelzen.AppWidget.InnerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_below="@id/appwidget_quoteverse"/>
-    <TextView
-        android:id="@+id/appwidget_inspirationverse"
-        style="@style/Widget.StJohannisUelzen.AppWidget.InnerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textStyle="italic"
-        android:layout_below="@id/appwidget_inspiration"/>
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/appwidget_quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/appwidget_quoteverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appwidget_quote"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/appwidget_inspiration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appwidget_quoteverse"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/appwidget_inspirationverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appwidget_inspiration"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textStyle="italic" />
+    </RelativeLayout>
+</LinearLayout>

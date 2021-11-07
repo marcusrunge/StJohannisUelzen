@@ -7,5 +7,5 @@ interface Quote {
      * Gets the motto from daily motto
      * @param date the date of the motto
      */
-    suspend fun get(date: Date): Pair<String?, String?>?
+    suspend fun getAsync(date: Date): Pair<String?, String?>?
 }

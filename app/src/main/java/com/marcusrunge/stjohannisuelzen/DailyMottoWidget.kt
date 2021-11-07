@@ -6,6 +6,10 @@ import android.content.Context
 import android.widget.RemoteViews
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -22,8 +26,10 @@ class DailyMottoWidget : AppWidgetProvider() {
         appWidgetIds: IntArray
     ) {
         // There may be multiple widgets active, so update all of them
-        for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
+        CoroutineScope(Dispatchers.IO).launch {
+            for (appWidgetId in appWidgetIds) {
+                updateAppWidget(context, appWidgetManager, appWidgetId)
+            }
         }
     }
 
@@ -34,13 +40,21 @@ class DailyMottoWidget : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-}
 
-internal fun updateAppWidget(
-    context: Context,
-    appWidgetManager: AppWidgetManager,
-    appWidgetId: Int
-) {
-    val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
-    appWidgetManager.updateAppWidget(appWidgetId, views)
+    private suspend fun updateAppWidget(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetId: Int
+    ) {
+        val quote = dailyMotto.quote.getAsync(Calendar.getInstance().time)
+        val inspiration = dailyMotto.inspiration.getAsync(Calendar.getInstance().time)
+        val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
+        views.apply {
+            setTextViewText(R.id.appwidget_quote, quote?.first)
+            setTextViewText(R.id.appwidget_quoteverse, quote?.second)
+            setTextViewText(R.id.appwidget_inspiration, inspiration?.first?.trimIndent())
+            setTextViewText(R.id.appwidget_inspirationverse, inspiration?.second)
+        }
+        appWidgetManager.updateAppWidget(appWidgetId, views)
+    }
 }
