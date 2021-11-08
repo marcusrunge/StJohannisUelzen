@@ -3,23 +3,20 @@
     style="@style/Widget.StJohannisUelzen.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8e24aa"
     android:theme="@style/Theme.StJohannisUelzen.AppWidgetContainer">
 
     <RelativeLayout
         style="@style/Widget.StJohannisUelzen.AppWidget.InnerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#8e24aa">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/appwidget_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="false"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="4dp"
+            android:background="#8e24aa"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <TextView
@@ -41,19 +38,11 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/appwidget_titledivider"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/appwidget_title"
-            android:background="@color/white"
-            android:orientation="horizontal" />
-
         <TextView
             android:id="@+id/appwidget_quote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/appwidget_titledivider"
+            android:layout_below="@id/appwidget_title"
             android:layout_marginHorizontal="16dp"
             android:text="@string/appwidget_previewquote"
             android:textColor="@color/white" />
@@ -75,8 +64,6 @@
             android:layout_below="@id/appwidget_quoteverse"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="6dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:background="@color/white"
             android:orientation="horizontal" />
 
