@@ -34,9 +34,7 @@ class YoutubeRecyclerViewAdapter(
         holder.bind(youtubeItem)
     }
 
-    override fun getItemCount(): Int {
-        return youtubeItems.size
-    }
+    override fun getItemCount(): Int = youtubeItems.size
 
     class ViewHolder internal constructor(private val viewDataBinding: ViewDataBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {

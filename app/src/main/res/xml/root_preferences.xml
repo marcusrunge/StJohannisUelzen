@@ -8,6 +8,11 @@
             android:key="@string/key_theme"
             android:title="@string/theme_header"
             app:useSimpleSummaryProvider="true" />
+        <!--<SwitchPreference
+            android:summaryOff="@string/off"
+            android:summaryOn="@string/on"
+            android:key="@string/key_pushnotifications"
+            android:title="@string/pushnotifications_header"/>-->
     </PreferenceCategory>
     <PreferenceCategory app:title="Information">
         <Preference android:layout="@layout/preference_information" />

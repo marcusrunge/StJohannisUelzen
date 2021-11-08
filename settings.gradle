@@ -9,3 +9,4 @@ rootProject.name = "St. Johannis Uelzen"
 include ':app'
 include ':core'
 include ':apiconnect'
+include ':dailymotto'

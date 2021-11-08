@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="St._Johannis_Uelzen.apiconnect" target="11" />
       <module name="St._Johannis_Uelzen.app" target="11" />
+      <module name="St._Johannis_Uelzen.dailymotto" target="11" />
       <module name="St._Johannis_Uelzen.preferences" target="11" />
     </bytecodeTargetLevel>
   </component>

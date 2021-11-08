@@ -19,10 +19,15 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
+import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 
