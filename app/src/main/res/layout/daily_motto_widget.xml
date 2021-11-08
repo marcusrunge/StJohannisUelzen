@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:background="#8e24aa"
+            android:background="@drawable/shape_rounded_topcorner"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
