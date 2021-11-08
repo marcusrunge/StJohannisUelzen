@@ -1,6 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.utils
 
 import android.content.Context
+import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.marcusrunge.stjohannisuelzen.R
@@ -40,6 +41,9 @@ class QuotesRemoteViewsFactory(
         remoteViews.apply {
             setTextViewText(R.id.quote_content, quote.content)
             setTextViewText(R.id.quote_verse, quote.verse)
+            if(position+1 == quotes.size){
+                setViewVisibility(R.id.quote_divider, View.GONE )
+            }
         }
         return remoteViews
     }
