@@ -15,29 +15,23 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 
 import android.content.Intent
-
-
+import com.marcusrunge.stjohannisuelzen.models.Quote
+import com.marcusrunge.stjohannisuelzen.utils.QuotesRemoteViewsService
 
 
 /**
  * Implementation of App Widget functionality.
  */
-@AndroidEntryPoint
-class DailyMottoWidget : AppWidgetProvider() {
-    @Inject
-    lateinit var dailyMotto: DailyMotto
 
+class DailyMottoWidget : AppWidgetProvider() {
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        // There may be multiple widgets active, so update all of them
-        CoroutineScope(Dispatchers.IO).launch {
             for (appWidgetId in appWidgetIds) {
                 updateAppWidget(context, appWidgetManager, appWidgetId)
             }
-        }
     }
 
     override fun onEnabled(context: Context) {
@@ -48,24 +42,19 @@ class DailyMottoWidget : AppWidgetProvider() {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    private suspend fun updateAppWidget(
+    private fun updateAppWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetId: Int
     ) {
-        val quote = dailyMotto.quote.getAsync(Calendar.getInstance().time)
-        val inspiration = dailyMotto.inspiration.getAsync(Calendar.getInstance().time)
         val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
-        val intent = Intent(context, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, FLAG_IMMUTABLE)
+        val mainActivity = Intent(context, MainActivity::class.java)
+        val quotesRemoteViewsService = Intent(context, QuotesRemoteViewsService::class.java)
+        val pendingIntent = PendingIntent.getActivity(context, 0, mainActivity, FLAG_IMMUTABLE)
         views.apply {
-            setTextViewText(R.id.appwidget_quote, quote?.first)
-            setTextViewText(R.id.appwidget_quoteverse, quote?.second)
-            setTextViewText(R.id.appwidget_inspiration, inspiration?.first)
-            setTextViewText(R.id.appwidget_inspirationverse, inspiration?.second)
+            setRemoteAdapter(R.id.listview_quotes, quotesRemoteViewsService)
             setOnClickPendingIntent(R.id.appwidget_root, pendingIntent)
         }
-
         appWidgetManager.updateAppWidget(appWidgetId, views)
     }
 }
