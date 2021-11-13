@@ -7,9 +7,7 @@ import android.widget.RemoteViewsService
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import com.marcusrunge.stjohannisuelzen.models.Quote
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
@@ -17,7 +15,7 @@ import java.util.*
 class QuotesRemoteViewsFactory(
     private val context: Context,
     private val dailyMotto: DailyMotto
-):
+) :
     RemoteViewsService.RemoteViewsFactory {
     private val quotes = mutableListOf<Quote>()
 
@@ -41,8 +39,8 @@ class QuotesRemoteViewsFactory(
         remoteViews.apply {
             setTextViewText(R.id.quote_content, quote.content)
             setTextViewText(R.id.quote_verse, quote.verse)
-            if(position+1 == quotes.size){
-                setViewVisibility(R.id.quote_divider, View.GONE )
+            if (position + 1 == quotes.size) {
+                setViewVisibility(R.id.quote_divider, View.GONE)
             }
         }
         return remoteViews
@@ -56,8 +54,8 @@ class QuotesRemoteViewsFactory(
 
     override fun hasStableIds(): Boolean = true
 
-    private fun loadQuotes(){
-        runBlocking(Dispatchers.IO){
+    private fun loadQuotes() {
+        runBlocking(Dispatchers.IO) {
             val time = Calendar.getInstance().time
             val first = dailyMotto.quote.getAsync(time)
             val second = dailyMotto.inspiration.getAsync(Calendar.getInstance().time)
