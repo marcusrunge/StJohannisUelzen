@@ -5,6 +5,7 @@
       <module name="St._Johannis_Uelzen.apiconnect" target="11" />
       <module name="St._Johannis_Uelzen.app" target="11" />
       <module name="St._Johannis_Uelzen.dailymotto" target="11" />
+      <module name="St._Johannis_Uelzen.notification" target="11" />
       <module name="St._Johannis_Uelzen.preferences" target="11" />
     </bytecodeTargetLevel>
   </component>
