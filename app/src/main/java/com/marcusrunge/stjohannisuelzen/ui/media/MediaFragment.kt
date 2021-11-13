@@ -50,6 +50,13 @@ class MediaFragment : Fragment() {
                     p2: Boolean
                 ) {
                     youTubePlayer = p1
+                    youTubePlayer?.cueVideo(viewModel.liveVideoId.value)
+                    viewModel.liveVideoId.observe(viewLifecycleOwner) {
+                        try {
+                            youTubePlayer?.cueVideo(it)
+                        } catch (e: IllegalStateException) {
+                        }
+                    }
                 }
 
                 override fun onInitializationFailure(
@@ -59,12 +66,6 @@ class MediaFragment : Fragment() {
                     Toast.makeText(context, p1?.name, Toast.LENGTH_LONG).show()
                 }
             })
-        viewModel.liveVideoId.observe(viewLifecycleOwner) {
-            try {
-                youTubePlayer?.cueVideo(it)
-            } catch (e: IllegalStateException) {
-            }
-        }
     }
 
     override fun onDestroyView() {
