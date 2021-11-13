@@ -18,7 +18,7 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
     @OptIn(DelicateCoroutinesApi::class)
     private fun loadDailyMottos() =
         GlobalScope.async(Dispatchers.IO) {
-            val parser = context?.resources?.getXml(R.xml.losungen)
+            val parser = context?.resources?.getXml(R.xml.losungen2021)
             val result = mutableListOf<Losungen?>()
             if (parser != null) {
                 var eventType = parser.eventType
