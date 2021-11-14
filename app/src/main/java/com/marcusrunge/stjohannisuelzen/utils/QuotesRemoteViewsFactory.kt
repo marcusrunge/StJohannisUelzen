@@ -39,7 +39,7 @@ class QuotesRemoteViewsFactory(
         remoteViews.apply {
             setTextViewText(R.id.quote_content, quote.content)
             setTextViewText(R.id.quote_verse, quote.verse)
-            if (quotes.size > 1 && position % 2 > 0) {
+            if (quotes.size > 1 && position % 2 == 0) {
                 setViewVisibility(R.id.quote_divider, View.VISIBLE)
             } else {
                 setViewVisibility(R.id.quote_divider, View.GONE)
