@@ -14,4 +14,8 @@ internal class PushImpl(notificationBase: NotificationBase) : Push {
             }
         }
     }
+
+    override fun show(message: String?) {
+        TODO("Not yet implemented")
+    }
 }

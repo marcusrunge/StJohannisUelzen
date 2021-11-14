@@ -8,6 +8,12 @@ interface Notification {
     val push: Push
 
     /**
+     * Gets the toast instance
+     * @see Toast
+     */
+    val toast: Toast
+
+    /**
      * Gets the schedule instance
      * @see Schedule
      */

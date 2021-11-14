@@ -14,4 +14,12 @@ internal class ScheduleImpl(notificationBase: NotificationBase) : Schedule {
             }
         }
     }
+
+    override fun startRecurringDailyMotto() {
+        TODO("Not yet implemented")
+    }
+
+    override fun stopRecurringDailyMotto() {
+        TODO("Not yet implemented")
+    }
 }
