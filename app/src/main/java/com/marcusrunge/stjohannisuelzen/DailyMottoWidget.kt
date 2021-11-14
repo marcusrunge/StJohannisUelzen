@@ -1,21 +1,12 @@
 package com.marcusrunge.stjohannisuelzen
 
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
-import android.widget.RemoteViews
-import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.util.*
-import javax.inject.Inject
-import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
-
 import android.content.Intent
-import com.marcusrunge.stjohannisuelzen.models.Quote
+import android.widget.RemoteViews
 import com.marcusrunge.stjohannisuelzen.utils.QuotesRemoteViewsService
 
 
@@ -29,9 +20,10 @@ class DailyMottoWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-            for (appWidgetId in appWidgetIds) {
-                updateAppWidget(context, appWidgetManager, appWidgetId)
-            }
+        for (appWidgetId in appWidgetIds) {
+            updateAppWidget(context, appWidgetManager, appWidgetId)
+        }
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.listview_quotes)
     }
 
     override fun onEnabled(context: Context) {
