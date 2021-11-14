@@ -7,7 +7,10 @@ import com.marcusrunge.stjohannisuelzen.notification.interfaces.Push
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Schedule
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Toast
 
-internal abstract class NotificationBase(internal val context: Context?, internal val dailyMotto: DailyMotto?) : Notification {
+internal abstract class NotificationBase(
+    internal val context: Context?,
+    internal val dailyMotto: DailyMotto?
+) : Notification {
     protected lateinit var _push: Push
     protected lateinit var _toast: Toast
     protected lateinit var _schedule: Schedule

@@ -16,10 +16,18 @@ internal class ToastImpl(private val notificationBase: NotificationBase) : Toast
     }
 
     override fun showShort(message: String?) {
-        android.widget.Toast.makeText(notificationBase.context, message, android.widget.Toast.LENGTH_SHORT).show()
+        android.widget.Toast.makeText(
+            notificationBase.context,
+            message,
+            android.widget.Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun showLong(message: String?) {
-        android.widget.Toast.makeText(notificationBase.context, message, android.widget.Toast.LENGTH_LONG).show()
+        android.widget.Toast.makeText(
+            notificationBase.context,
+            message,
+            android.widget.Toast.LENGTH_LONG
+        ).show()
     }
 }
