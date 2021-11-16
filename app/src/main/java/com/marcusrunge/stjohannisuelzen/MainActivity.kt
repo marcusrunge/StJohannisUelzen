@@ -19,15 +19,10 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
-import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 
@@ -38,7 +33,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private lateinit var binding: MainActivityBinding
     private lateinit var navController: NavController
     private lateinit var tabLayout: TabLayout
-    private lateinit var linkButtons:Array<LinkButton>
+    private lateinit var linkButtons: Array<LinkButton>
 
     @Inject
     lateinit var core: Core
@@ -151,7 +146,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private fun createLinkButtonsArray() {
         linkButtons = arrayOf(
             LinkButton(getString(R.string.current), getString(R.string.url_stjohannis_uelzen)),
-            LinkButton(getString(R.string.worshipservices), getString(R.string.url_worshipservices)),
+            LinkButton(
+                getString(R.string.worshipservices),
+                getString(R.string.url_worshipservices)
+            ),
             LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
             LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
             LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
