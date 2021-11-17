@@ -5,12 +5,16 @@ import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.marcusrunge.stjohannisuelzen.R
+import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
+    @Inject
+    lateinit var notification: Notification
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +28,24 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         key?.let {
-            if (it == getString(R.string.key_theme)) sharedPreferences?.let { preferences ->
-                val themeValues = resources.getStringArray(R.array.theme_values)
-                preferences.getString(it, themeValues[0])?.let { theme ->
-                    ThemeUtils.setTheme(themeValues, theme)
+            when (it) {
+                getString(R.string.key_theme) -> sharedPreferences?.let { preferences ->
+                    val themeValues = resources.getStringArray(R.array.theme_values)
+                    preferences.getString(it, themeValues[0])?.let { theme ->
+                        ThemeUtils.setTheme(themeValues, theme)
+                    }
+                }
+                getString(R.string.key_pushnotifications) -> sharedPreferences?.let { preferences ->
+                    if (preferences.getBoolean(it, false))
+                        notification.schedule.startRecurringDailyMotto()
+                    else
+                        notification.schedule.stopRecurringDailyMotto()
+                }
+                else -> {
+
                 }
             }
+
         }
     }
 

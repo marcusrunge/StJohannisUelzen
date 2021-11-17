@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/quote_divider"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textIsSelectable="true"/>
 
     <TextView
         android:id="@+id/quote_verse"
@@ -24,5 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/quote_content"
         android:textColor="@color/white"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:textIsSelectable="true"/>
 </RelativeLayout>

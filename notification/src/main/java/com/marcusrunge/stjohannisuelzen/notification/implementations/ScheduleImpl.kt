@@ -19,12 +19,15 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
         }
     }
 
+    private var dailyMottoNotificationWorkerRequestId: UUID? = null
+
     init {
         val configuration = Configuration.Builder()
             .setMinimumLoggingLevel(android.util.Log.INFO)
-            .setWorkerFactory(DailyMottoNotificationWorkerFactory(notificationBase.dailyMotto))
+            .setWorkerFactory(DailyMottoNotificationWorkerFactory(notificationBase))
             .build()
         WorkManager.initialize(notificationBase.context!!, configuration)
+        WorkManager.getInstance(notificationBase.context).cancelAllWork()
     }
 
     override fun startRecurringDailyMotto() {
@@ -33,7 +36,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
         val delay = ((60 - minute) + (24 - hourOfDay) + 5).toLong()
         val request =
             PeriodicWorkRequestBuilder<DailyMottoNotificationWorker>(24, TimeUnit.HOURS)
-                .setInitialDelay(2, TimeUnit.MINUTES)
+                .setInitialDelay(delay, TimeUnit.MINUTES)
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
                     PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
@@ -46,9 +49,14 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
             ExistingPeriodicWorkPolicy.KEEP,
             request
         )
+        dailyMottoNotificationWorkerRequestId = request.id
     }
 
     override fun stopRecurringDailyMotto() {
-        TODO("Not yet implemented")
+        dailyMottoNotificationWorkerRequestId?.let {
+            WorkManager.getInstance(notificationBase.context!!).cancelWorkById(
+                it
+            )
+        }
     }
 }

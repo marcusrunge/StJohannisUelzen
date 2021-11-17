@@ -44,10 +44,11 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
         clazz: Class<*>?
     ) {
         val builder = createNotificationBuilder(textTitle, clazz)
-        builder.setStyle(
-            NotificationCompat.InboxStyle()
-                .addLine(textLine1)
-                .addLine(textLine2)
+        builder
+            .setContentText(textLine1)
+            .setStyle(
+            NotificationCompat.BigTextStyle()
+                .bigText(textLine1 + "\n\n" + textLine2)
         )
         notifyNotification(builder.build())
     }
@@ -79,7 +80,7 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
             .setContentTitle(textTitle)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
+            .setAutoCancel(false)
     }
 
     private fun notifyNotification(notification: Notification) {

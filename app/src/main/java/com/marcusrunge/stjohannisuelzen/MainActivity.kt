@@ -21,6 +21,7 @@ import com.google.android.material.tabs.TabLayout
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
+import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -37,6 +38,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     @Inject
     lateinit var core: Core
+
+    @Inject
+    lateinit var notification: Notification
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +71,11 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         navController.addOnDestinationChangedListener(this)
         if (navController.currentDestination?.id == R.id.navigation_web)
             setLinkButtonsActionBar()
+
+        if (sharedPref.getBoolean(getString(R.string.key_pushnotifications), false))
+            notification.schedule.startRecurringDailyMotto()
+        else
+            notification.schedule.stopRecurringDailyMotto()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
