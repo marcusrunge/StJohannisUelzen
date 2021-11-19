@@ -27,13 +27,13 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
             .setWorkerFactory(DailyMottoNotificationWorkerFactory(notificationBase))
             .build()
         WorkManager.initialize(notificationBase.context!!, configuration)
-        WorkManager.getInstance(notificationBase.context).cancelAllWork()
     }
 
     override fun startRecurringDailyMotto() {
+        stopRecurringDailyMotto()
         val hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val minute = Calendar.getInstance().get(Calendar.MINUTE)
-        val delay = ((60 - minute) + (24 - hourOfDay) + 5).toLong()
+        val delay = ((60 - minute) + (24 - hourOfDay) * 60 - 60).toLong()
         val request =
             PeriodicWorkRequestBuilder<DailyMottoNotificationWorker>(24, TimeUnit.HOURS)
                 .setInitialDelay(delay, TimeUnit.MINUTES)
@@ -58,5 +58,8 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
                 it
             )
         }
+        WorkManager.getInstance(notificationBase.context!!).cancelAllWorkByTag(
+            "dailymotto"
+        )
     }
 }
