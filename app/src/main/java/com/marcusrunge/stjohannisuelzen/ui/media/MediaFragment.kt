@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,16 +14,20 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment
 import com.marcusrunge.stjohannisuelzen.BuildConfig
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.databinding.MediaFragmentBinding
+import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class MediaFragment : Fragment() {
-
     private var _binding: MediaFragmentBinding? = null
     private val viewModel by viewModels<MediaViewModel>()
     private val binding get() = _binding!!
     private var youTubePlayer: YouTubePlayer? = null
+
+    @Inject
+    lateinit var notification: Notification
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +58,7 @@ class MediaFragment : Fragment() {
                         try {
                             youTubePlayer?.cueVideo(it)
                         } catch (e: IllegalStateException) {
+                            notification.toast.showLong(e.message)
                         }
                     }
                 }
@@ -63,7 +67,7 @@ class MediaFragment : Fragment() {
                     p0: YouTubePlayer.Provider?,
                     p1: YouTubeInitializationResult?
                 ) {
-                    Toast.makeText(context, p1?.name, Toast.LENGTH_LONG).show()
+                    notification.toast.showLong(p1?.name)
                 }
             })
     }
