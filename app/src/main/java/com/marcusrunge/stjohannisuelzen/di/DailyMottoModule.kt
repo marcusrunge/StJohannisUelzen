@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DailyMottoModule {
     @Provides
-    @Singleton
     fun provideApiConnect(@ApplicationContext context: Context?): DailyMotto {
         return DailyMottoFactoryImpl.create(context)
     }
