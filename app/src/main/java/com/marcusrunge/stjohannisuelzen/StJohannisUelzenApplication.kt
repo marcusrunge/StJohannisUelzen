@@ -7,7 +7,7 @@ import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 @HiltAndroidApp
-class StJohannisUelzenApplication : Application(),  Configuration.Provider{
+class StJohannisUelzenApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var notification: Notification
     override fun getWorkManagerConfiguration(): Configuration {

@@ -1,12 +1,10 @@
 package com.marcusrunge.stjohannisuelzen.utils
 
 import android.content.Context
-import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
-import com.marcusrunge.stjohannisuelzen.models.Quote
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import java.util.*
@@ -17,31 +15,30 @@ class QuotesRemoteViewsFactory(
     private val dailyMotto: DailyMotto
 ) :
     RemoteViewsService.RemoteViewsFactory {
-    private val quotes = mutableListOf<Quote>()
+    private val dailymottos = mutableListOf<com.marcusrunge.stjohannisuelzen.models.DailyMotto>()
 
     override fun onCreate() {
-        loadQuotes()
+        loadDailyMotto()
     }
 
     override fun onDataSetChanged() {
-        loadQuotes()
+        loadDailyMotto()
     }
 
     override fun onDestroy() {
-        quotes.clear()
+        dailymottos.clear()
     }
 
-    override fun getCount(): Int = quotes.size
+    override fun getCount(): Int = dailymottos.size
 
     override fun getViewAt(position: Int): RemoteViews {
-        val quote = quotes[position]
-        val remoteViews = RemoteViews(context.packageName, R.layout.viewholder_quote)
+        val quote = dailymottos[position]
+        val remoteViews = RemoteViews(context.packageName, R.layout.viewholder_dailymotto)
         remoteViews.apply {
-            setTextViewText(R.id.quote_content, quote.content)
-            setTextViewText(R.id.quote_verse, quote.verse)
-            if (quotes.size == 1 || (quotes.size > 1 && position == 0)) {
-                setViewVisibility(R.id.quote_divider, View.GONE)
-            }
+            setTextViewText(R.id.dailymotto_quotecontent, quote.quoteContent)
+            setTextViewText(R.id.dailymotto_quoteverse, quote.quoteVerse)
+            setTextViewText(R.id.dailymotto_inspirationcontent, quote.inspirationContent)
+            setTextViewText(R.id.dailymotto_inspirationverse, quote.inspirationVerse)
         }
         return remoteViews
     }
@@ -54,14 +51,20 @@ class QuotesRemoteViewsFactory(
 
     override fun hasStableIds(): Boolean = true
 
-    private fun loadQuotes() {
+    private fun loadDailyMotto() {
         runBlocking(Dispatchers.IO) {
             val time = Calendar.getInstance().time
             val first = dailyMotto.quote.getAsync(time)
             val second = dailyMotto.inspiration.getAsync(Calendar.getInstance().time)
-            quotes.clear()
-            quotes.add(Quote(first?.first, first?.second))
-            quotes.add(Quote(second?.first, second?.second))
+            dailymottos.clear()
+            dailymottos.add(
+                com.marcusrunge.stjohannisuelzen.models.DailyMotto(
+                    first?.first,
+                    first?.second,
+                    second?.first,
+                    second?.second
+                )
+            )
         }
     }
 }
