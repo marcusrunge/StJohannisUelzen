@@ -19,14 +19,11 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
         }
     }
 
-    private var dailyMottoNotificationWorkerRequestId: UUID? = null
-
-    init {
-        val configuration = Configuration.Builder()
+    override fun createWorkManagerConfiguration(): Configuration {
+        return Configuration.Builder()
             .setMinimumLoggingLevel(android.util.Log.INFO)
             .setWorkerFactory(DailyMottoNotificationWorkerFactory(notificationBase))
             .build()
-        WorkManager.initialize(notificationBase.context!!, configuration)
     }
 
     override fun startRecurringDailyMotto() {
@@ -40,8 +37,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
                     PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
-                    TimeUnit.MILLISECONDS
-                )
+                    TimeUnit.MILLISECONDS)
                 .addTag("dailymotto")
                 .build()
         WorkManager.getInstance(notificationBase.context!!).enqueueUniquePeriodicWork(
@@ -49,15 +45,9 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
             ExistingPeriodicWorkPolicy.KEEP,
             request
         )
-        dailyMottoNotificationWorkerRequestId = request.id
     }
 
     override fun stopRecurringDailyMotto() {
-        dailyMottoNotificationWorkerRequestId?.let {
-            WorkManager.getInstance(notificationBase.context!!).cancelWorkById(
-                it
-            )
-        }
         WorkManager.getInstance(notificationBase.context!!).cancelAllWorkByTag(
             "dailymotto"
         )

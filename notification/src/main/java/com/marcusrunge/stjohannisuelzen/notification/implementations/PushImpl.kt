@@ -74,7 +74,9 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent: PendingIntent =
-            PendingIntent.getActivity(notificationBase.context, 0, intent, 0)
+            PendingIntent.getActivity(notificationBase.context, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
         return NotificationCompat.Builder(notificationBase.context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_facetcross)
             .setContentTitle(textTitle)
