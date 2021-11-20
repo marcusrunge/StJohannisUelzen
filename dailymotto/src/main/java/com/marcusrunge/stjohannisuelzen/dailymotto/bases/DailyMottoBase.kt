@@ -1,6 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.dailymotto.bases
 
 import android.content.Context
+import android.content.res.XmlResourceParser
 import com.marcusrunge.stjohannisuelzen.dailymotto.R
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Inspiration
@@ -8,6 +9,7 @@ import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Quote
 import com.marcusrunge.stjohannisuelzen.dailymotto.models.Losungen
 import kotlinx.coroutines.*
 import org.xmlpull.v1.XmlPullParser
+import java.util.*
 
 internal abstract class DailyMottoBase(internal val context: Context?) : DailyMotto {
     protected lateinit var _inspiration: Inspiration
@@ -18,7 +20,15 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
     @OptIn(DelicateCoroutinesApi::class)
     private fun loadDailyMottos() =
         GlobalScope.async(Dispatchers.IO) {
-            val parser = context?.resources?.getXml(R.xml.losungen2021)
+            var parser:XmlResourceParser?=null
+            when (Calendar.getInstance().get(Calendar.YEAR)) {
+                2021 -> {
+                    parser = context?.resources?.getXml(R.xml.losungen2021)
+                }
+                2022 -> {
+                    parser = context?.resources?.getXml(R.xml.losungen2022)
+                }
+            }
             val result = mutableListOf<Losungen?>()
             if (parser != null) {
                 var eventType = parser.eventType
