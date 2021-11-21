@@ -40,7 +40,9 @@ class DailyMottoWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
-        val mainActivity = Intent(context, MainActivity::class.java)
+        val mainActivity = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
         val quotesRemoteViewsService = Intent(context, QuotesRemoteViewsService::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, mainActivity, FLAG_IMMUTABLE)
         views.apply {
