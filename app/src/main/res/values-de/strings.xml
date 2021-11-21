@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_web">Übersicht</string>
-    <string name="title_counseling">Seelsorge</string>
     <string name="title_media">Medien</string>
     <string name="title_privacy">Datenschutz</string>
     <string name="title_settings">Einstellungen</string>
@@ -21,7 +20,7 @@
     <string name="sermon">Predigt</string>
     <string name="groups">Gruppen</string>
     <string name="happy_hour">Happy Hour</string>
-    <string name="gallery">Gallerie</string>
+    <string name="gallery">Galerie</string>
     <string name="mission">Leitbild</string>
     <string name="history">Geschichte</string>
     <string name="confirmands">Konfirmanden</string>

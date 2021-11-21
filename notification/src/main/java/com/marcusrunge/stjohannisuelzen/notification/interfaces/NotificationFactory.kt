@@ -9,6 +9,7 @@ interface NotificationFactory {
      * @see Notification
      * @param context The application context
      * @param dailyMotto The daily motto instance
+     * @param clazz The main activity class
      */
-    fun create(context: Context?, dailyMotto: DailyMotto?): Notification
+    fun create(context: Context?, dailyMotto: DailyMotto?, clazz: Class<*>?): Notification
 }

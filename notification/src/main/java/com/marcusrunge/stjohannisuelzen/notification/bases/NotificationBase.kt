@@ -9,7 +9,8 @@ import com.marcusrunge.stjohannisuelzen.notification.interfaces.Toast
 
 internal abstract class NotificationBase(
     internal val context: Context?,
-    internal val dailyMotto: DailyMotto?
+    internal val dailyMotto: DailyMotto?,
+    internal val clazz: Class<*>?
 ) : Notification {
     protected lateinit var _push: Push
     protected lateinit var _toast: Toast

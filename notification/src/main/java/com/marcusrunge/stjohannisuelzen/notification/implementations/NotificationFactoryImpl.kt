@@ -7,13 +7,6 @@ import com.marcusrunge.stjohannisuelzen.notification.interfaces.NotificationFact
 
 class NotificationFactoryImpl {
     companion object : NotificationFactory {
-        private var notification: Notification? = null
-        override fun create(context: Context?, dailyMotto: DailyMotto?): Notification = when {
-            notification != null -> notification!!
-            else -> {
-                notification = NotificationImpl(context, dailyMotto)
-                notification!!
-            }
-        }
+        override fun create(context: Context?, dailyMotto: DailyMotto?, clazz: Class<*>?): Notification = NotificationImpl(context, dailyMotto, clazz)
     }
 }
