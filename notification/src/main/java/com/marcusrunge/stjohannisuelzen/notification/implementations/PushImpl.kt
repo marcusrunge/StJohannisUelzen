@@ -32,7 +32,7 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
     }
 
     override fun showSmall(textTitle: String?, textContent: String?, clazz: Class<*>?) {
-        val builder = createNotificationBuilder(textTitle, clazz)
+        val builder = createNotificationBuilder(textTitle, clazz ?: notificationBase.clazz)
         builder.setContentText(textContent)
         notifyNotification(builder.build())
     }
@@ -43,7 +43,7 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
         textLine2: String?,
         clazz: Class<*>?
     ) {
-        val builder = createNotificationBuilder(textTitle, clazz)
+        val builder = createNotificationBuilder(textTitle, clazz ?: notificationBase.clazz)
         builder
             .setContentText(textLine1)
             .setStyle(

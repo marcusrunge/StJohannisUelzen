@@ -7,8 +7,8 @@ import com.marcusrunge.stjohannisuelzen.notification.interfaces.Push
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Schedule
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Toast
 
-internal class NotificationImpl(context: Context?, dailyMotto: DailyMotto?) :
-    NotificationBase(context, dailyMotto) {
+internal class NotificationImpl(context: Context?, dailyMotto: DailyMotto?, clazz: Class<*>?) :
+    NotificationBase(context, dailyMotto, clazz) {
     init {
         _push = PushImpl.create(this)
         _toast = ToastImpl.create(this)

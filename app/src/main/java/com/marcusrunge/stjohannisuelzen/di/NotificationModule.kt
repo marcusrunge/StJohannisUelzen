@@ -1,6 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.di
 
 import android.content.Context
+import com.marcusrunge.stjohannisuelzen.MainActivity
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import com.marcusrunge.stjohannisuelzen.notification.implementations.NotificationFactoryImpl
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
@@ -21,6 +22,6 @@ object NotificationModule {
             @ApplicationContext context: Context?,
             dailyMotto: DailyMotto?
         ): Notification =
-            NotificationFactoryImpl.create(context, dailyMotto)
+            NotificationFactoryImpl.create(context, dailyMotto, MainActivity::class.java)
     }
 }
