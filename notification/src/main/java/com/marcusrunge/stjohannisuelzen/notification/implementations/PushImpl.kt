@@ -70,12 +70,12 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
         clazz: Class<*>?
     ): NotificationCompat.Builder {
         NotificationManagerCompat.from(notificationBase.context!!).cancel(notificationId)
-        val intent = Intent(notificationBase.context, clazz).apply {
+        val intent = Intent(notificationBase.context, clazz)/*.apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
+        }*/
         val pendingIntent: PendingIntent =
             PendingIntent.getActivity(notificationBase.context, 0, intent,
-                PendingIntent.FLAG_IMMUTABLE
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         return NotificationCompat.Builder(notificationBase.context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_facetcross)

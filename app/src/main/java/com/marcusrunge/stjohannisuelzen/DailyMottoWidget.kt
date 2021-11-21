@@ -2,6 +2,7 @@ package com.marcusrunge.stjohannisuelzen
 
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
@@ -40,11 +41,11 @@ class DailyMottoWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         val views = RemoteViews(context.packageName, R.layout.daily_motto_widget)
-        val mainActivity = Intent(context, MainActivity::class.java).apply {
+        val mainActivity = Intent(context, MainActivity::class.java)/*.apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
+        }*/
         val quotesRemoteViewsService = Intent(context, QuotesRemoteViewsService::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, mainActivity, FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getActivity(context, 0, mainActivity, FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE)
         views.apply {
             setRemoteAdapter(R.id.listview_quotes, quotesRemoteViewsService)
             setOnClickPendingIntent(R.id.appwidget_root, pendingIntent)
