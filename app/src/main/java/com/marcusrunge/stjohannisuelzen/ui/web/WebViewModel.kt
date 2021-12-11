@@ -8,21 +8,15 @@ import android.view.View
 import androidx.databinding.Bindable
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.bases.ViewModelBase
+import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import kotlin.math.abs
 
 @HiltViewModel
-class WebViewModel @Inject constructor(@ApplicationContext private val context: Context) :
+class WebViewModel @Inject constructor(@ApplicationContext private val context: Context, val core: Core) :
     ViewModelBase(), View.OnTouchListener {
-
-    private val HORIZONTAL_MIN_DISTANCE = 30
-    private val VERTICAL_MIN_DISTANCE = 80
-
-    private var downX = 0f
-    private var downY = 0f
-    private var upX = 0f
-    private var upY = 0f
 
     @get:Bindable
     val endpointUrl
@@ -36,14 +30,10 @@ class WebViewModel @Inject constructor(@ApplicationContext private val context: 
     override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
         when (p1?.action) {
             MotionEvent.ACTION_DOWN -> {
-                downX = p1.x
-                downY = p1.y
             }
             MotionEvent.ACTION_MOVE -> {
-                upX = p1.x
-                upY = p1.y
             }
         }
-        return false
+        return true
     }
 }
