@@ -1,5 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.utils
 
+import android.annotation.SuppressLint
+import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -14,6 +16,7 @@ import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
 
 object BindingUtils {
+    @SuppressLint("SetJavaScriptEnabled")
     @BindingAdapter("endpointUrl")
     @JvmStatic
     fun setEndpointUrl(view: WebView, endpointUrl: String) {
@@ -22,6 +25,13 @@ object BindingUtils {
         view.settings.loadsImagesAutomatically = true
         view.settings.javaScriptEnabled = true
         view.loadUrl(endpointUrl)
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @BindingAdapter("onTouchListener")
+    @JvmStatic
+    fun setOnTouchListener(view: WebView, onTouchListener: View.OnTouchListener) {
+        view.setOnTouchListener(onTouchListener)
     }
 
     @BindingAdapter("imageUrl")

@@ -18,7 +18,9 @@ import androidx.preference.PreferenceManager
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import com.marcusrunge.stjohannisuelzen.core.enums.Swipe
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
+import com.marcusrunge.stjohannisuelzen.core.interfaces.OnSwipeListener
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
@@ -29,7 +31,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener,
-    TabLayout.OnTabSelectedListener {
+    TabLayout.OnTabSelectedListener, OnSwipeListener {
 
     private lateinit var binding: MainActivityBinding
     private lateinit var navController: NavController
@@ -76,6 +78,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             notification.schedule.startRecurringDailyMotto()
         else
             notification.schedule.stopRecurringDailyMotto()
+
+        core.gestures.swipe.setOnSwipeListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -149,7 +153,21 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     override fun onDestroy() {
         navController.removeOnDestinationChangedListener(this)
+        core.gestures.swipe.removeOnSwipeListener(this)
         super.onDestroy()
+    }
+
+    override fun onSwipe(swipe: Swipe) {
+        when (swipe) {
+            Swipe.Left -> {
+                tabLayout.getTabAt(tabLayout.selectedTabPosition + 1)?.select()
+            }
+            Swipe.Right -> {
+                tabLayout.getTabAt(tabLayout.selectedTabPosition - 1)?.select()
+            }
+            Swipe.Up -> {}
+            Swipe.Down -> {}
+        }
     }
 
     private fun createLinkButtonsArray() {
@@ -181,7 +199,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
 
 
-        tabLayout = linkbuttonsLayout.findViewById<TabLayout>(R.id.linkbuttons_tabLayout)
+        tabLayout = linkbuttonsLayout.findViewById(R.id.linkbuttons_tabLayout)
         linkButtons.forEach {
             tabLayout.addTab(tabLayout.newTab().setText(it.text).setTag(it.url))
         }
