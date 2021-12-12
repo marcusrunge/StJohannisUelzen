@@ -16,6 +16,7 @@ import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
 
 object BindingUtils {
+    @SuppressLint("SetJavaScriptEnabled")
     @BindingAdapter("endpointUrl")
     @JvmStatic
     fun setEndpointUrl(view: WebView, endpointUrl: String) {
