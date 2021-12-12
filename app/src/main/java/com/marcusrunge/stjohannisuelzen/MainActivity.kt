@@ -158,7 +158,16 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     override fun onSwipe(swipe: Swipe) {
-        TODO("Not yet implemented")
+        when (swipe) {
+            Swipe.Left -> {
+                tabLayout.getTabAt(tabLayout.selectedTabPosition + 1)?.select()
+            }
+            Swipe.Right -> {
+                tabLayout.getTabAt(tabLayout.selectedTabPosition - 1)?.select()
+            }
+            Swipe.Up -> {}
+            Swipe.Down -> {}
+        }
     }
 
     private fun createLinkButtonsArray() {
@@ -190,7 +199,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
 
 
-        tabLayout = linkbuttonsLayout.findViewById<TabLayout>(R.id.linkbuttons_tabLayout)
+        tabLayout = linkbuttonsLayout.findViewById(R.id.linkbuttons_tabLayout)
         linkButtons.forEach {
             tabLayout.addTab(tabLayout.newTab().setText(it.text).setTag(it.url))
         }
