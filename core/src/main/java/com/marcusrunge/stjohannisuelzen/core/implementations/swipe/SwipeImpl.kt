@@ -29,7 +29,7 @@ internal class SwipeImpl(gesturesBase: GesturesBase) : Swipe {
         }
     }
 
-    override fun setOnSwipeListener(onSwipeListener: OnSwipeListener) {
+    override fun addOnSwipeListener(onSwipeListener: OnSwipeListener) {
         onSwipeListeners.add(WeakReference(onSwipeListener))
     }
 

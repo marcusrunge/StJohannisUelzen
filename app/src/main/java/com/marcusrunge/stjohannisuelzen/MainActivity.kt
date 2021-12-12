@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         else
             notification.schedule.stopRecurringDailyMotto()
 
-        core.gestures.swipe.setOnSwipeListener(this)
+        core.gestures.swipe.addOnSwipeListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

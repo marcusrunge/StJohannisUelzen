@@ -1,8 +1,8 @@
 package com.marcusrunge.stjohannisuelzen.core.enums
 
-enum class Swipe {
+enum class Scroll {
     Left,
     Right,
     Up,
-    Down
+    Down,
 }

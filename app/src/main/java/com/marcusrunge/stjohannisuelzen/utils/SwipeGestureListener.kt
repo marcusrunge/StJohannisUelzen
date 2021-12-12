@@ -35,6 +35,11 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
                     } else{
                         onSwipeListener?.onScrollDown(abs(distanceY).toInt())
                     }
+                    if(distanceX>0){
+                        onSwipeListener?.onScrollRight(abs(distanceY).toInt())
+                    } else{
+                        onSwipeListener?.onScrollLeft(abs(distanceY).toInt())
+                    }
                     return true
                 }
                 return false
@@ -77,6 +82,8 @@ interface OnSwipeListener{
     fun onSwipeLeft(value:Int)
     fun onSwipeUp(value:Int)
     fun onSwipeDown(value:Int)
+    fun onScrollLeft(value:Int)
+    fun onScrollRight(value:Int)
     fun onScrollUp(value:Int)
     fun onScrollDown(value:Int)
 }

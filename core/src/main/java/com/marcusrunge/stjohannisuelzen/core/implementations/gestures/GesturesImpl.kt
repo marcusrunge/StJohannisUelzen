@@ -2,6 +2,7 @@ package com.marcusrunge.stjohannisuelzen.core.implementations.gestures
 
 import com.marcusrunge.stjohannisuelzen.core.bases.CoreBase
 import com.marcusrunge.stjohannisuelzen.core.bases.GesturesBase
+import com.marcusrunge.stjohannisuelzen.core.implementations.scroll.ScrollImpl
 import com.marcusrunge.stjohannisuelzen.core.implementations.swipe.SwipeImpl
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Gestures
 
@@ -19,5 +20,6 @@ internal class GesturesImpl(coreBase: CoreBase) : GesturesBase(coreBase) {
 
     init {
         _swipe = SwipeImpl.create(this)
+        _scroll=ScrollImpl.create(this)
     }
 }
