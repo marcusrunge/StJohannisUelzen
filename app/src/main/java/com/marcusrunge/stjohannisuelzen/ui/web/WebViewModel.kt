@@ -22,19 +22,19 @@ class WebViewModel @Inject constructor(
     @get:Bindable
     val gestureDetector
         get() = SwipeGestureListener(context, object : OnSwipeListener {
-            override fun onSwipeRight(value:Int) {
+            override fun onSwipeRight(value: Int) {
                 core.gestures.swipe.onSwipe(Swipe.Right, value)
             }
 
-            override fun onSwipeLeft(value:Int) {
+            override fun onSwipeLeft(value: Int) {
                 core.gestures.swipe.onSwipe(Swipe.Left, value)
             }
 
-            override fun onSwipeUp(value:Int) {
+            override fun onSwipeUp(value: Int) {
                 core.gestures.swipe.onSwipe(Swipe.Up, value)
             }
 
-            override fun onSwipeDown(value:Int) {
+            override fun onSwipeDown(value: Int) {
                 core.gestures.swipe.onSwipe(Swipe.Down, value)
             }
 

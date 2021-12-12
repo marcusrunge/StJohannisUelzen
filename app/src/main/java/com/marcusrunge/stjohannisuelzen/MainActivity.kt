@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         super.onDestroy()
     }
 
-    override fun onSwipe(swipe: Swipe, value:Int) {
+    override fun onSwipe(swipe: Swipe, value: Int) {
         when (swipe) {
             Swipe.Left -> {
                 tabLayout.getTabAt(tabLayout.selectedTabPosition + 1)?.select()

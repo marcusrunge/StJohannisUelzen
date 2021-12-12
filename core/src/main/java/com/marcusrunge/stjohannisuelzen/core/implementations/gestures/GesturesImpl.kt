@@ -20,6 +20,6 @@ internal class GesturesImpl(coreBase: CoreBase) : GesturesBase(coreBase) {
 
     init {
         _swipe = SwipeImpl.create(this)
-        _scroll=ScrollImpl.create(this)
+        _scroll = ScrollImpl.create(this)
     }
 }

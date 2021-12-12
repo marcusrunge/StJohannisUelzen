@@ -1,14 +1,11 @@
 package com.marcusrunge.stjohannisuelzen.core.implementations.scroll
 
 import com.marcusrunge.stjohannisuelzen.core.bases.GesturesBase
-import com.marcusrunge.stjohannisuelzen.core.implementations.swipe.SwipeImpl
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnScrollListener
-import com.marcusrunge.stjohannisuelzen.core.interfaces.OnSwipeListener
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Scroll
-import com.marcusrunge.stjohannisuelzen.core.interfaces.Swipe
 import java.lang.ref.WeakReference
 
-internal class ScrollImpl(gesturesBase: GesturesBase):Scroll {
+internal class ScrollImpl(gesturesBase: GesturesBase) : Scroll {
     internal companion object {
         var swipe: Scroll? = null
         fun create(gesturesBase: GesturesBase): Scroll = when {

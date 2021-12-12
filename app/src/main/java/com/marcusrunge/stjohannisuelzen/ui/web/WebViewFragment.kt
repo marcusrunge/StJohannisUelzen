@@ -112,11 +112,11 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
     }
 
     override fun onScroll(scroll: Scroll, value: Int) {
-        when (scroll){
-            Scroll.Left -> {         }
-            Scroll.Right -> {         }
-            Scroll.Up -> stJohannisUelzenWebview.scrollBy(0,value)
-            Scroll.Down -> stJohannisUelzenWebview.scrollBy(0,-value)
+        when (scroll) {
+            Scroll.Left -> {}
+            Scroll.Right -> {}
+            Scroll.Up -> stJohannisUelzenWebview.scrollBy(0, value)
+            Scroll.Down -> stJohannisUelzenWebview.scrollBy(0, -value)
         }
     }
 }

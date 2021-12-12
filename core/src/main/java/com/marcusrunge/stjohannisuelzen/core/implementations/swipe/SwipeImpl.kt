@@ -20,7 +20,7 @@ internal class SwipeImpl(gesturesBase: GesturesBase) : Swipe {
     private val onSwipeListeners: MutableList<WeakReference<OnSwipeListener>> =
         mutableListOf()
 
-    override fun onSwipe(swipe:com.marcusrunge.stjohannisuelzen.core.enums.Swipe, value:Int) {
+    override fun onSwipe(swipe: com.marcusrunge.stjohannisuelzen.core.enums.Swipe, value: Int) {
         for (weakRef in onSwipeListeners) {
             try {
                 weakRef.get()?.onSwipe(swipe, value)
