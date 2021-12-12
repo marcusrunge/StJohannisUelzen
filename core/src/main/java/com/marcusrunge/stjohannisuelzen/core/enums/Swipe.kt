@@ -4,5 +4,7 @@ enum class Swipe {
     Left,
     Right,
     Up,
-    Down
+    Down,
+    ScrollUp,
+    ScrollDown
 }

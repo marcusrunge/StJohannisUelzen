@@ -15,17 +15,15 @@ import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
 import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
 import androidx.webkit.WebViewFeature
 import com.marcusrunge.stjohannisuelzen.R
-import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
-import com.marcusrunge.stjohannisuelzen.core.interfaces.OnCanGoBackRequestedListener
-import com.marcusrunge.stjohannisuelzen.core.interfaces.OnGoBackRequestedListener
-import com.marcusrunge.stjohannisuelzen.core.interfaces.OnRequestNavigateToListener
+import com.marcusrunge.stjohannisuelzen.core.enums.Swipe
+import com.marcusrunge.stjohannisuelzen.core.interfaces.*
 import com.marcusrunge.stjohannisuelzen.databinding.WebFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener,
-    OnRequestNavigateToListener {
+    OnRequestNavigateToListener, OnSwipeListener {
 
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
@@ -63,6 +61,7 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
             stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
         }
         setTheme()
+        core.gestures.swipe.setOnSwipeListener(this)
     }
 
     override fun onDestroyView() {
@@ -76,6 +75,7 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         core.back.web.removeOnGoBackRequestedListener()
         core.back.web.removeOnCanGoBackRequestedListener()
         core.webNavigation.removeOnRequestNavigateToListener()
+        core.gestures.swipe.removeOnSwipeListener(this)
     }
 
     override fun onGoBackRequested() {
@@ -107,9 +107,18 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
 
     override fun onRequestNavigateTo(url: String) {
         if (::stJohannisUelzenWebview.isInitialized) {
-            //stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = true
             stJohannisUelzenWebview.loadUrl(url)
-            //stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    override fun onSwipe(swipe: Swipe, value:Int) {
+        when (swipe){
+            Swipe.Left -> {         }
+            Swipe.Right -> {         }
+            Swipe.Up -> {         }
+            Swipe.Down -> {         }
+            Swipe.ScrollUp -> stJohannisUelzenWebview.scrollBy(0,value)
+            Swipe.ScrollDown -> stJohannisUelzenWebview.scrollBy(0,-value)
         }
     }
 }

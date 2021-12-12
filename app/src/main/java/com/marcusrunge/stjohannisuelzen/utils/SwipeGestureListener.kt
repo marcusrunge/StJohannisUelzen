@@ -23,6 +23,22 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
         }
 
         private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
+            override fun onScroll(
+                e1: MotionEvent?,
+                e2: MotionEvent?,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+                if(e1?.action== MotionEvent.ACTION_DOWN && e2?.action == MotionEvent.ACTION_MOVE){
+                    if(distanceY>0){
+                        onSwipeListener?.onScrollUp(abs(distanceY).toInt())
+                    } else{
+                        onSwipeListener?.onScrollDown(abs(distanceY).toInt())
+                    }
+                    return true
+                }
+                return false
+            }
             override fun onDown(e: MotionEvent): Boolean {
                 return true
             }
@@ -34,17 +50,17 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
                     if (abs(diffX) > abs(diffY)) {
                         if (abs(diffX) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                             if (diffX > 0) {
-                                onSwipeListener?.onSwipeRight()
+                                onSwipeListener?.onSwipeRight(abs(diffX).toInt())
                             } else {
-                                onSwipeListener?.onSwipeLeft()
+                                onSwipeListener?.onSwipeLeft(abs(diffX).toInt())
                             }
                             result = true
                         }
                     } else if (abs(diffY) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
                         if (diffY > 0) {
-                            onSwipeListener?.onSwipeDown()
+                            onSwipeListener?.onSwipeDown(abs(diffY).toInt())
                         } else {
-                            onSwipeListener?.onSwipeUp()
+                            onSwipeListener?.onSwipeUp(abs(diffY).toInt())
                         }
                         result = true
                     }
@@ -57,8 +73,10 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
 }
 
 interface OnSwipeListener{
-    fun onSwipeRight()
-    fun onSwipeLeft()
-    fun onSwipeUp()
-    fun onSwipeDown()
+    fun onSwipeRight(value:Int)
+    fun onSwipeLeft(value:Int)
+    fun onSwipeUp(value:Int)
+    fun onSwipeDown(value:Int)
+    fun onScrollUp(value:Int)
+    fun onScrollDown(value:Int)
 }

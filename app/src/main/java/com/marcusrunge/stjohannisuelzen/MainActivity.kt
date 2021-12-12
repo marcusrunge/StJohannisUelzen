@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         super.onDestroy()
     }
 
-    override fun onSwipe(swipe: Swipe) {
+    override fun onSwipe(swipe: Swipe, value:Int) {
         when (swipe) {
             Swipe.Left -> {
                 tabLayout.getTabAt(tabLayout.selectedTabPosition + 1)?.select()
@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             LinkButton(getString(R.string.current), getString(R.string.url_stjohannis_uelzen)),
             LinkButton(
                 getString(R.string.churchservices),
-                getString(R.string.url_worshipservices)
+                getString(R.string.url_churchservices)
             ),
             LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
             LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),

@@ -55,7 +55,7 @@
     <string name="url_board" translatable="false">https://st-johannis-uelzen.wir-e.de/kirchenvorstand</string>
     <string name="url_donations" translatable="false">https://st-johannis-uelzen.wir-e.de/spendenkonto-st-johannis</string>
     <string name="url_newsletter" translatable="false">https://st-johannis-uelzen.wir-e.de/rundbrief</string>
-    <string name="url_worshipservices" translatable="false">gottesdienste.kirche-uelzen.de</string>
+    <string name="url_churchservices" translatable="false">http://gottesdienste.kirche-uelzen.de/Uelzen%20St.%20Johannis/embed/</string>
     <string name="information_projecturl">Project URL:</string>
     <string name="on">On</string>
     <string name="off">Off</string>
