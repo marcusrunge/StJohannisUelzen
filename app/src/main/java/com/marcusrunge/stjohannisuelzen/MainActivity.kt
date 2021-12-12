@@ -174,7 +174,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         linkButtons = arrayOf(
             LinkButton(getString(R.string.current), getString(R.string.url_stjohannis_uelzen)),
             LinkButton(
-                getString(R.string.worshipservices),
+                getString(R.string.churchservices),
                 getString(R.string.url_worshipservices)
             ),
             LinkButton(getString(R.string.solution), getString(R.string.url_solution)),

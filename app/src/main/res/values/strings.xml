@@ -35,7 +35,7 @@
     <string name="board">Board</string>
     <string name="donations">Donations</string>
     <string name="newsletter">Newsletter</string>
-    <string name="worshipservices">Worshipservices</string>
+    <string name="churchservices">Church services</string>
     <string name="url_solution" translatable="false">https://st-johannis-uelzen.wir-e.de/tageslosung</string>
     <string name="url_thoughts" translatable="false">https://st-johannis-uelzen.wir-e.de/gedanken-fuer-den-tag</string>
     <string name="url_meditations" translatable="false">https://st-johannis-uelzen.wir-e.de/kreuzwegmeditationen-in-zeiten-von-corona-2021</string>
