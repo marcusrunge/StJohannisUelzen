@@ -16,14 +16,9 @@ import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
 
 object BindingUtils {
-    @SuppressLint("SetJavaScriptEnabled")
     @BindingAdapter("endpointUrl")
     @JvmStatic
     fun setEndpointUrl(view: WebView, endpointUrl: String) {
-        view.webViewClient = WebViewClient()
-        view.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-        view.settings.loadsImagesAutomatically = true
-        view.settings.javaScriptEnabled = true
         view.loadUrl(endpointUrl)
     }
 

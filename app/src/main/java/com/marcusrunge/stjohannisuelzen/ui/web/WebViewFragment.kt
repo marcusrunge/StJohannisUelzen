@@ -1,11 +1,14 @@
 package com.marcusrunge.stjohannisuelzen.ui.web
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -49,11 +52,21 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         return binding.root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
         stJohannisUelzenWebview = view.findViewById(R.id.stjohannisuelzen_webview)
+        stJohannisUelzenWebview.webViewClient = object :WebViewClient(){
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                core.webNavigation.pageFinished()
+            }
+        }
+        stJohannisUelzenWebview.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        stJohannisUelzenWebview.settings.loadsImagesAutomatically = true
+        stJohannisUelzenWebview.settings.javaScriptEnabled = true
         stJohannisUelzenWebviewSwipeRefreshLayout =
             view.findViewById(R.id.stjohannisuelzen_webview_swiperefreshlayout)
         stJohannisUelzenWebviewSwipeRefreshLayout.setOnRefreshListener {

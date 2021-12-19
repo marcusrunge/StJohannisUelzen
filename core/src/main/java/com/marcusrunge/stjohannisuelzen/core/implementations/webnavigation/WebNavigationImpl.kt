@@ -1,5 +1,6 @@
 package com.marcusrunge.stjohannisuelzen.core.implementations.webnavigation
 
+import com.marcusrunge.stjohannisuelzen.core.interfaces.OnPageFinishedListener
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnRequestNavigateToListener
 import com.marcusrunge.stjohannisuelzen.core.interfaces.WebNavigation
 
@@ -17,6 +18,8 @@ internal class WebNavigationImpl : WebNavigation {
     }
 
     private var onRequestNavigateToListener: OnRequestNavigateToListener? = null
+    private var onPageFinishedListener: OnPageFinishedListener? = null
+
     override fun requestNavigateTo(url: String) {
         onRequestNavigateToListener?.onRequestNavigateTo(url)
     }
@@ -27,5 +30,17 @@ internal class WebNavigationImpl : WebNavigation {
 
     override fun removeOnRequestNavigateToListener() {
         this.onRequestNavigateToListener = null
+    }
+
+    override fun setOnPageFinishedListener(onPageFinishedListener: OnPageFinishedListener) {
+        this.onPageFinishedListener = onPageFinishedListener
+    }
+
+    override fun removeOnPageFinishedListener() {
+        this.onPageFinishedListener = null
+    }
+
+    override fun pageFinished() {
+        this.onPageFinishedListener?.onPageFinished()
     }
 }
