@@ -1,8 +1,10 @@
 package com.marcusrunge.stjohannisuelzen.ui.web
 
 import android.content.Context
+import android.graphics.Point
 import android.os.Message
 import androidx.databinding.Bindable
+import androidx.databinding.library.baseAdapters.BR
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.bases.ViewModelBase
 import com.marcusrunge.stjohannisuelzen.core.enums.Scroll
@@ -18,6 +20,7 @@ import javax.inject.Inject
 class WebViewModel @Inject constructor(
     @ApplicationContext private val context: Context, val core: Core
 ) : ViewModelBase() {
+    private var _tapUpPoint: Point? = null
 
     @get:Bindable
     val gestureDetector
@@ -53,11 +56,23 @@ class WebViewModel @Inject constructor(
             override fun onScrollDown(value: Int) {
                 core.gestures.scroll.onScroll(Scroll.Down, value)
             }
+
+            override fun onSingleTapUp(x: Int, y: Int) {
+                tapUpPoint = Point(x, y)
+            }
         })
 
     @get:Bindable
     val endpointUrl
         get() = context.getString(R.string.url_stjohannis_uelzen)
+
+    @get:Bindable
+    var tapUpPoint: Point?
+        get() = _tapUpPoint
+        set(value) {
+            _tapUpPoint = value
+            notifyPropertyChanged(BR.tapUpPoint)
+        }
 
     override fun updateView(inputMessage: Message) {
         //TODO("Not yet implemented")

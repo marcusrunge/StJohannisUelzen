@@ -47,7 +47,7 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
         }
 
         override fun onDown(e: MotionEvent): Boolean {
-            return false
+            return true
         }
 
         override fun onFling(
@@ -82,6 +82,13 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
             }
             return result
         }
+
+        override fun onSingleTapUp(e: MotionEvent?): Boolean {
+            if (e != null) {
+                onSwipeListener?.onSingleTapUp(e.x.toInt(), e.y.toInt())
+            }
+            return super.onSingleTapUp(e)
+        }
     }
 }
 
@@ -94,4 +101,5 @@ interface OnSwipeListener {
     fun onScrollRight(value: Int)
     fun onScrollUp(value: Int)
     fun onScrollDown(value: Int)
+    fun onSingleTapUp(x: Int, y: Int)
 }

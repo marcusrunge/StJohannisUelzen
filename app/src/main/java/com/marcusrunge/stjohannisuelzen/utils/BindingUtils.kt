@@ -1,6 +1,9 @@
 package com.marcusrunge.stjohannisuelzen.utils
 
 import android.annotation.SuppressLint
+import android.graphics.Point
+import android.os.SystemClock
+import android.view.MotionEvent
 import android.view.View
 import android.webkit.WebView
 import android.widget.ImageView
@@ -64,5 +67,30 @@ object BindingUtils {
     @JvmStatic
     fun bindIsRefreshing(view: SwipeRefreshLayout, isRefreshing: Boolean) {
         view.isRefreshing = isRefreshing
+    }
+
+    @BindingAdapter("tapUpPoint")
+    @JvmStatic
+    fun setTapUpPoint(view: WebView, tapUpPoint: Point?) {
+        if (tapUpPoint != null) {
+            val motionEventDown = MotionEvent.obtain(
+                SystemClock.uptimeMillis(),
+                SystemClock.uptimeMillis() + 100,
+                MotionEvent.ACTION_DOWN,
+                tapUpPoint.x.toFloat(),
+                tapUpPoint.y.toFloat(),
+                0
+            )
+            val motionEventUp = MotionEvent.obtain(
+                SystemClock.uptimeMillis(),
+                SystemClock.uptimeMillis() + 100,
+                MotionEvent.ACTION_UP,
+                tapUpPoint.x.toFloat(),
+                tapUpPoint.y.toFloat(),
+                0
+            )
+            view.onTouchEvent(motionEventDown)
+            view.onTouchEvent(motionEventUp)
+        }
     }
 }
