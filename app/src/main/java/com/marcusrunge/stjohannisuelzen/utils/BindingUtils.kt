@@ -2,9 +2,7 @@ package com.marcusrunge.stjohannisuelzen.utils
 
 import android.annotation.SuppressLint
 import android.view.View
-import android.webkit.WebSettings
 import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter

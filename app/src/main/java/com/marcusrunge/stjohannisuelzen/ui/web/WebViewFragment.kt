@@ -58,7 +58,7 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
         stJohannisUelzenWebview = view.findViewById(R.id.stjohannisuelzen_webview)
-        stJohannisUelzenWebview.webViewClient = object :WebViewClient(){
+        stJohannisUelzenWebview.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 core.webNavigation.pageFinished()

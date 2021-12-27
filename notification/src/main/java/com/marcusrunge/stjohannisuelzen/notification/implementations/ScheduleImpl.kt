@@ -37,7 +37,8 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
                     PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
-                    TimeUnit.MILLISECONDS)
+                    TimeUnit.MILLISECONDS
+                )
                 .addTag("dailymotto")
                 .build()
         WorkManager.getInstance(notificationBase.context!!).enqueueUniquePeriodicWork(

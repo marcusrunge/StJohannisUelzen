@@ -47,7 +47,7 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
         }
 
         override fun onDown(e: MotionEvent): Boolean {
-            return true
+            return false
         }
 
         override fun onFling(
