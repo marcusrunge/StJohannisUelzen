@@ -38,7 +38,7 @@ internal class AppImpl(private val backBase: BackBase) : App {
 
     override fun onBackPressed(callback: (() -> Unit)?) {
         if (!(backBase.web.isWebViewActive && backBase.web.requestCanGoBack())) {
-            var handled: Boolean = false
+            var handled = false
             for (weakRef in onBackPressedListeners) {
                 try {
                     if (weakRef.get()?.onBackPressed() == true) handled = true
