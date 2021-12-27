@@ -7,6 +7,10 @@ import com.marcusrunge.stjohannisuelzen.notification.interfaces.NotificationFact
 
 class NotificationFactoryImpl {
     companion object : NotificationFactory {
-        override fun create(context: Context?, dailyMotto: DailyMotto?, clazz: Class<*>?): Notification = NotificationImpl(context, dailyMotto, clazz)
+        override fun create(
+            context: Context?,
+            dailyMotto: DailyMotto?,
+            clazz: Class<*>?
+        ): Notification = NotificationImpl(context, dailyMotto, clazz)
     }
 }
