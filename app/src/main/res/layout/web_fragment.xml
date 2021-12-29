@@ -26,7 +26,8 @@
             app:endpointUrl="@{viewmodel.endpointUrl}"
             app:onTouchListener="@{viewmodel.gestureDetector}"
             app:tapUpPoint="@{viewmodel.tapUpPoint}"
-            app:velocityY="@{viewmodel.velocityY}"/>
+            app:velocityY="@{viewmodel.velocityY}"
+            app:scrollY="@{viewmodel.scrollY}"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

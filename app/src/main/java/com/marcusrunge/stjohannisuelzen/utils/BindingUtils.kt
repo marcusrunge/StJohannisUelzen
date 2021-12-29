@@ -101,4 +101,12 @@ object BindingUtils {
             view.flingScroll(0, velocityY)
         }
     }
+
+    @BindingAdapter("scrollY")
+    @JvmStatic
+    fun setScrollY(view: WebView, scrollY: Int?) {
+        if (scrollY != null) {
+            view.scrollBy(0, scrollY)
+        }
+    }
 }
