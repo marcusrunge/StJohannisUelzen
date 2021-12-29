@@ -26,7 +26,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackRequestedListener,
-    OnRequestNavigateToListener, OnScrollListener {
+    OnRequestNavigateToListener {
 
     private var _binding: WebFragmentBinding? = null
     private val viewModel by viewModels<WebViewModel>()
@@ -74,7 +74,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
             stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
         }
         setTheme()
-        core.gestures.scroll.addOnScrollListener(this)
     }
 
     override fun onDestroyView() {
@@ -88,7 +87,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         core.back.web.removeOnGoBackRequestedListener()
         core.back.web.removeOnCanGoBackRequestedListener()
         core.webNavigation.removeOnRequestNavigateToListener()
-        core.gestures.scroll.removeOnScrollListener(this)
     }
 
     override fun onGoBackRequested() {
@@ -121,15 +119,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
     override fun onRequestNavigateTo(url: String) {
         if (::stJohannisUelzenWebview.isInitialized) {
             stJohannisUelzenWebview.loadUrl(url)
-        }
-    }
-
-    override fun onScroll(scroll: Scroll, value: Int) {
-        when (scroll) {
-            Scroll.Left -> {}
-            Scroll.Right -> {}
-            Scroll.Up -> stJohannisUelzenWebview.scrollBy(0, value)
-            Scroll.Down -> stJohannisUelzenWebview.scrollBy(0, -value)
         }
     }
 }

@@ -21,6 +21,7 @@ class WebViewModel @Inject constructor(
     @ApplicationContext private val context: Context, val core: Core
 ) : ViewModelBase() {
     private var _tapUpPoint: Point? = null
+    private var _velocityY:Int?=null
 
     @get:Bindable
     val gestureDetector
@@ -33,12 +34,14 @@ class WebViewModel @Inject constructor(
                 core.gestures.swipe.onSwipe(Swipe.Left, value)
             }
 
-            override fun onSwipeUp(value: Int) {
-                core.gestures.swipe.onSwipe(Swipe.Up, value)
+            override fun onSwipeUp(diffY: Int, veloY: Int) {
+                core.gestures.swipe.onSwipe(Swipe.Up, diffY)
+                velocityY=veloY
             }
 
-            override fun onSwipeDown(value: Int) {
-                core.gestures.swipe.onSwipe(Swipe.Down, value)
+            override fun onSwipeDown(diffY: Int, veloY: Int) {
+                core.gestures.swipe.onSwipe(Swipe.Down, diffY)
+                velocityY=-veloY
             }
 
             override fun onScrollLeft(value: Int) {
@@ -72,6 +75,14 @@ class WebViewModel @Inject constructor(
         set(value) {
             _tapUpPoint = value
             notifyPropertyChanged(BR.tapUpPoint)
+        }
+
+    @get:Bindable
+    var velocityY: Int?
+        get() = _velocityY
+        set(value) {
+            _velocityY = value
+            notifyPropertyChanged(BR.velocityY)
         }
 
     override fun updateView(inputMessage: Message) {

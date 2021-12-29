@@ -25,7 +25,8 @@
             android:layout_height="match_parent"
             app:endpointUrl="@{viewmodel.endpointUrl}"
             app:onTouchListener="@{viewmodel.gestureDetector}"
-            app:tapUpPoint="@{viewmodel.tapUpPoint}" />
+            app:tapUpPoint="@{viewmodel.tapUpPoint}"
+            app:velocityY="@{viewmodel.velocityY}"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

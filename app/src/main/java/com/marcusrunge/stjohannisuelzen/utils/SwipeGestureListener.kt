@@ -71,10 +71,16 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
                     }
                 } else if (abs(diffY) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffY > 0) {
-                        onSwipeListener?.onSwipeDown(abs(diffY).toInt())
+                        onSwipeListener?.onSwipeDown(abs(diffY).toInt(), abs(velocityY).toInt())
                     } else {
-                        onSwipeListener?.onSwipeUp(abs(diffY).toInt())
+                        onSwipeListener?.onSwipeUp(abs(diffY).toInt(), abs(velocityY).toInt())
                     }
+                    result = true
+                } else if (diffY > 0) {
+                    onSwipeListener?.onSwipeDown(0, abs(velocityY).toInt())
+                    result = true
+                } else {
+                    onSwipeListener?.onSwipeUp(0, abs(velocityY).toInt())
                     result = true
                 }
             } catch (exception: Exception) {
@@ -95,8 +101,8 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
 interface OnSwipeListener {
     fun onSwipeRight(value: Int)
     fun onSwipeLeft(value: Int)
-    fun onSwipeUp(value: Int)
-    fun onSwipeDown(value: Int)
+    fun onSwipeUp(diffY: Int, veloY: Int)
+    fun onSwipeDown(diffY: Int, veloY: Int)
     fun onScrollLeft(value: Int)
     fun onScrollRight(value: Int)
     fun onScrollUp(value: Int)

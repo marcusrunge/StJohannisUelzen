@@ -93,4 +93,12 @@ object BindingUtils {
             view.onTouchEvent(motionEventUp)
         }
     }
+
+    @BindingAdapter("velocityY")
+    @JvmStatic
+    fun setVelocityY(view: WebView, velocityY: Int?) {
+        if (velocityY != null) {
+            view.flingScroll(0, velocityY)
+        }
+    }
 }
