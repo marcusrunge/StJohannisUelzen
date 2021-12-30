@@ -35,22 +35,12 @@ class WebViewModel @Inject constructor(
                 core.gestures.swipe.onSwipe(Swipe.Left, value)
             }
 
-            override fun onSwipeUp(diffY: Int, veloY: Int) {
-                core.gestures.swipe.onSwipe(Swipe.Up, diffY)
-                velocityY=veloY
+            override fun onFlingUp(velocity: Int) {
+                velocityY = velocity
             }
 
-            override fun onSwipeDown(diffY: Int, veloY: Int) {
-                core.gestures.swipe.onSwipe(Swipe.Down, diffY)
-                velocityY=-veloY
-            }
-
-            override fun onScrollLeft(value: Int) {
-                core.gestures.scroll.onScroll(Scroll.Left, value)
-            }
-
-            override fun onScrollRight(value: Int) {
-                core.gestures.scroll.onScroll(Scroll.Right, value)
+            override fun onFlingDown(velocity: Int) {
+                velocityY = -velocity
             }
 
             override fun onScrollUp(value: Int) {

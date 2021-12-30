@@ -165,8 +165,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             Swipe.Right -> {
                 tabLayout.getTabAt(tabLayout.selectedTabPosition - 1)?.select()
             }
-            Swipe.Up -> {}
-            Swipe.Down -> {}
         }
     }
 

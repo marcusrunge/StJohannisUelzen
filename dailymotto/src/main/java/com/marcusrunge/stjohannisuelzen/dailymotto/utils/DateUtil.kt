@@ -4,7 +4,7 @@ import java.util.*
 
 internal class DateUtil {
     companion object {
-        fun removeTime(date: Date?): Date? {
+        fun removeTime(date: Date): Date? {
             val cal: Calendar = Calendar.getInstance()
             cal.time = date
             cal.set(Calendar.HOUR_OF_DAY, 0)

@@ -22,7 +22,7 @@ internal class QuoteImpl(private val dailyMottoBase: DailyMottoBase) : Quote {
     override suspend fun getAsync(date: Date): Pair<String?, String?>? {
         val dailyMottos = dailyMottoBase.dailyMottos.await()
         dailyMottos.forEach {
-            val itDate: Date = SimpleDateFormat("yyyy-MM-dd").parse(it?.Datum)
+            val itDate: Date? = SimpleDateFormat("yyyy-MM-dd").parse(it?.Datum)
             if (itDate == DateUtil.removeTime(date))
                 return Pair(it?.Losungstext?.normalize(), it?.Losungsvers)
         }

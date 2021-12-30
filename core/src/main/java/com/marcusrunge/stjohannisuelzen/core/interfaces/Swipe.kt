@@ -3,7 +3,7 @@ package com.marcusrunge.stjohannisuelzen.core.interfaces
 interface Swipe {
     /**
      * Executes the onSwipe detection.
-     * @param scroll the direction.
+     * @param swipe the direction.
      * @param value the amount of swiped pixels.
      */
     fun onSwipe(swipe: com.marcusrunge.stjohannisuelzen.core.enums.Swipe, value: Int)
