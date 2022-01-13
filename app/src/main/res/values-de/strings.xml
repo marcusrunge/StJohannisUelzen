@@ -13,7 +13,7 @@
     <string name="theme_header">Design</string>
     <string name="pushnotifications_header">Kurzmitteilungen</string>
     <string name="information_intro">Entwickelt von</string>
-    <string name="information_outro">für und im Namen der\nPfarrei St. Johannis Uelzen</string>
+    <string name="information_outro">für und im Namen der\nPfarrei St. Johannis und Georgs Kirchengemeinde Uelzen</string>
     <string name="current">Aktuelles</string>
     <string name="thoughts">Gedanken</string>
     <string name="solution">Losung</string>
@@ -31,6 +31,7 @@
     <string name="donations">Spenden</string>
     <string name="newsletter">Rundbrief</string>
     <string name="churchservices">Gottesdienste</string>
+    <string name="georgsway">Georgsweg</string>
     <string name="information_projecturl">Projekt URL:</string>
     <string name="on">An</string>
     <string name="off">Aus</string>

@@ -67,12 +67,12 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         stJohannisUelzenWebview.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         stJohannisUelzenWebview.settings.loadsImagesAutomatically = true
         stJohannisUelzenWebview.settings.javaScriptEnabled = true
-        stJohannisUelzenWebviewSwipeRefreshLayout =
+        /*stJohannisUelzenWebviewSwipeRefreshLayout =
             view.findViewById(R.id.stjohannisuelzen_webview_swiperefreshlayout)
         stJohannisUelzenWebviewSwipeRefreshLayout.setOnRefreshListener {
             stJohannisUelzenWebview.reload()
             stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
-        }
+        }*/
         setTheme()
     }
 

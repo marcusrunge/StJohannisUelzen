@@ -13,7 +13,7 @@
             type="com.marcusrunge.stjohannisuelzen.ui.web.WebViewModel" />
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <!--<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/stjohannisuelzen_webview_swiperefreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,5 +29,12 @@
             app:velocityY="@{viewmodel.velocityY}"
             app:scrollY="@{viewmodel.scrollY}"/>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+    <WebView
+        android:id="@+id/stjohannisuelzen_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:endpointUrl="@{viewmodel.endpointUrl}"
+        android:paddingBottom="?attr/actionBarSize"/>
 </layout>
