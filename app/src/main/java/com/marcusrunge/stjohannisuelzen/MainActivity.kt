@@ -127,8 +127,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         arguments: Bundle?
     ) {
         if (destination.id == R.id.navigation_web) {
-            core.back.web.isWebViewActive = true
-            setLinkButtonsActionBar()
+            if (core.back.web.isWebViewActive) {
+                selectTab(getString(R.string.url_stjohannis_uelzen))
+            } else {
+                core.back.web.isWebViewActive = true
+                setLinkButtonsActionBar()
+            }
         } else {
             core.back.web.isWebViewActive = false
             supportActionBar?.setDisplayShowCustomEnabled(false)
@@ -196,8 +200,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     private fun setLinkButtonsActionBar() {
         val linkbuttonsLayout: View = layoutInflater.inflate(R.layout.linkbuttons_layout, null)
-
-
         tabLayout = linkbuttonsLayout.findViewById(R.id.linkbuttons_tabLayout)
         linkButtons.forEach {
             tabLayout.addTab(tabLayout.newTab().setText(it.text).setTag(it.url))

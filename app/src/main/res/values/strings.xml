@@ -13,7 +13,7 @@
     <string name="category_general">General</string>
     <string name="theme_header">Theme</string>
     <string name="pushnotifications_header">Push Notifications</string>
-    <string name="url_stjohannis_uelzen" translatable="false">https://st-johannis-uelzen.wir-e.de/</string>
+    <string name="url_stjohannis_uelzen" translatable="false">https://johannis-und-georg.wir-e.de/</string>
     <string name="key_theme" translatable="false">theme</string>
     <string name="key_pushnotifications" translatable="false">pushnotifications</string>
     <string name="information_intro">Developed by</string>
@@ -55,7 +55,7 @@
     <string name="url_board" translatable="false">https://johannis-und-georg.wir-e.de/kirchenvorstand</string>
     <string name="url_donations" translatable="false">https://johannis-und-georg.wir-e.de/spendenkonto-st-johannis</string>
     <string name="url_newsletter" translatable="false">https://johannis-und-georg.wir-e.de/rundbrief</string>
-    <string name="url_churchservices" translatable="false">http://gottesdienste.kirche-uelzen.de/Uelzen%20St.%20Johannis/embed/</string>
+    <string name="url_churchservices" translatable="false">https://gottesdienste.kirche-uelzen.de/Uelzen%20Johannis-und-Georgs-Kirchengemeinde/embed/</string>
     <string name="information_projecturl">Project URL:</string>
     <string name="on">On</string>
     <string name="off">Off</string>
