@@ -35,7 +35,7 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
     @Inject
     lateinit var core: Core
     private lateinit var stJohannisUelzenWebview: WebView
-    private lateinit var stJohannisUelzenWebviewSwipeRefreshLayout: SwipeRefreshLayout
+    //private lateinit var stJohannisUelzenWebviewSwipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,9 +84,9 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
 
     override fun onDestroy() {
         super.onDestroy()
-        core.back.web.removeOnGoBackRequestedListener()
+        /*core.back.web.removeOnGoBackRequestedListener()
         core.back.web.removeOnCanGoBackRequestedListener()
-        core.webNavigation.removeOnRequestNavigateToListener()
+        core.webNavigation.removeOnRequestNavigateToListener()*/
     }
 
     override fun onGoBackRequested() {

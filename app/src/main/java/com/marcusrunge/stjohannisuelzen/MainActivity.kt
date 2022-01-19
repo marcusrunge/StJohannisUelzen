@@ -213,7 +213,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private fun selectTab(url: String) {
         if (::tabLayout.isInitialized) {
             for (i in linkButtons.indices) {
-                if (linkButtons[i].equals(url)) {
+                if (linkButtons[i].url == url) {
                     tabLayout.getTabAt(i)?.select()
                     break
                 }
