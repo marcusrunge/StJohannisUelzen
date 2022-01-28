@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_web, R.id.navigation_media
+                R.id.navigation_web, R.id.navigation_media, R.id.navigation_map
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -194,7 +194,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             LinkButton(getString(R.string.board), getString(R.string.url_board)),
             LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
             LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter)),
-            LinkButton(getString(R.string.georgsway), getString(R.string.url_georgsway))
+            LinkButton(getString(R.string.wayofgeorge), getString(R.string.url_wayofgeorge))
         )
     }
 

@@ -31,9 +31,10 @@
     <string name="donations">Spenden</string>
     <string name="newsletter">Rundbrief</string>
     <string name="churchservices">Gottesdienste</string>
-    <string name="georgsway">Georgsweg</string>
+    <string name="wayofgeorge">Georgsweg</string>
     <string name="information_projecturl">Projekt URL:</string>
     <string name="on">An</string>
     <string name="off">Aus</string>
     <string name="app_widget_description">Tageslosung</string>
+    <string name="title_map">Georgsweg</string>
 </resources>

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.android.gms.oss-licenses-plugin'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 def localProperties = new Properties()
@@ -72,6 +73,7 @@ dependencies {
     implementation project(path: ':dailymotto')
     implementation project(path: ':notification')
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -4,11 +4,13 @@
     package="com.marcusrunge.stjohannisuelzen">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <queries>
         <intent>
             <action android:name="com.google.android.youtube.api.service.START" />
         </intent>
     </queries>
+
     <application
         android:name=".StJohannisUelzenApplication"
         android:allowBackup="true"
@@ -19,31 +21,53 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StJohannisUelzen">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
+
         <receiver
             android:name=".DailyMottoWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/daily_motto_widget_info" />
         </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".utils.QuotesRemoteViewsService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
-            tools:node="remove"></provider>
+            tools:node="remove" />
     </application>
+
 </manifest>
