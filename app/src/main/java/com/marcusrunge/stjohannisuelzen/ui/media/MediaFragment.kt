@@ -45,7 +45,7 @@ class MediaFragment : Fragment() {
         val youTubeFragment =
             childFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerSupportFragment
         youTubeFragment.initialize(
-            BuildConfig.YOUTUBE_DATA_API_KEY,
+            BuildConfig.YOUTUBE_API_KEY,
             object : OnInitializedListener {
                 override fun onInitializationSuccess(
                     p0: YouTubePlayer.Provider?,
