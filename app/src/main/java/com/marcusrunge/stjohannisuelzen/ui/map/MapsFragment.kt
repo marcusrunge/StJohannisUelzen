@@ -11,11 +11,15 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.PolylineOptions
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.databinding.MapsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MapsFragment : Fragment() {
@@ -33,6 +37,14 @@ class MapsFragment : Fragment() {
         ) {
             googleMap.isMyLocationEnabled = true
             googleMap.uiSettings.isMyLocationButtonEnabled = true
+            val georgswayLatitudes = resources.getStringArray(R.array.georgsway_latitudes)
+            val georgswayLongitudes = resources.getStringArray(R.array.georgsway_longitudes)
+            val polyline = PolylineOptions().clickable(false)
+            for (i in georgswayLatitudes.indices) {
+            polyline.points.add(LatLng(georgswayLatitudes[i].toDouble(), georgswayLongitudes[i].toDouble()))
+            }
+            googleMap.addPolyline(polyline)
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.999412, 10.522050), 14f))
         }
     }
 

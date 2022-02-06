@@ -10,4 +10,40 @@
         <item>light_theme</item>
         <item>dark_theme</item>
     </string-array>
+    <string-array name="georgsway_latitudes">
+        <item>52.990387</item>
+        <item>52.992146</item>
+        <item>52.992265</item>
+        <item>52.993098</item>
+        <item>52.993315</item>
+        <item>52.993719</item>
+        <item>52.994105</item>
+        <item>52.994152</item>
+        <item>52.994116</item>
+        <item>52.994026</item>
+        <item>52.994279</item>
+        <item>52.994859</item>
+        <item>52.994960</item>
+        <item>52.995089</item>
+        <item>52.995481</item>
+        <item>52.995721</item>
+    </string-array>
+    <string-array name="georgsway_longitudes">
+        <item>10.522274</item>
+        <item>10.520168</item>
+        <item>10.521676</item>
+        <item>10.520514</item>
+        <item>10.520149</item>
+        <item>10.519693</item>
+        <item>10.518839</item>
+        <item>10.518579</item>
+        <item>10.518248</item>
+        <item>10.517955</item>
+        <item>10.517362</item>
+        <item>10.517575</item>
+        <item>10.517553</item>
+        <item>10.517457</item>
+        <item>10.517414</item>
+        <item>10.519700</item>
+    </string-array>
 </resources>
