@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
 
+@Suppress("CAST_NEVER_SUCCEEDS")
 object BindingUtils {
     @BindingAdapter("endpointUrl")
     @JvmStatic
@@ -107,6 +110,17 @@ object BindingUtils {
     fun setScrollY(view: WebView, scrollY: Int?) {
         if (scrollY != null) {
             view.scrollBy(0, scrollY)
+        }
+    }
+
+    @BindingAdapter("onMapReadyCallback")
+    @JvmStatic
+    fun setOnMapReadyCallback(
+        view: androidx.fragment.app.FragmentContainerView,
+        callback: OnMapReadyCallback?
+    ) {
+        if (callback != null) {
+             view.getFragment<SupportMapFragment>().getMapAsync(callback)
         }
     }
 }

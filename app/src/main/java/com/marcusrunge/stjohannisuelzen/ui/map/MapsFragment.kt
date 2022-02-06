@@ -27,27 +27,6 @@ class MapsFragment : Fragment() {
     private val viewModel by viewModels<MapsViewModel>()
     private val binding get() = _binding!!
 
-    @SuppressLint("MissingPermission")
-    private val callback = OnMapReadyCallback { googleMap ->
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            == PackageManager.PERMISSION_GRANTED
-        ) {
-            googleMap.isMyLocationEnabled = true
-            googleMap.uiSettings.isMyLocationButtonEnabled = true
-            val georgswayLatitudes = resources.getStringArray(R.array.georgsway_latitudes)
-            val georgswayLongitudes = resources.getStringArray(R.array.georgsway_longitudes)
-            val polyline = PolylineOptions().clickable(false)
-            for (i in georgswayLatitudes.indices) {
-            polyline.points.add(LatLng(georgswayLatitudes[i].toDouble(), georgswayLongitudes[i].toDouble()))
-            }
-            googleMap.addPolyline(polyline)
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.999412, 10.522050), 14f))
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,8 +40,6 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
     }
 
     override fun onDestroyView() {
