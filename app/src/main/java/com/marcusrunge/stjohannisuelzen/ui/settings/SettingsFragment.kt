@@ -18,7 +18,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        PreferenceManager.getDefaultSharedPreferences(context)
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
             .registerOnSharedPreferenceChangeListener(this)
     }
 
@@ -50,7 +50,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     }
 
     override fun onDestroy() {
-        PreferenceManager.getDefaultSharedPreferences(context)
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
             .unregisterOnSharedPreferenceChangeListener(this)
         super.onDestroy()
     }

@@ -38,7 +38,7 @@ internal class YouTubeImpl(private val apiConnectBase: ApiConnectBase) : YouTube
                 onSuccess?.invoke(youtubeSearchList)
             },
             { error ->
-                onError?.invoke(error.message)
+                onError?.invoke("StatusCode:${error.networkResponse.statusCode}")
             })
         requestQueue.add(stringRequest)
     }

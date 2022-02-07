@@ -1,6 +1,8 @@
 package com.marcusrunge.stjohannisuelzen
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -8,6 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -63,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_web, R.id.navigation_media
+                R.id.navigation_web, R.id.navigation_media, R.id.navigation_map
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -80,6 +84,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             notification.schedule.stopRecurringDailyMotto()
 
         core.gestures.swipe.addOnSwipeListener(this)
+        getLocationPermission()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -193,8 +198,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
             LinkButton(getString(R.string.board), getString(R.string.url_board)),
             LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
-            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter)),
-            LinkButton(getString(R.string.georgsway), getString(R.string.url_georgsway))
+            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
         )
     }
 
@@ -216,6 +220,54 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 if (linkButtons[i].url == url) {
                     tabLayout.getTabAt(i)?.select()
                     break
+                }
+            }
+        }
+    }
+
+    private val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
+    private var locationPermissionGranted = false
+
+    /**
+     * Prompts the user for permission to use the device location.
+     */
+    // [START maps_current_place_location_permission]
+    private fun getLocationPermission() {
+        /*
+         * Request location permission, so that we can get the location of the
+         * device. The result of the permission request is handled by a callback,
+         * onRequestPermissionsResult.
+         */
+        if (ContextCompat.checkSelfPermission(
+                this.applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+            == PackageManager.PERMISSION_GRANTED
+        ) {
+            locationPermissionGranted = true
+        } else {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
+            )
+        }
+    }
+    // [END maps_current_place_location_permission]
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        locationPermissionGranted = false
+        when (requestCode) {
+            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION -> {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.isNotEmpty() &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED
+                ) {
+                    locationPermissionGranted = true
                 }
             }
         }

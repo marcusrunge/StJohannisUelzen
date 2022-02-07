@@ -87,7 +87,7 @@ class MediaViewModel @Inject constructor(
     private fun getYoutubeSearchList() {
         viewModelScope.launch {
             apiConnect.youTube.getYoutubeSearchList(
-                BuildConfig.YOUTUBE_DATA_API_KEY,
+                BuildConfig.YOUTUBE_API_KEY,
                 context.getString(R.string.youtube_channel),
                 {
                     val message = Message()

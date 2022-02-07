@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.android.gms.oss-licenses-plugin'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 def localProperties = new Properties()
@@ -15,9 +16,9 @@ android {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
         targetSdk 32
-        versionCode 23
-        versionName '1.1.8'
-        buildConfigField "String", "YOUTUBE_DATA_API_KEY", localProperties['youTubeDataAPI_key']
+        versionCode 24
+        versionName '1.1.9'
+        buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         targetSdkVersion 32
         minSdkVersion 27
@@ -46,7 +47,7 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '32.0.0'
+    buildToolsVersion '32.1.0-rc1'
     compileSdkVersion 32
 }
 
@@ -59,10 +60,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     implementation 'androidx.webkit:webkit:1.4.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
@@ -72,6 +73,7 @@ dependencies {
     implementation project(path: ':dailymotto')
     implementation project(path: ':notification')
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
