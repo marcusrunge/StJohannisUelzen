@@ -198,8 +198,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
             LinkButton(getString(R.string.board), getString(R.string.url_board)),
             LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
-            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter)),
-            LinkButton(getString(R.string.wayofgeorge), getString(R.string.url_wayofgeorge))
+            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
         )
     }
 

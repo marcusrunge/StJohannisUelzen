@@ -64,7 +64,5 @@
     <string name="appwidget_previewquoteverse" translatable="false">3. Mose 19,11</string>
     <string name="appwidget_previewinspiration" translatable="false">Seid allesamt gleich gesinnt, mitleidig, brüderlich, barmherzig, demütig. Vergeltet nicht Böses mit Bösem oder Scheltwort mit Scheltwort, sondern segnet vielmehr, weil ihr dazu berufen seid, auf dass ihr Segen erbt.</string>
     <string name="appwidget_previewinspirationverse" translatable="false">1. Petrus 3,8-9</string>
-    <string name="wayofgeorge">WayOfGeorge</string>
-    <string name="url_wayofgeorge" translatable="false">https://johannis-und-georg.wir-e.de/georgs-weg</string>
     <string name="title_map">Way of George</string>
 </resources>

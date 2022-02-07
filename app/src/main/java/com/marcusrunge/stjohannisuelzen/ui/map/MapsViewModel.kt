@@ -49,6 +49,7 @@ class MapsViewModel @Inject constructor(@ApplicationContext val context: Context
             for (i in georgswayLatitudes.indices) {
                 polyline.points.add(LatLng(georgswayLatitudes[i].toDouble(), georgswayLongitudes[i].toDouble()))
             }
+            polyline.color(ContextCompat.getColor(context, R.color.purple_500))
             p0.addPolyline(polyline)
             p0.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.999412, 10.522050), 14f))
         }
