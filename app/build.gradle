@@ -16,8 +16,8 @@ android {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
         targetSdk 32
-        versionCode 24
-        versionName '1.2.0'
+        versionCode 25
+        versionName '1.2.1'
         buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         targetSdkVersion 32
@@ -47,7 +47,7 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '32.1.0-rc1'
+    buildToolsVersion '33.0.0 rc1'
     compileSdkVersion 32
 }
 
@@ -56,12 +56,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
