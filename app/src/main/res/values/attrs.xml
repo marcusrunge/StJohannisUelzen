@@ -1,6 +1,7 @@
 <resources>
     <attr name="stateSelectedColor" format="color" />
     <attr name="stateUnselectedColor" format="color" />
+    <attr name="colorPrimaryTranslucent" format="color" />
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />
         <attr name="appWidgetInnerRadius" format="dimension" />

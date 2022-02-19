@@ -15,7 +15,7 @@
     <string name="information_intro">Entwickelt von</string>
     <string name="information_outro">für und im Namen der\nPfarrei St. Johannis und Georgs Kirchengemeinde Uelzen</string>
     <string name="current">Aktuelles</string>
-    <string name="thoughts">Gedanken</string>
+    <string name="thoughts">Impulse</string>
     <string name="solution">Losung</string>
     <string name="sermon">Predigt</string>
     <string name="groups">Gruppen</string>
@@ -36,4 +36,6 @@
     <string name="off">Aus</string>
     <string name="app_widget_description">Tageslosung</string>
     <string name="title_map">Georgsweg</string>
+    <string name="churchinlife">Kirche im Leben</string>
+    <string name="marker_info_title">Georgskirche zu Kirchweyhe</string>
 </resources>

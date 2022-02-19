@@ -184,21 +184,22 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 getString(R.string.churchservices),
                 getString(R.string.url_churchservices)
             ),
-            LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
+            //LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
             LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
-            LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
+            //LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
             LinkButton(getString(R.string.groups), getString(R.string.url_groups)),
-            LinkButton(getString(R.string.happy_hour), getString(R.string.url_happy_hour)),
+            LinkButton(getString(R.string.churchinlife), getString(R.string.url_churchinlife)),
+            //LinkButton(getString(R.string.happy_hour), getString(R.string.url_happy_hour)),
             LinkButton(getString(R.string.gallery), getString(R.string.url_gallery)),
-            LinkButton(getString(R.string.mission), getString(R.string.url_mission)),
+            //LinkButton(getString(R.string.mission), getString(R.string.url_mission)),
             LinkButton(getString(R.string.history), getString(R.string.url_history)),
-            LinkButton(getString(R.string.confirmands), getString(R.string.url_confirmands)),
-            LinkButton(getString(R.string.environment), getString(R.string.url_environment)),
+            //LinkButton(getString(R.string.confirmands), getString(R.string.url_confirmands)),
+            //LinkButton(getString(R.string.environment), getString(R.string.url_environment)),
             LinkButton(getString(R.string.foundation), getString(R.string.url_foundation)),
-            LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
-            LinkButton(getString(R.string.board), getString(R.string.url_board)),
-            LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
-            LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
+            //LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
+            //LinkButton(getString(R.string.board), getString(R.string.url_board)),
+            //LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
+            //LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
         )
     }
 

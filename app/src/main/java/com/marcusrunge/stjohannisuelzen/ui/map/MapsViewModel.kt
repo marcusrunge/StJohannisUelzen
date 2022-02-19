@@ -11,10 +11,10 @@ import androidx.databinding.library.baseAdapters.BR
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.bases.ViewModelBase
+import com.marcusrunge.stjohannisuelzen.utils.BitmapHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -52,6 +52,21 @@ class MapsViewModel @Inject constructor(@ApplicationContext val context: Context
             polyline.color(ContextCompat.getColor(context, R.color.purple_500))
             p0.addPolyline(polyline)
             p0.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.999412, 10.522050), 14f))
+            p0.addMarker( MarkerOptions()
+                .title(context.resources.getString(R.string.marker_info_title))
+                .position(LatLng(53.002251, 10.533597))
+                .icon(bicycleIcon))
+            p0.addCircle(
+                CircleOptions()
+                    .center(LatLng(53.002251, 10.533597))
+                    .radius(150.0)
+                    .fillColor(ContextCompat.getColor(context, R.color.purple_500_translucent))
+                    .strokeColor(ContextCompat.getColor(context, R.color.design_default_color_primary)))
         }
+    }
+
+    private val bicycleIcon: BitmapDescriptor by lazy {
+        val color = ContextCompat.getColor(context, R.color.design_default_color_primary)
+        BitmapHelper.vectorToBitmap(context, R.drawable.outline_directions_walk_24, color)
     }
 }

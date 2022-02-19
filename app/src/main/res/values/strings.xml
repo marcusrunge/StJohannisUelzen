@@ -21,7 +21,7 @@
     <string name="youtube_channel" translatable="false">UC1M10W3W1vJ5KNxXensEM1w</string>
     <string name="current">Current</string>
     <string name="solution">Solution</string>
-    <string name="thoughts">Thoughts</string>
+    <string name="thoughts">Impulses</string>
     <string name="sermon">Sermon</string>
     <string name="groups">Groups</string>
     <string name="happy_hour">Happy Hour</string>
@@ -36,6 +36,7 @@
     <string name="donations">Donations</string>
     <string name="newsletter">Newsletter</string>
     <string name="churchservices">Church services</string>
+    <string name="churchinlife">Church in Life</string>
     <string name="url_solution" translatable="false">https://johannis-und-georg.wir-e.de/tageslosung</string>
     <string name="url_thoughts" translatable="false">https://johannis-und-georg.wir-e.de/gedanken-fuer-den-tag</string>
     <string name="url_meditations" translatable="false">https://johannis-und-georg.wir-e.de/kreuzwegmeditationen-in-zeiten-von-corona-2021</string>
@@ -56,6 +57,7 @@
     <string name="url_donations" translatable="false">https://johannis-und-georg.wir-e.de/spendenkonto-st-johannis</string>
     <string name="url_newsletter" translatable="false">https://johannis-und-georg.wir-e.de/rundbrief</string>
     <string name="url_churchservices" translatable="false">https://gottesdienste.kirche-uelzen.de/Uelzen%20Johannis-und-Georgs-Kirchengemeinde/embed/</string>
+    <string name="url_churchinlife" translatable="false">https://johannis-und-georg.wir-e.de/kirche-im-leben</string>
     <string name="information_projecturl">Project URL:</string>
     <string name="on">On</string>
     <string name="off">Off</string>
@@ -65,4 +67,5 @@
     <string name="appwidget_previewinspiration" translatable="false">Seid allesamt gleich gesinnt, mitleidig, brüderlich, barmherzig, demütig. Vergeltet nicht Böses mit Bösem oder Scheltwort mit Scheltwort, sondern segnet vielmehr, weil ihr dazu berufen seid, auf dass ihr Segen erbt.</string>
     <string name="appwidget_previewinspirationverse" translatable="false">1. Petrus 3,8-9</string>
     <string name="title_map">Way of George</string>
+    <string name="marker_info_title">George\'s Church in Kirchweyhe</string>
 </resources>
