@@ -47,7 +47,7 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '33.0.0 rc1'
+    buildToolsVersion '33.0.0 rc2'
     compileSdkVersion 32
 }
 
