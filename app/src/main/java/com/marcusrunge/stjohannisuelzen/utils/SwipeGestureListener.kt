@@ -25,12 +25,12 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
 
     private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
         override fun onScroll(
-            e1: MotionEvent?,
-            e2: MotionEvent?,
+            e1: MotionEvent,
+            e2: MotionEvent,
             distanceX: Float,
             distanceY: Float
         ): Boolean {
-            if (e1?.action == MotionEvent.ACTION_DOWN && e2?.action == MotionEvent.ACTION_MOVE) {
+            if (e1.action == MotionEvent.ACTION_DOWN && e2.action == MotionEvent.ACTION_MOVE) {
                 if (distanceY > 0) {
                     onSwipeListener?.onScrollUp(abs(distanceY).toInt())
                 } else {
@@ -89,10 +89,8 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
             return result
         }
 
-        override fun onSingleTapUp(e: MotionEvent?): Boolean {
-            if (e != null) {
-                onSwipeListener?.onSingleTapUp(e.x.toInt(), e.y.toInt())
-            }
+        override fun onSingleTapUp(e: MotionEvent): Boolean {
+            onSwipeListener?.onSingleTapUp(e.x.toInt(), e.y.toInt())
             return super.onSingleTapUp(e)
         }
     }

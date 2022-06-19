@@ -11,16 +11,16 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
-    compileSdk 32
+    compileSdk 33
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
         targetSdk 32
-        versionCode 25
-        versionName '1.2.1'
+        versionCode 26
+        versionName '1.2.2'
         buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        targetSdkVersion 32
+        targetSdkVersion 33
         minSdkVersion 27
     }
 
@@ -47,15 +47,15 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '33.0.0 rc4'
-    compileSdkVersion 32
+    buildToolsVersion '33.0.0'
+    compileSdkVersion 33
     namespace 'com.marcusrunge.stjohannisuelzen'
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
