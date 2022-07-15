@@ -4,6 +4,10 @@
         android:id="@+id/navigation_web"
         android:icon="@drawable/ic_home_black"
         android:title="@string/title_web" />
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_calendar_month_black_24dp"
+        android:title="@string/churchservices" />
 
     <item
         android:id="@+id/navigation_media"

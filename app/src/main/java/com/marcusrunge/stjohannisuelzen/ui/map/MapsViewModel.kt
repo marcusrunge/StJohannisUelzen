@@ -18,10 +18,13 @@ import com.marcusrunge.stjohannisuelzen.utils.BitmapHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+
 @HiltViewModel
-class MapsViewModel @Inject constructor(@ApplicationContext val context: Context
+class MapsViewModel @Inject constructor(
+    @ApplicationContext val context: Context
 ) : ViewModelBase(), OnMapReadyCallback {
     private var _string: String? = null
+
     @get:Bindable
     var string: String?
         get() = _string
@@ -29,6 +32,7 @@ class MapsViewModel @Inject constructor(@ApplicationContext val context: Context
             _string = value
             notifyPropertyChanged(BR.string)
         }
+
     override fun updateView(inputMessage: Message) {
         TODO("Not yet implemented")
     }
@@ -47,21 +51,34 @@ class MapsViewModel @Inject constructor(@ApplicationContext val context: Context
             val georgswayLongitudes = context.resources.getStringArray(R.array.georgsway_longitudes)
             val polyline = PolylineOptions().clickable(false)
             for (i in georgswayLatitudes.indices) {
-                polyline.points.add(LatLng(georgswayLatitudes[i].toDouble(), georgswayLongitudes[i].toDouble()))
+                polyline.points.add(
+                    LatLng(
+                        georgswayLatitudes[i].toDouble(),
+                        georgswayLongitudes[i].toDouble()
+                    )
+                )
             }
             polyline.color(ContextCompat.getColor(context, R.color.purple_500))
             p0.addPolyline(polyline)
             p0.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(52.999412, 10.522050), 14f))
-            p0.addMarker( MarkerOptions()
-                .title(context.resources.getString(R.string.marker_info_title))
-                .position(LatLng(53.002251, 10.533597))
-                .icon(bicycleIcon))
+            p0.addMarker(
+                MarkerOptions()
+                    .title(context.resources.getString(R.string.marker_info_title))
+                    .position(LatLng(53.002251, 10.533597))
+                    .icon(bicycleIcon)
+            )
             p0.addCircle(
                 CircleOptions()
                     .center(LatLng(53.002251, 10.533597))
                     .radius(150.0)
                     .fillColor(ContextCompat.getColor(context, R.color.purple_500_translucent))
-                    .strokeColor(ContextCompat.getColor(context, R.color.design_default_color_primary)))
+                    .strokeColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.design_default_color_primary
+                        )
+                    )
+            )
         }
     }
 

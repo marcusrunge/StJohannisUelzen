@@ -120,7 +120,7 @@ object BindingUtils {
         callback: OnMapReadyCallback?
     ) {
         if (callback != null) {
-             view.getFragment<SupportMapFragment>().getMapAsync(callback)
+            view.getFragment<SupportMapFragment>().getMapAsync(callback)
         }
     }
 }
