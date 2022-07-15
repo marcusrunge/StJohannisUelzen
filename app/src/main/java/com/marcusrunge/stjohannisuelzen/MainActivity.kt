@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         getLocationPermission()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.options_menu, menu)
         return true
@@ -143,6 +143,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             supportActionBar?.setDisplayShowCustomEnabled(false)
             supportActionBar?.setDisplayShowTitleEnabled(true)
             supportActionBar?.title = destination.label
+            if (destination.id == R.id.navigation_calendar) {
+                supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_TITLE
+            }
         }
     }
 
@@ -180,10 +183,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private fun createLinkButtonsArray() {
         linkButtons = arrayOf(
             LinkButton(getString(R.string.current), getString(R.string.url_stjohannis_uelzen)),
-            LinkButton(
-                getString(R.string.churchservices),
-                getString(R.string.url_churchservices)
-            ),
+            //LinkButton(getString(R.string.churchservices), getString(R.string.url_churchservices)),
             //LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
             LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
             //LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),

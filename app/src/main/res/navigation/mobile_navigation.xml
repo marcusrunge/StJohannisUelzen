@@ -27,10 +27,15 @@
         android:id="@+id/navigation_media"
         android:name="com.marcusrunge.stjohannisuelzen.ui.media.MediaFragment"
         android:label="@string/title_media"
-        tools:layout="@layout/media_fragment"/>
+        tools:layout="@layout/media_fragment" />
     <fragment
         android:id="@+id/navigation_map"
         android:name="com.marcusrunge.stjohannisuelzen.ui.map.MapsFragment"
         android:label="@string/title_map"
-        tools:layout="@layout/maps_fragment"/>
+        tools:layout="@layout/maps_fragment" />
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="com.marcusrunge.stjohannisuelzen.ui.calendar.CalendarFragment"
+        android:label="@string/churchservices"
+        tools:layout="@layout/calendar_fragment" />
 </navigation>

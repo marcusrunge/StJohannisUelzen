@@ -1,0 +1,3 @@
+package com.marcusrunge.stjohannisuelzen.apiconnect.interfaces
+
+interface ChurchServices
