@@ -1,7 +1,12 @@
 package com.marcusrunge.stjohannisuelzen.ui.settings
 
+import android.Manifest
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.marcusrunge.stjohannisuelzen.R
@@ -15,6 +20,15 @@ class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
     @Inject
     lateinit var notification: Notification
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                notification.schedule.startRecurringDailyMotto()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,16 +50,32 @@ class SettingsFragment : PreferenceFragmentCompat(),
                     }
                 }
                 getString(R.string.key_pushnotifications) -> sharedPreferences?.let { preferences ->
-                    if (preferences.getBoolean(it, false))
-                        notification.schedule.startRecurringDailyMotto()
-                    else
+                    if (preferences.getBoolean(it, false)) {
+                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2) {
+                            when (PackageManager.PERMISSION_GRANTED) {
+                                context?.let { it1 ->
+                                    ContextCompat.checkSelfPermission(
+                                        it1,
+                                        Manifest.permission.POST_NOTIFICATIONS
+                                    )
+                                } -> {
+                                    //
+                                }
+                                else -> {
+                                    requestPermissionLauncher.launch(
+                                        Manifest.permission.POST_NOTIFICATIONS
+                                    )
+                                }
+                            }
+                        } else
+                            notification.schedule.startRecurringDailyMotto()
+                    } else
                         notification.schedule.stopRecurringDailyMotto()
                 }
                 else -> {
-
+                    //
                 }
             }
-
         }
     }
 
