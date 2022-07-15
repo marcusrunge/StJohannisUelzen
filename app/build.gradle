@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
-        targetSdk 32
+        targetSdk 33
         versionCode 27
         versionName '1.2.3'
         buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
