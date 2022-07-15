@@ -143,6 +143,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             supportActionBar?.setDisplayShowCustomEnabled(false)
             supportActionBar?.setDisplayShowTitleEnabled(true)
             supportActionBar?.title = destination.label
+            if (destination.id == R.id.navigation_calendar) {
+                supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_TITLE
+            }
         }
     }
 
