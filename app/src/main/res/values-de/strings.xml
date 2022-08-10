@@ -38,4 +38,8 @@
     <string name="title_map">Georgsweg</string>
     <string name="churchinlife">Kirche im Leben</string>
     <string name="marker_info_title">Georgskirche zu Kirchweyhe</string>
+    <string name="latitude">Breitengrad</string>
+    <string name="longitude">Längengrad</string>
+    <string name="speed">Geschw. (m/s)</string>
+    <string name="bearing">Richtung</string>
 </resources>

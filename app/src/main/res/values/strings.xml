@@ -67,5 +67,9 @@
     <string name="appwidget_previewinspiration" translatable="false">Seid allesamt gleich gesinnt, mitleidig, brüderlich, barmherzig, demütig. Vergeltet nicht Böses mit Bösem oder Scheltwort mit Scheltwort, sondern segnet vielmehr, weil ihr dazu berufen seid, auf dass ihr Segen erbt.</string>
     <string name="appwidget_previewinspirationverse" translatable="false">1. Petrus 3,8-9</string>
     <string name="title_map">Way of George</string>
-    <string name="marker_info_title">George\'s Church in Kirchweyhe</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="speed">Speed (m/s)</string>
+    <string name="bearing">Bearing</string>
+    <string name="marker_info_title">Georg\'s church with Kirchweyhe</string>
 </resources>
