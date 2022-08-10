@@ -56,22 +56,22 @@
             <TableRow>
                 <TextView
                     android:text="@{viewmodel.longitude}"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:padding="3dip" />
                 <TextView
                     android:text="@{viewmodel.latitude}"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:padding="3dip" />
                 <TextView
                     android:text="@{viewmodel.bearing}"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:padding="3dip" />
                 <TextView
                     android:text="@{viewmodel.speed}"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:padding="3dip" />
             </TableRow>

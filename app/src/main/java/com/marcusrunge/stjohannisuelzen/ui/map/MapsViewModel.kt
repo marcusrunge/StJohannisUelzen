@@ -102,9 +102,9 @@ class MapsViewModel @Inject constructor(
                 override fun onLocationResult(locationResult: LocationResult) {
                     super.onLocationResult(locationResult)
                     currentLocation = locationResult.lastLocation
-                    latitude = currentLocation?.latitude.toString()
-                    longitude = currentLocation?.longitude.toString()
-                    bearing = currentLocation?.bearing?.toInt().toString()
+                    latitude = String.format("%.4f", currentLocation?.latitude)
+                    longitude = String.format("%.4f", currentLocation?.longitude)
+                    bearing = "${currentLocation?.bearing?.toInt().toString()}°"
                     speed = currentLocation?.speed?.toInt().toString()
                     if (::circle.isInitialized && currentLocation?.accuracy != null)
                         circle.radius = currentLocation!!.accuracy.toDouble()

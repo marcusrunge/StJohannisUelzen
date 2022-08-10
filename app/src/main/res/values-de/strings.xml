@@ -40,6 +40,6 @@
     <string name="marker_info_title">Georgskirche zu Kirchweyhe</string>
     <string name="latitude">Breitengrad</string>
     <string name="longitude">Längengrad</string>
-    <string name="speed">Geschw. (m/s)</string>
+    <string name="speed">(m/s)</string>
     <string name="bearing">Richtung</string>
 </resources>

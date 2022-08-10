@@ -16,7 +16,7 @@ android {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
         targetSdk 33
-        versionCode 28
+        versionCode 29
         versionName '1.2.4'
         buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
