@@ -8,10 +8,13 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.BuildCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -48,6 +51,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     @Inject
     lateinit var notification: Notification
 
+    @androidx.annotation.OptIn(BuildCompat.PrereleaseSdkCheck::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -85,6 +89,20 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         core.gestures.swipe.addOnSwipeListener(this)
         getLocationPermission()
+
+        if (BuildCompat.isAtLeastT()) {
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ) {
+                core.back.app.onBackPressed { finish() }
+            }
+        } else {
+            onBackPressedDispatcher.addCallback(this /* lifecycle owner */, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    core.back.app.onBackPressed { finish() }
+                }
+            })
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -120,10 +138,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 else -> super.onOptionsItemSelected(item)
             }
         }
-    }
-
-    override fun onBackPressed() {
-        core.back.app.onBackPressed { super.onBackPressed() }
     }
 
     override fun onDestinationChanged(
