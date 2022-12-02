@@ -22,7 +22,7 @@ internal class InspirationImpl(private val dailyMottoBase: DailyMottoBase) : Ins
     override suspend fun getAsync(date: Date): Pair<String?, String?>? {
         val dailyMottos = dailyMottoBase.dailyMottos.await()
         dailyMottos.forEach {
-            val itDate: Date? = SimpleDateFormat("yyyy-MM-dd").parse(it?.Datum)
+            val itDate: Date? = it?.Datum?.let { it1 -> SimpleDateFormat("yyyy-MM-dd").parse(it1) }
             if (itDate == DateUtil.removeTime(date))
                 return Pair(it?.Lehrtext?.normalize(), it?.Lehrtextvers)
         }
