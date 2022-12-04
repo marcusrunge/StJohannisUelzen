@@ -22,8 +22,8 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
         GlobalScope.async(Dispatchers.IO) {
             var parser: XmlResourceParser? = null
             when (Calendar.getInstance().get(Calendar.YEAR)) {
-                2021 -> {
-                    parser = context?.resources?.getXml(R.xml.losungen2021)
+                2023 -> {
+                    parser = context?.resources?.getXml(R.xml.losungen2023)
                 }
                 2022 -> {
                     parser = context?.resources?.getXml(R.xml.losungen2022)

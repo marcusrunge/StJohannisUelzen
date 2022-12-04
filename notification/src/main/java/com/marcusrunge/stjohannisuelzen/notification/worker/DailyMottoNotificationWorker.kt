@@ -5,7 +5,9 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.marcusrunge.stjohannisuelzen.notification.bases.NotificationBase
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
@@ -16,7 +18,8 @@ internal class DailyMottoNotificationWorker(
 ) :
     Worker(appContext, workerParams) {
     override fun doWork(): Result {
-        runBlocking(Dispatchers.IO) {
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch {
             val time = Calendar.getInstance().time
             val first = notificationBase?.dailyMotto?.quote?.getAsync(time)
             val second =
