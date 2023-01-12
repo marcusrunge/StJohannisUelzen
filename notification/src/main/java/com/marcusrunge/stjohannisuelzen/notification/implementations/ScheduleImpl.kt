@@ -32,7 +32,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
         val minute = Calendar.getInstance().get(Calendar.MINUTE)
         val delay = ((60 - minute) + (24 - hourOfDay) * 60 - 60).toLong()
         val request =
-            PeriodicWorkRequestBuilder<DailyMottoNotificationWorker>(2, TimeUnit.MINUTES)
+            PeriodicWorkRequestBuilder<DailyMottoNotificationWorker>(delay, TimeUnit.MINUTES)
                 .setInitialDelay(1, TimeUnit.MINUTES)
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
