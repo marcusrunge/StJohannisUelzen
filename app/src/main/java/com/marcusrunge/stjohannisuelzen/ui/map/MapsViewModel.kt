@@ -92,12 +92,12 @@ class MapsViewModel @Inject constructor(
             == PackageManager.PERMISSION_GRANTED
         ) {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
-            locationRequest = LocationRequest.create().apply {
-                interval = TimeUnit.SECONDS.toMillis(60)
-                fastestInterval = TimeUnit.SECONDS.toMillis(30)
-                maxWaitTime = TimeUnit.MINUTES.toMillis(2)
-                priority = PRIORITY_HIGH_ACCURACY
-            }
+            locationRequest =
+                LocationRequest.Builder(PRIORITY_HIGH_ACCURACY, TimeUnit.SECONDS.toMillis(60))
+                    .apply {
+                        setMinUpdateIntervalMillis(TimeUnit.SECONDS.toMillis(30))
+                        setMaxUpdateDelayMillis(TimeUnit.MINUTES.toMillis(2))
+                    }.build()
             locationCallback = object : LocationCallback() {
                 override fun onLocationResult(locationResult: LocationResult) {
                     super.onLocationResult(locationResult)

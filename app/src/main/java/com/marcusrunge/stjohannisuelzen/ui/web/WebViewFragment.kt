@@ -1,7 +1,6 @@
 package com.marcusrunge.stjohannisuelzen.ui.web
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +11,6 @@ import android.webkit.WebViewClient
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.webkit.WebSettingsCompat
-import androidx.webkit.WebSettingsCompat.FORCE_DARK_OFF
-import androidx.webkit.WebSettingsCompat.FORCE_DARK_ON
-import androidx.webkit.WebViewFeature
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnCanGoBackRequestedListener
@@ -74,7 +69,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
             stJohannisUelzenWebview.reload()
             stJohannisUelzenWebviewSwipeRefreshLayout.isRefreshing = false
         }*/
-        setTheme()
     }
 
     override fun onDestroyView() {
@@ -96,25 +90,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
 
     override fun onCanGoBackRequested(): Boolean {
         return stJohannisUelzenWebview.canGoBack()
-    }
-
-    private fun setTheme() {
-        if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
-            when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-                Configuration.UI_MODE_NIGHT_YES -> {
-                    WebSettingsCompat.setForceDark(stJohannisUelzenWebview.settings, FORCE_DARK_ON)
-                }
-                Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> {
-                    WebSettingsCompat.setForceDark(
-                        stJohannisUelzenWebview.settings,
-                        FORCE_DARK_OFF
-                    )
-                }
-                else -> {
-                    //
-                }
-            }
-        }
     }
 
     override fun onRequestNavigateTo(url: String) {
