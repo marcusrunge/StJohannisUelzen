@@ -4,7 +4,7 @@ import androidx.work.*
 import com.marcusrunge.stjohannisuelzen.notification.bases.NotificationBase
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Schedule
 import com.marcusrunge.stjohannisuelzen.notification.worker.DailyMottoNotificationWorker
-import java.util.*
+import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
 internal class ScheduleImpl(private val notificationBase: NotificationBase) : Schedule {
@@ -28,12 +28,11 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
 
     override fun startRecurringDailyMotto() {
         stopRecurringDailyMotto()
-        val hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
-        val minute = Calendar.getInstance().get(Calendar.MINUTE)
-        val delay = ((60 - minute) + (24 - hourOfDay) * 60 - 60).toLong()
+        val now = LocalDateTime.now()
+        val initialDelay = (1441 - ((now.hour * 60) + now.minute)).toLong()
         val request =
-            PeriodicWorkRequestBuilder<DailyMottoNotificationWorker>(delay, TimeUnit.MINUTES)
-                .setInitialDelay(1, TimeUnit.MINUTES)
+            PeriodicWorkRequestBuilder<DailyMottoNotificationWorker>(1, TimeUnit.DAYS)
+                .setInitialDelay(initialDelay, TimeUnit.MINUTES)
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
                     PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
@@ -43,7 +42,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
                 .build()
         WorkManager.getInstance(notificationBase.context!!).enqueueUniquePeriodicWork(
             "showDailyMotto",
-            ExistingPeriodicWorkPolicy.KEEP,
+            ExistingPeriodicWorkPolicy.REPLACE,
             request
         )
     }
