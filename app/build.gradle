@@ -47,7 +47,7 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '33.0.1'
+    buildToolsVersion '34.0.0 rc1'
     compileSdkVersion 33
     namespace 'com.marcusrunge.stjohannisuelzen'
 }
