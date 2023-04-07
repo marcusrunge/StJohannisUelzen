@@ -35,7 +35,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
                 .setInitialDelay(initialDelay, TimeUnit.MINUTES)
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
-                    PeriodicWorkRequest.MIN_BACKOFF_MILLIS,
+                    WorkRequest.MIN_BACKOFF_MILLIS,
                     TimeUnit.MILLISECONDS
                 )
                 .addTag("dailymotto")
