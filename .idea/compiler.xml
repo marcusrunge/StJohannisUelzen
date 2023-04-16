@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
+      <module name="St._Johannis_Uelzen.apiconnect" target="17" />
+      <module name="St._Johannis_Uelzen.dailymotto" target="17" />
+      <module name="St._Johannis_Uelzen.notification" target="17" />
       <module name="St._Johannis_Uelzen.preferences" target="11" />
     </bytecodeTargetLevel>
   </component>
