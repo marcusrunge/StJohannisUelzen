@@ -50,8 +50,8 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion '34.0.0 rc3'
-    compileSdkVersion 33
+    buildToolsVersion '34.0.0'
+    compileSdk 34
     namespace 'com.marcusrunge.stjohannisuelzen'
 }
 
@@ -64,12 +64,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
-    implementation 'androidx.webkit:webkit:1.6.1'
+    implementation 'androidx.webkit:webkit:1.7.0'
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation project(path: ':core')
