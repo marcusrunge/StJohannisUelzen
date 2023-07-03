@@ -20,7 +20,7 @@ android {
         versionName '1.2.8'
         buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        targetSdkVersion 33
+        targetSdkVersion 34
         minSdkVersion 27
     }
 
