@@ -11,11 +11,11 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
-    compileSdk 33
+    compileSdk 34
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
-        targetSdk 33
+        targetSdk 34
         versionCode 33
         versionName '1.2.8'
         buildConfigField "String", "YOUTUBE_API_KEY", localProperties['YOUTUBE_API_KEY']
