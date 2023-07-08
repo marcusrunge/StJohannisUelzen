@@ -5,6 +5,7 @@ import android.os.Message
 import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -29,11 +30,11 @@ class MediaViewModel @Inject constructor(
         private const val YOUTUBE_SEARCHLIST = 1
         private const val ERROR = 2
     }
-
+    private val _endpointUrl = MutableLiveData(context.getString(R.string.html_youtube))
     private val youtubeItems: MutableList<YoutubeItem> = mutableListOf()
     private var _isRefreshing: Boolean = true
     val liveVideoId = MutableLiveData<String>()
-
+    val endpointUrl: LiveData<String> = _endpointUrl
     @get:Bindable
     var youtubeRecyclerViewAdapter: YoutubeRecyclerViewAdapter? =
         YoutubeRecyclerViewAdapter(youtubeItems) {
