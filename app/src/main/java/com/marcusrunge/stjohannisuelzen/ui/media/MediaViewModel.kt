@@ -44,7 +44,7 @@ class MediaViewModel @Inject constructor(
     @get:Bindable
     var youtubeRecyclerViewAdapter: YoutubeRecyclerViewAdapter? =
         YoutubeRecyclerViewAdapter(youtubeItems) {
-            liveVideoId.value = it
+            _data.value = it?.let { it1 -> createHtmlData(it1) }
         }
         set(value) {
             field = value
@@ -92,7 +92,11 @@ class MediaViewModel @Inject constructor(
                         )
                     )
                 }
-                if (youtubeItems.size > 0) liveVideoId.value = youtubeItems[0].videoId
+                if (youtubeItems.size > 0) _data.value = youtubeItems[0].videoId?.let {
+                    createHtmlData(
+                        it
+                    )
+                }
                 youtubeRecyclerViewAdapter?.notifyDataSetChanged()
                 isRefreshing = false
             }
