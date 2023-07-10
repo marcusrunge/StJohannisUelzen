@@ -123,4 +123,16 @@ object BindingUtils {
             view.getFragment<SupportMapFragment>().getMapAsync(callback)
         }
     }
+
+    /*@BindingAdapter(value = ["bind:baseUrl", "bind:data", "bind:mimeType", "bind:encoding"], requireAll = true)
+    @JvmStatic
+    fun bindDataWithBaseURL(view: WebView,baseUrl:String, data: String, mimeType:String, encoding:String) {
+        view.loadDataWithBaseURL(baseUrl, data,mimeType,encoding, null)
+    }*/
+
+    @BindingAdapter(value = ["bind:data", "bind:mimeType", "bind:encoding"], requireAll = true)
+    @JvmStatic
+    fun bindData(view: WebView, data: String, mimeType: String, encoding: String) {
+        view.loadData(data, mimeType, encoding)
+    }
 }

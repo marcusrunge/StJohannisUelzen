@@ -1,9 +1,11 @@
 package com.marcusrunge.stjohannisuelzen.ui.media
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -32,10 +34,15 @@ class MediaFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
+        val youtubeWebview = view.findViewById<WebView>(R.id.youtube_webview)
+        youtubeWebview.settings.javaScriptEnabled = true
+        youtubeWebview.settings.loadWithOverviewMode = true
+        youtubeWebview.settings.useWideViewPort = true
     }
 
     override fun onDestroyView() {

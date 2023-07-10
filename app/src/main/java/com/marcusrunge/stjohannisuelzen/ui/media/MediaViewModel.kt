@@ -1,5 +1,6 @@
 package com.marcusrunge.stjohannisuelzen.ui.media
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Message
 import android.widget.Toast
@@ -30,11 +31,16 @@ class MediaViewModel @Inject constructor(
         private const val YOUTUBE_SEARCHLIST = 1
         private const val ERROR = 2
     }
-    private val _endpointUrl = MutableLiveData(context.getString(R.string.html_youtube))
+
+    private val _data = MutableLiveData(createHtmlData("M7lc1UVf-VE"))
     private val youtubeItems: MutableList<YoutubeItem> = mutableListOf()
     private var _isRefreshing: Boolean = true
-    val liveVideoId = MutableLiveData<String>()
-    val endpointUrl: LiveData<String> = _endpointUrl
+    private var _mimeType: String = "text/html"
+    private var _encoding: String = "UTF-8"
+
+    private val liveVideoId = MutableLiveData<String>()
+    val data: LiveData<String> = _data
+
     @get:Bindable
     var youtubeRecyclerViewAdapter: YoutubeRecyclerViewAdapter? =
         YoutubeRecyclerViewAdapter(youtubeItems) {
@@ -53,10 +59,27 @@ class MediaViewModel @Inject constructor(
             notifyPropertyChanged(BR.refreshing)
         }
 
+    @get:Bindable
+    var mimeType: String
+        get() = _mimeType
+        set(value) {
+            _mimeType = value
+            notifyPropertyChanged(BR.mimeType)
+        }
+
+    @get:Bindable
+    var encoding: String
+        get() = _encoding
+        set(value) {
+            _encoding = value
+            notifyPropertyChanged(BR.encoding)
+        }
+
     init {
         getYoutubeSearchList()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun updateView(inputMessage: Message) {
         when (inputMessage.arg1) {
             YOUTUBE_SEARCHLIST -> {
@@ -73,6 +96,7 @@ class MediaViewModel @Inject constructor(
                 youtubeRecyclerViewAdapter?.notifyDataSetChanged()
                 isRefreshing = false
             }
+
             ERROR -> {
                 Toast.makeText(context, (inputMessage.obj as String?), Toast.LENGTH_LONG).show()
                 isRefreshing = false
@@ -106,5 +130,52 @@ class MediaViewModel @Inject constructor(
                 }
             )
         }
+    }
+
+    private fun createHtmlData(videoId: String): String {
+        return """
+            <html>            
+                <body>            
+                    <div id="player"></div>            
+                    <script>
+                        var tag = document.createElement('script');
+                        tag.src = "https://www.youtube.com/iframe_api";
+                        var firstScriptTag = document.getElementsByTagName('script')[0];
+                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                        var player;
+                        function onYouTubeIframeAPIReady() {
+                            player = new YT.Player('player', {
+                                height: '100%',
+                                width: '100%',
+                                videoId: '$videoId',
+                                events: {
+                                    'onReady': onPlayerReady,
+                                    'onStateChange': onPlayerStateChange
+                                }
+                            });
+                        }
+                        function onPlayerReady(event) {
+                            event.target.playVideo();
+                        }                       
+                        function onPlayerStateChange(event) {
+                        if (event.data == YT.PlayerState.PLAYING && !done) {
+                            setTimeout(stopVideo, 6000);
+                            done = true;
+                            }
+                        }
+                        function stopVideo() {
+                            player.stopVideo();
+                        }
+                        window.addEventListener("load", playerSizer);
+                        window.addEventListener("resize", playerSizer);
+                        function playerSizer() {
+                            var player = document.getElementById("player");
+                            var width = player.offsetWidth;
+                            player.style.height = (width * 0.5625) + "px";
+                        }
+                    </script>
+                </body>
+            </html>
+        """
     }
 }
