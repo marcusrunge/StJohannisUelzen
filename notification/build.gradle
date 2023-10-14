@@ -26,7 +26,6 @@ android {
         jvmTarget = '17'
     }
     compileSdk 34
-    buildToolsVersion '34.0.0'
     namespace 'com.marcusrunge.stjohannisuelzen.notification'
 }
 

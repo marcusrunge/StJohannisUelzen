@@ -3,6 +3,7 @@ package com.marcusrunge.stjohannisuelzen
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -51,7 +52,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     @Inject
     lateinit var notification: Notification
 
-    @androidx.annotation.OptIn(BuildCompat.PrereleaseSdkCheck::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         core.gestures.swipe.addOnSwipeListener(this)
         getLocationPermission()
 
-        if (BuildCompat.isAtLeastT()) {
+        if (Build.VERSION.SDK_INT >= 33) {
             onBackInvokedDispatcher.registerOnBackInvokedCallback(
                 OnBackInvokedDispatcher.PRIORITY_DEFAULT
             ) {
