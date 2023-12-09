@@ -1,3 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.newsfeed.interfaces
 
-interface NewsFeedFactory
+import android.content.Context
+
+interface NewsFeedFactory {
+    fun create(context: Context?): NewsFeed
+}

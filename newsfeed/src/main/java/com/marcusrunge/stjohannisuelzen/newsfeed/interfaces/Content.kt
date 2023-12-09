@@ -1,7 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.newsfeed.interfaces
 
-import android.net.Uri
+import org.jsoup.nodes.Document
 
 interface Content {
-    suspend fun parseAsync(url:Uri)
+    suspend fun parseAsync(url: String):Document
 }
