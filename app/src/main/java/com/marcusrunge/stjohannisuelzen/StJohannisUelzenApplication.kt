@@ -10,7 +10,7 @@ import javax.inject.Inject
 class StJohannisUelzenApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var notification: Notification
-    override fun getWorkManagerConfiguration(): Configuration {
-        return notification.schedule.createWorkManagerConfiguration()
-    }
+
+    override val workManagerConfiguration: Configuration
+        get() = notification.schedule.createWorkManagerConfiguration()
 }

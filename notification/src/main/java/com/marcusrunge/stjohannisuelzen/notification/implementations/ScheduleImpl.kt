@@ -42,7 +42,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
                 .build()
         WorkManager.getInstance(notificationBase.context!!).enqueueUniquePeriodicWork(
             "showDailyMotto",
-            ExistingPeriodicWorkPolicy.REPLACE,
+            ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
             request
         )
     }
