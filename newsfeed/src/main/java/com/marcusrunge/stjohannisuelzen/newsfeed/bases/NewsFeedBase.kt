@@ -1,0 +1,11 @@
+package com.marcusrunge.stjohannisuelzen.newsfeed.bases
+
+import android.content.Context
+import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.Content
+import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.NewsFeed
+import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.Notifications
+
+internal abstract class NewsFeedBase(internal val context: Context?) : NewsFeed {
+    protected lateinit var _content: Content
+    protected lateinit var _notifications: Notifications
+}

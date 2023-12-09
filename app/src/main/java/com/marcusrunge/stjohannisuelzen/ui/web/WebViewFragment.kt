@@ -77,13 +77,6 @@ class WebViewFragment : Fragment(), OnGoBackRequestedListener, OnCanGoBackReques
         _binding = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        /*core.back.web.removeOnGoBackRequestedListener()
-        core.back.web.removeOnCanGoBackRequestedListener()
-        core.webNavigation.removeOnRequestNavigateToListener()*/
-    }
-
     override fun onGoBackRequested() {
         stJohannisUelzenWebview.goBack()
     }

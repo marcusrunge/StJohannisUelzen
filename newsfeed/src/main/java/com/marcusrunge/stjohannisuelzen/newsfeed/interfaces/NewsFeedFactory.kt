@@ -1,0 +1,3 @@
+package com.marcusrunge.stjohannisuelzen.newsfeed.interfaces
+
+interface NewsFeedFactory
