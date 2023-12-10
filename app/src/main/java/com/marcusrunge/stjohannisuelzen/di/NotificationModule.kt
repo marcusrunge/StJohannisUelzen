@@ -3,6 +3,7 @@ package com.marcusrunge.stjohannisuelzen.di
 import android.content.Context
 import com.marcusrunge.stjohannisuelzen.MainActivity
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
+import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.NewsFeed
 import com.marcusrunge.stjohannisuelzen.notification.implementations.NotificationFactoryImpl
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import dagger.Module
@@ -20,8 +21,9 @@ object NotificationModule {
         @Singleton
         fun provideNotification(
             @ApplicationContext context: Context?,
-            dailyMotto: DailyMotto?
+            dailyMotto: DailyMotto?,
+            newsFeed: NewsFeed?
         ): Notification =
-            NotificationFactoryImpl.create(context, dailyMotto, MainActivity::class.java)
+            NotificationFactoryImpl.create(context, dailyMotto,newsFeed, MainActivity::class.java)
     }
 }

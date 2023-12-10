@@ -26,7 +26,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                notification.schedule.startRecurringDailyMotto()
+                val sharedPreferences= PreferenceManager.getDefaultSharedPreferences(requireContext())
+                if(sharedPreferences.getBoolean(getString(R.string.key_newsfeed_pushnotifications), false))
+                    notification.schedule.startRecurringNewsFeedNotification()
+                if(sharedPreferences.getBoolean(getString(R.string.dailymotto_pushnotifications_header), false))
+                    notification.schedule.startRecurringDailyMotto()
             }
         }
 

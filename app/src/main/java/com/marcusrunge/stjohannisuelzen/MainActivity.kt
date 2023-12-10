@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         if (navController.currentDestination?.id == R.id.navigation_web)
             setLinkButtonsActionBar()
 
-        if (sharedPref.getBoolean(getString(R.string.key_pushnotifications), false))
+        if (sharedPref.getBoolean(getString(R.string.key_dailymotto_pushnotifications), false))
             notification.schedule.startRecurringDailyMotto()
         else
             notification.schedule.stopRecurringDailyMotto()
