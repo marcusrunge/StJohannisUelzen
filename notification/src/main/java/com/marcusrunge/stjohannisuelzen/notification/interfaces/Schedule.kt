@@ -17,4 +17,14 @@ interface Schedule {
      * Stops a recurring daily motto notification
      */
     fun stopRecurringDailyMotto()
+
+    /**
+     * Creates and starts a recurring news feed notification
+     */
+    fun startRecurringNewsFeedNotification()
+
+    /**
+     * Stops a recurring news feed notification
+     */
+    fun stopRecurringNewsFeedNotification()
 }

@@ -4,6 +4,7 @@ import androidx.work.*
 import com.marcusrunge.stjohannisuelzen.notification.bases.NotificationBase
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Schedule
 import com.marcusrunge.stjohannisuelzen.notification.worker.DailyMottoNotificationWorker
+import com.marcusrunge.stjohannisuelzen.notification.worker.NewsFeedNotificationWorker
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
@@ -50,6 +51,30 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
     override fun stopRecurringDailyMotto() {
         WorkManager.getInstance(notificationBase.context!!).cancelAllWorkByTag(
             "dailymotto"
+        )
+    }
+
+    override fun startRecurringNewsFeedNotification() {
+        stopRecurringNewsFeedNotification()
+        val request =
+            PeriodicWorkRequestBuilder<NewsFeedNotificationWorker>(6, TimeUnit.HOURS)
+                .setBackoffCriteria(
+                    BackoffPolicy.LINEAR,
+                    WorkRequest.MIN_BACKOFF_MILLIS,
+                    TimeUnit.MILLISECONDS
+                )
+                .addTag("newsfeed")
+                .build()
+        WorkManager.getInstance(notificationBase.context!!).enqueueUniquePeriodicWork(
+            "showNews",
+            ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
+            request
+        )
+    }
+
+    override fun stopRecurringNewsFeedNotification() {
+        WorkManager.getInstance(notificationBase.context!!).cancelAllWorkByTag(
+            "newsfeed"
         )
     }
 }

@@ -8,11 +8,18 @@
             android:key="@string/key_theme"
             android:title="@string/theme_header"
             app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/pushnotifications_header">
         <SwitchPreference
-            android:key="@string/key_pushnotifications"
+            android:key="@string/key_dailymotto_pushnotifications"
             android:summaryOff="@string/off"
             android:summaryOn="@string/on"
-            android:title="@string/pushnotifications_header" />
+            android:title="@string/dailymotto_pushnotifications_header" />
+        <SwitchPreference
+            android:key="@string/key_newsfeed_pushnotifications"
+            android:summaryOff="@string/off"
+            android:summaryOn="@string/on"
+            android:title="@string/newsfeed_pushnotifications_header" />
     </PreferenceCategory>
     <PreferenceCategory app:title="Information">
         <Preference android:layout="@layout/preference_information" />

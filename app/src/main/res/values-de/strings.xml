@@ -12,6 +12,8 @@
     <string name="category_general">Allgemein</string>
     <string name="theme_header">Design</string>
     <string name="pushnotifications_header">Kurzmitteilungen</string>
+    <string name="dailymotto_pushnotifications_header">Tageslosungen</string>
+    <string name="newsfeed_pushnotifications_header">Aktuelles</string>
     <string name="information_intro">Entwickelt von</string>
     <string name="information_outro">für und im Namen der\nPfarrei St. Johannis und Georgs Kirchengemeinde Uelzen</string>
     <string name="current">Aktuelles</string>

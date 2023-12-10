@@ -49,7 +49,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         ThemeUtils.setTheme(themeValues, theme)
                     }
                 }
-                getString(R.string.key_pushnotifications) -> sharedPreferences?.let { preferences ->
+                getString(R.string.key_dailymotto_pushnotifications) -> sharedPreferences?.let { preferences ->
                     if (preferences.getBoolean(it, false)) {
                         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2) {
                             when (PackageManager.PERMISSION_GRANTED) {
@@ -61,6 +61,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                                 } -> {
                                     //
                                 }
+
                                 else -> {
                                     requestPermissionLauncher.launch(
                                         Manifest.permission.POST_NOTIFICATIONS
@@ -71,6 +72,30 @@ class SettingsFragment : PreferenceFragmentCompat(),
                             notification.schedule.startRecurringDailyMotto()
                     } else
                         notification.schedule.stopRecurringDailyMotto()
+                }
+                    getString(R.string.key_newsfeed_pushnotifications) -> sharedPreferences?.let { preferences ->
+                    if (preferences.getBoolean(it, false)) {
+                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2) {
+                            when (PackageManager.PERMISSION_GRANTED) {
+                                context?.let { it1 ->
+                                    ContextCompat.checkSelfPermission(
+                                        it1,
+                                        Manifest.permission.POST_NOTIFICATIONS
+                                    )
+                                } -> {
+                                    //
+                                }
+
+                                else -> {
+                                    requestPermissionLauncher.launch(
+                                        Manifest.permission.POST_NOTIFICATIONS
+                                    )
+                                }
+                            }
+                        } else
+                            notification.schedule.startRecurringNewsFeedNotification()
+                    } else
+                        notification.schedule.stopRecurringNewsFeedNotification()
                 }
                 else -> {
                     //

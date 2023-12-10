@@ -2,12 +2,13 @@ package com.marcusrunge.stjohannisuelzen.notification.implementations
 
 import android.content.Context
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
+import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.NewsFeed
 import com.marcusrunge.stjohannisuelzen.notification.bases.NotificationBase
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Push
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Schedule
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Toast
 
-internal class NotificationImpl(context: Context?, dailyMotto: DailyMotto?, clazz: Class<*>?) :
+internal class NotificationImpl(context: Context?, dailyMotto: DailyMotto?, newsFeed: NewsFeed?, clazz: Class<*>?) :
     NotificationBase(context, dailyMotto, clazz) {
     init {
         _push = PushImpl.create(this)
