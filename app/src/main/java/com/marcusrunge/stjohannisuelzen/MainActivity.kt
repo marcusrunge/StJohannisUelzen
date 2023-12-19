@@ -15,7 +15,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.os.BuildCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -31,6 +30,7 @@ import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnSwipeListener
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
+import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.NewsFeed
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     @Inject
     lateinit var notification: Notification
+
+    @Inject
+    lateinit var newsFeed: NewsFeed
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,11 +100,13 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 core.back.app.onBackPressed { finish() }
             }
         } else {
-            onBackPressedDispatcher.addCallback(this /* lifecycle owner */, object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    core.back.app.onBackPressed { finish() }
-                }
-            })
+            onBackPressedDispatcher.addCallback(
+                this /* lifecycle owner */,
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        core.back.app.onBackPressed { finish() }
+                    }
+                })
         }
     }
 
@@ -119,22 +124,27 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     navController.navigate(R.id.navigation_settings)
                     true
                 }
+
                 R.id.navigation_privacy -> {
                     navController.navigate(R.id.navigation_privacy)
                     true
                 }
+
                 R.id.navigation_licenses -> {
                     startActivity(Intent(this, OssLicensesMenuActivity::class.java))
                     true
                 }
+
                 R.id.navigation_terms -> {
                     navController.navigate(R.id.navigation_terms)
                     true
                 }
+
                 android.R.id.home -> {
                     navController.popBackStack()
                     true
                 }
+
                 else -> super.onOptionsItemSelected(item)
             }
         }
@@ -188,6 +198,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             Swipe.Left -> {
                 tabLayout.getTabAt(tabLayout.selectedTabPosition + 1)?.select()
             }
+
             Swipe.Right -> {
                 tabLayout.getTabAt(tabLayout.selectedTabPosition - 1)?.select()
             }
