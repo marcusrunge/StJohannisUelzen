@@ -34,6 +34,9 @@ import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.NewsFeed
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -107,6 +110,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                         core.back.app.onBackPressed { finish() }
                     }
                 })
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            val pair = newsFeed.content.parseAsync(getString(R.string.url_stjohannis_uelzen))
+            val first = pair.first;
         }
     }
 

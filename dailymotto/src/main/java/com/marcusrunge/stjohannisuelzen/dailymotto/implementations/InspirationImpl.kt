@@ -5,7 +5,7 @@ import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Inspiration
 import com.marcusrunge.stjohannisuelzen.dailymotto.utils.DateUtil
 import com.marcusrunge.stjohannisuelzen.dailymotto.utils.StringUtil.Companion.normalize
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 internal class InspirationImpl(private val dailyMottoBase: DailyMottoBase) : Inspiration {
     companion object {

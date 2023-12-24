@@ -8,8 +8,7 @@ import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import java.util.*
+import java.util.Calendar
 
 internal class DailyMottoNotificationWorker(
     appContext: Context,

@@ -24,6 +24,6 @@ object NotificationModule {
             dailyMotto: DailyMotto?,
             newsFeed: NewsFeed?
         ): Notification =
-            NotificationFactoryImpl.create(context, dailyMotto,newsFeed, MainActivity::class.java)
+            NotificationFactoryImpl.create(context, dailyMotto, newsFeed, MainActivity::class.java)
     }
 }

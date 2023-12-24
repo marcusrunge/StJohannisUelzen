@@ -1,6 +1,7 @@
 package com.marcusrunge.stjohannisuelzen.dailymotto.utils
 
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 
 internal class DateUtil {
     companion object {

@@ -26,10 +26,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                val sharedPreferences= PreferenceManager.getDefaultSharedPreferences(requireContext())
-                if(sharedPreferences.getBoolean(getString(R.string.key_newsfeed_pushnotifications), false))
+                val sharedPreferences =
+                    PreferenceManager.getDefaultSharedPreferences(requireContext())
+                if (sharedPreferences.getBoolean(
+                        getString(R.string.key_newsfeed_pushnotifications),
+                        false
+                    )
+                )
                     notification.schedule.startRecurringNewsFeedNotification()
-                if(sharedPreferences.getBoolean(getString(R.string.dailymotto_pushnotifications_header), false))
+                if (sharedPreferences.getBoolean(
+                        getString(R.string.dailymotto_pushnotifications_header),
+                        false
+                    )
+                )
                     notification.schedule.startRecurringDailyMotto()
             }
         }
@@ -53,6 +62,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         ThemeUtils.setTheme(themeValues, theme)
                     }
                 }
+
                 getString(R.string.key_dailymotto_pushnotifications) -> sharedPreferences?.let { preferences ->
                     if (preferences.getBoolean(it, false)) {
                         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2) {
@@ -77,7 +87,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
                     } else
                         notification.schedule.stopRecurringDailyMotto()
                 }
-                    getString(R.string.key_newsfeed_pushnotifications) -> sharedPreferences?.let { preferences ->
+
+                getString(R.string.key_newsfeed_pushnotifications) -> sharedPreferences?.let { preferences ->
                     if (preferences.getBoolean(it, false)) {
                         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2) {
                             when (PackageManager.PERMISSION_GRANTED) {
@@ -101,6 +112,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                     } else
                         notification.schedule.stopRecurringNewsFeedNotification()
                 }
+
                 else -> {
                     //
                 }

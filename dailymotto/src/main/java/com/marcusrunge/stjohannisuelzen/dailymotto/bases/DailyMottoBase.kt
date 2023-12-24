@@ -7,9 +7,13 @@ import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Inspiration
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.Quote
 import com.marcusrunge.stjohannisuelzen.dailymotto.models.Losungen
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import org.xmlpull.v1.XmlPullParser
-import java.util.*
+import java.util.Calendar
 
 internal abstract class DailyMottoBase(internal val context: Context?) : DailyMotto {
     protected lateinit var _inspiration: Inspiration
@@ -25,6 +29,7 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
                 2023 -> {
                     parser = context?.resources?.getXml(R.xml.losungen2023)
                 }
+
                 2024 -> {
                     parser = context?.resources?.getXml(R.xml.losungen2024)
                 }
@@ -40,6 +45,7 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
                         XmlPullParser.START_TAG -> if (tagName.equals("Losungen")) {
                             losungen = Losungen()
                         }
+
                         XmlPullParser.TEXT -> text = parser.text
                         XmlPullParser.END_TAG -> {
                             when (tagName) {

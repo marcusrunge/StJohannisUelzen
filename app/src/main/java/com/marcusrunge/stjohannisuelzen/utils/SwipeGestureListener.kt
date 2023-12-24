@@ -66,6 +66,7 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
                             result = true
                         }
                     }
+
                     abs(diffY) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD -> {
                         if (diffY > 0) {
                             onSwipeListener?.onFlingDown(abs(velocityY).toInt())
@@ -74,10 +75,12 @@ class SwipeGestureListener(context: Context, val onSwipeListener: OnSwipeListene
                         }
                         result = true
                     }
+
                     diffY > 0 -> {
                         onSwipeListener?.onFlingDown(abs(velocityY).toInt())
                         result = true
                     }
+
                     else -> {
                         onSwipeListener?.onFlingUp(abs(velocityY).toInt())
                         result = true

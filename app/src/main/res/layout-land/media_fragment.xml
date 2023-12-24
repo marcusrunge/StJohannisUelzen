@@ -25,11 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginEnd="12dp"
+            app:data="@{viewmodel.data}"
+            app:encoding="@{viewmodel.encoding}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:data="@{viewmodel.data}"
-            app:encoding="@{viewmodel.encoding}"
             app:mimeType="@{viewmodel.mimeType}" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

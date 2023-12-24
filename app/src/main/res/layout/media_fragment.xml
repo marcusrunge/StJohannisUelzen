@@ -25,9 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:layout_constraintTop_toTopOf="parent"
             app:data="@{viewmodel.data}"
             app:encoding="@{viewmodel.encoding}"
+            app:layout_constraintTop_toTopOf="parent"
             app:mimeType="@{viewmodel.mimeType}" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

@@ -7,7 +7,7 @@ import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.dailymotto.interfaces.DailyMotto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import java.util.*
+import java.util.Calendar
 
 
 class QuotesRemoteViewsFactory(

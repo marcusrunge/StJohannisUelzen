@@ -1,6 +1,6 @@
 package com.marcusrunge.stjohannisuelzen.dailymotto.interfaces
 
-import java.util.*
+import java.util.Date
 
 interface Quote {
     /**

@@ -12,5 +12,10 @@ interface NotificationFactory {
      * @param dailyMotto The daily motto instance
      * @param clazz The main activity class
      */
-    fun create(context: Context?, dailyMotto: DailyMotto?, newsFeed: NewsFeed?, clazz: Class<*>?): Notification
+    fun create(
+        context: Context?,
+        dailyMotto: DailyMotto?,
+        newsFeed: NewsFeed?,
+        clazz: Class<*>?
+    ): Notification
 }
