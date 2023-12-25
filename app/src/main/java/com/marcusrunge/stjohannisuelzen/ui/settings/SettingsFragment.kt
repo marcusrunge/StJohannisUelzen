@@ -73,7 +73,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                                         Manifest.permission.POST_NOTIFICATIONS
                                     )
                                 } -> {
-                                    //
+                                    notification.schedule.startRecurringDailyMotto()
                                 }
 
                                 else -> {
@@ -98,7 +98,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                                         Manifest.permission.POST_NOTIFICATIONS
                                     )
                                 } -> {
-                                    //
+                                    notification.schedule.startRecurringNewsFeedNotification()
                                 }
 
                                 else -> {

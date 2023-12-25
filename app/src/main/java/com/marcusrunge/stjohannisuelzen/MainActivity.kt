@@ -30,13 +30,9 @@ import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnSwipeListener
 import com.marcusrunge.stjohannisuelzen.databinding.MainActivityBinding
 import com.marcusrunge.stjohannisuelzen.models.LinkButton
-import com.marcusrunge.stjohannisuelzen.newsfeed.interfaces.NewsFeed
 import com.marcusrunge.stjohannisuelzen.notification.interfaces.Notification
 import com.marcusrunge.stjohannisuelzen.utils.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -55,8 +51,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     @Inject
     lateinit var notification: Notification
 
-    @Inject
-    lateinit var newsFeed: NewsFeed
+    /*@Inject
+    lateinit var newsFeed: NewsFeed*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +89,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         else
             notification.schedule.stopRecurringDailyMotto()
 
-        core.gestures.swipe.addOnSwipeListener(this)
+        //core.gestures.swipe.addOnSwipeListener(this)
         getLocationPermission()
 
         if (Build.VERSION.SDK_INT >= 33) {
@@ -111,10 +107,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     }
                 })
         }
-        CoroutineScope(Dispatchers.IO).launch {
+        /*CoroutineScope(Dispatchers.IO).launch {
             val pair = newsFeed.content.parseAsync(getString(R.string.url_stjohannis_uelzen))
             val first = pair.first;
-        }
+        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

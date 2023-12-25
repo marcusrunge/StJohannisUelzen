@@ -29,6 +29,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
         return Configuration.Builder()
             .setMinimumLoggingLevel(android.util.Log.INFO)
             .setWorkerFactory(DailyMottoNotificationWorkerFactory(notificationBase))
+            .setWorkerFactory(NewsFeedNotificationWorkerFactory(notificationBase))
             .build()
     }
 
