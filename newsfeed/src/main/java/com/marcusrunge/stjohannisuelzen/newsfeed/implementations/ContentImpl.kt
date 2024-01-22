@@ -33,6 +33,6 @@ internal class ContentImpl(newsFeedBase: NewsFeedBase?) : Content {
         val text =
             content.first().getElementsByTag("div").first()?.select("div:not([class])")?.first()
                 ?.textNodes()?.first()?.text()
-        return Triple(latestPost.id(), title!!, text!!)
+        return Triple(latestPost.id(), title.orEmpty(), text.orEmpty())
     }
 }
