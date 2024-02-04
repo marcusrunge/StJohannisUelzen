@@ -23,7 +23,7 @@ internal class ContentImpl(newsFeedBase: NewsFeedBase?) : Content {
             "^(post_)[a-zA-Z0-9]{8}[-.]?[a-zA-Z0-9]{4}[-.]?[a-zA-Z0-9]{4}[-.]?[a-zA-Z0-9]{4}[-.]?[a-zA-Z0-9]{12}\$"
         ).filter { x -> x.tagName() == "turbo-frame" }
         val latestPost = turboFramePosts.first()
-        val postId = latestPost.id()
+        //val postId = latestPost.id()
         val body = latestPost.getElementsByTag("div").filter { x -> x.hasClass("body") }
         val title =
             body.first().getElementsByAttributeStarting("href").first()?.textNodes()?.first()

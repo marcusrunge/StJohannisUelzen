@@ -63,7 +63,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
     override fun startRecurringNewsFeedNotification() {
         stopRecurringNewsFeedNotification()
         val request =
-            PeriodicWorkRequestBuilder<NewsFeedNotificationWorker>(6, TimeUnit.HOURS)
+            PeriodicWorkRequestBuilder<NewsFeedNotificationWorker>(15, TimeUnit.MINUTES)
                 .setBackoffCriteria(
                     BackoffPolicy.LINEAR,
                     WorkRequest.MIN_BACKOFF_MILLIS,
