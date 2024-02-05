@@ -15,17 +15,24 @@ internal class NewsFeedNotificationWorker(
     private val notificationBase: NotificationBase?
 ) : Worker(appContext, workerParams) {
     override fun doWork(): Result {
-        val scope = CoroutineScope(Dispatchers.IO)
-        scope.launch {
-            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
-            val postId = sharedPreferences.getString("post_id", "")
-            val post =
-                notificationBase?.newsFeed?.content?.parseAsync("https://johannis-und-georg.wir-e.de")
-            if (postId != post?.first) {
-                notificationBase?.push?.showSmall(post?.second, post?.third, notificationBase.clazz)
+        try {
+            val scope = CoroutineScope(Dispatchers.IO)
+            scope.launch {
+                try {
+                    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(appContext)
+                    val postId = sharedPreferences.getString("post_id", "")
+                    val post =
+                        notificationBase?.newsFeed?.content?.parseAsync("https://johannis-und-georg.wir-e.de")
+                    if (postId != post?.first) {
+                        notificationBase?.push?.showSmall(post?.second, post?.third, notificationBase.clazz)
+                    }
+                    sharedPreferences.edit().putString("post_id", post?.first).apply()
+                }catch (_:Exception){}
             }
-            sharedPreferences.edit().putString("post_id", post?.first).apply()
+            return Result.success()
         }
-        return Result.success()
+        catch (ex:Exception){
+            return Result.failure()
+        }
     }
 }
