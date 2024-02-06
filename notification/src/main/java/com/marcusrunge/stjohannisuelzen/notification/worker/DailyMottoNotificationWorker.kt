@@ -17,19 +17,23 @@ internal class DailyMottoNotificationWorker(
 ) :
     Worker(appContext, workerParams) {
     override fun doWork(): Result {
-        val scope = CoroutineScope(Dispatchers.IO)
-        scope.launch {
-            val time = Calendar.getInstance().time
-            val first = notificationBase?.dailyMotto?.quote?.getAsync(time)
-            val second =
-                notificationBase?.dailyMotto?.inspiration?.getAsync(Calendar.getInstance().time)
-            (notificationBase as Notification).push.showLarge(
-                "Tageslosung",
-                first?.first + "\n" + first?.second,
-                second?.first + "\n" + second?.second,
-                notificationBase.clazz
-            )
+        try {
+            val scope = CoroutineScope(Dispatchers.IO)
+            scope.launch {
+                val time = Calendar.getInstance().time
+                val first = notificationBase?.dailyMotto?.quote?.getAsync(time)
+                val second =
+                    notificationBase?.dailyMotto?.inspiration?.getAsync(Calendar.getInstance().time)
+                (notificationBase as Notification).push.showLarge(
+                    "Tageslosung",
+                    first?.first + "\n" + first?.second,
+                    second?.first + "\n" + second?.second,
+                    notificationBase.clazz
+                )
+            }
+            return Result.success()
+        } catch (ex: Exception) {
+            return Result.failure()
         }
-        return Result.success()
     }
 }
