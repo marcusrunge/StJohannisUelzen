@@ -28,8 +28,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
     override fun createWorkManagerConfiguration(): Configuration {
         return Configuration.Builder()
             .setMinimumLoggingLevel(android.util.Log.INFO)
-            .setWorkerFactory(DailyMottoNotificationWorkerFactory(notificationBase))
-            .setWorkerFactory(NewsFeedNotificationWorkerFactory(notificationBase))
+            .setWorkerFactory(NotificationWorkerFactory(notificationBase))
             .build()
     }
 
