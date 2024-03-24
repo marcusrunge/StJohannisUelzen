@@ -73,7 +73,7 @@ dependencies {
     implementation project(path: ':newsfeed')
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
-    implementation 'com.google.android.gms:play-services-location:21.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.2.0'
     implementation project(':newsfeed')
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     testImplementation 'junit:junit:4.13.2'
