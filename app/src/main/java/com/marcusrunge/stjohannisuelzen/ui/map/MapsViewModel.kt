@@ -99,6 +99,7 @@ class MapsViewModel @Inject constructor(
                         setMaxUpdateDelayMillis(TimeUnit.MINUTES.toMillis(2))
                     }.build()
             locationCallback = object : LocationCallback() {
+                @SuppressLint("DefaultLocale")
                 override fun onLocationResult(locationResult: LocationResult) {
                     super.onLocationResult(locationResult)
                     currentLocation = locationResult.lastLocation

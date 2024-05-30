@@ -26,6 +26,7 @@
                 android:id="@+id/thumb_imageview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/video_thumbnail"
                 android:scaleType="fitCenter"
                 app:imageUrl="@{item.thumbnailUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
