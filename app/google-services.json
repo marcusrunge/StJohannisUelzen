@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "211081713145",
+    "project_id": "stjohannisuelzen-c131c",
+    "storage_bucket": "stjohannisuelzen-c131c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211081713145:android:929273112bbaa35c5ed928",
+        "android_client_info": {
+          "package_name": "com.marcusrunge.stjohannisuelzen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu2aHWv2hUTBXdIDl2r0uIEAkE_ET8-kQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
