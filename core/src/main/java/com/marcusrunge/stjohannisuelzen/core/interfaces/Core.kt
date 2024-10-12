@@ -2,6 +2,11 @@ package com.marcusrunge.stjohannisuelzen.core.interfaces
 
 interface Core {
     /**
+     * Provides api keys related functionality.
+     */
+    val apiKeys:ApiKeys
+
+    /**
      * Provides back button related functionality.
      */
     val back: Back

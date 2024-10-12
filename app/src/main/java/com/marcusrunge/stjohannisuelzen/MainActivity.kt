@@ -25,6 +25,10 @@ import androidx.preference.PreferenceManager
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.remoteConfigSettings
 import com.marcusrunge.stjohannisuelzen.core.enums.Swipe
 import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.core.interfaces.OnSwipeListener
@@ -56,7 +60,24 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        FirebaseApp.initializeApp(this)
+        val remoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 3600
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    remoteConfig.fetchAndActivate()
+                        .addOnCompleteListener { fetchTask ->
+                            if (fetchTask.isSuccessful) {
+                                core.apiKeys.googleMaps = remoteConfig.getString("MAPS_API_KEY")
+                                core.apiKeys.youtube = remoteConfig.getString("YOUTUBE_API_KEY")
+                            }
+                        }
+                }
+            }
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val themeValues = resources.getStringArray(R.array.theme_values)
         val theme = sharedPref.getString(getString(R.string.key_theme), themeValues[0])

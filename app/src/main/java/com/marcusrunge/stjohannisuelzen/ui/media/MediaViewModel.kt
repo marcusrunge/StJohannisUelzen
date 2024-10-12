@@ -10,12 +10,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.marcusrunge.stjohannisuelzen.BuildConfig
 import com.marcusrunge.stjohannisuelzen.R
 import com.marcusrunge.stjohannisuelzen.adapter.YoutubeRecyclerViewAdapter
 import com.marcusrunge.stjohannisuelzen.apiconnect.interfaces.ApiConnect
 import com.marcusrunge.stjohannisuelzen.apiconnect.models.YoutubeSearchList
 import com.marcusrunge.stjohannisuelzen.bases.ViewModelBase
+import com.marcusrunge.stjohannisuelzen.core.interfaces.Core
 import com.marcusrunge.stjohannisuelzen.models.YoutubeItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -25,7 +25,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MediaViewModel @Inject constructor(
     @ApplicationContext val context: Context,
-    private val apiConnect: ApiConnect
+    private val apiConnect: ApiConnect,
+    private val core: Core
 ) : ViewModelBase(), SwipeRefreshLayout.OnRefreshListener {
     companion object {
         private const val YOUTUBE_SEARCHLIST = 1
@@ -115,8 +116,9 @@ class MediaViewModel @Inject constructor(
 
     private fun getYoutubeSearchList() {
         viewModelScope.launch {
+            val yt=core.apiKeys.youtube
             apiConnect.youTube.getYoutubeSearchList(
-                BuildConfig.YOUTUBE_API_KEY,
+                yt,
                 context.getString(R.string.youtube_channel),
                 {
                     val message = Message()
