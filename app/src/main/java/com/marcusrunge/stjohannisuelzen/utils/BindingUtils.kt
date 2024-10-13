@@ -18,7 +18,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.marcusrunge.stjohannisuelzen.R
 import com.squareup.picasso.Picasso
 
-@Suppress("CAST_NEVER_SUCCEEDS")
 object BindingUtils {
     @BindingAdapter("endpointUrl")
     @JvmStatic
