@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
         minSdk 27
-        versionCode 381
-        versionName '1.3.6'
+        versionCode 382
+        versionName '1.3.7'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdkVersion 27
     }
@@ -38,9 +38,24 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     dataBinding {
         enabled = true
+    }
+    secrets {
+        // Optionally specify a different file name containing your secrets.
+        // The plugin defaults to "local.properties"
+        propertiesFileName = "secrets.properties"
+
+        // A properties file containing default secret values. This file can be
+        // checked in version control.
+        defaultPropertiesFileName = "local.defaults.properties"
+
+        // Configure which keys should be ignored by the plugin by providing regular expressions.
+        // "sdk.dir" is ignored by default.
+        ignoreList.add("keyToIgnore") // Ignore the key "keyToIgnore"
+        ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
     }
     namespace 'com.marcusrunge.stjohannisuelzen'
 }
