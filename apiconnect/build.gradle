@@ -5,6 +5,9 @@ plugins {
 
 android {
     defaultConfig {
+        minSdk 30
+        targetSdk 35
+        compileSdk 35
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -23,7 +26,6 @@ android {
         jvmTarget = "1.8"
     }
     namespace 'com.marcusrunge.stjohannisuelzen.apiconnect'
-    compileSdk 35
 }
 
 dependencies {
