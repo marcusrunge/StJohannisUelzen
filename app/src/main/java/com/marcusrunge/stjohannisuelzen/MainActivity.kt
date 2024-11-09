@@ -3,6 +3,7 @@ package com.marcusrunge.stjohannisuelzen
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -17,7 +18,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -91,7 +91,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         val navView: BottomNavigationView = binding.navView
 
-        navController =(supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main_activity) as NavHostFragment).navController
+        navController =
+            (supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main_activity) as NavHostFragment).navController
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
