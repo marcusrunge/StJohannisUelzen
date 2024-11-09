@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         val navView: BottomNavigationView = binding.navView
 
-        navController = findNavController(R.id.nav_host_fragment_main_activity)
+        navController =(supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main_activity) as NavHostFragment).navController
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
