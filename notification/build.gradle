@@ -6,7 +6,7 @@ plugins {
 android {
     defaultConfig {
         minSdk 30
-        targetSdk 35
+        targetSdk 36
         compileSdk 35
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
