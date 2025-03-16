@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdk 30
         targetSdk 36
-        compileSdk 35
+        compileSdk 36
     }
 
     applicationVariants.configureEach { variant ->
