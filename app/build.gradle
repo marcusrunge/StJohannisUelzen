@@ -11,11 +11,12 @@ plugins {
 android {
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
-        versionCode 390
+        versionCode 391
         versionName '1.4.0'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdk 30
         compileSdk 35
+        targetSdk 35
     }
 
     applicationVariants.configureEach { variant ->
