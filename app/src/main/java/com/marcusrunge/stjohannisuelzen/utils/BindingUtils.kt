@@ -129,7 +129,7 @@ object BindingUtils {
         view.loadDataWithBaseURL(baseUrl, data,mimeType,encoding, null)
     }*/
 
-    @BindingAdapter(value = ["bind:data", "bind:mimeType", "bind:encoding"], requireAll = true)
+    @BindingAdapter(value = ["data", "mimeType", "encoding"], requireAll = true)
     @JvmStatic
     fun bindData(view: WebView, data: String, mimeType: String, encoding: String) {
         view.loadData(data, mimeType, encoding)

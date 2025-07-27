@@ -10,10 +10,11 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import androidx.core.graphics.createBitmap
 
 object BitmapHelper {
     /**
-     * Demonstrates converting a [Drawable] to a [BitmapDescriptor],
+     * Demonstrates converting a [android.graphics.drawable.Drawable] to a [BitmapDescriptor],
      * for use as a marker icon. Taken from ApiDemos on GitHub:
      * https://github.com/googlemaps/android-samples/blob/main/ApiDemos/kotlin/app/src/main/java/com/example/kotlindemos/MarkerDemoActivity.kt
      */
@@ -27,11 +28,7 @@ object BitmapHelper {
             Log.e("BitmapHelper", "Resource not found")
             return BitmapDescriptorFactory.defaultMarker()
         }
-        val bitmap = Bitmap.createBitmap(
-            vectorDrawable.intrinsicWidth,
-            vectorDrawable.intrinsicHeight,
-            Bitmap.Config.ARGB_8888
-        )
+        val bitmap = createBitmap(vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
         val canvas = Canvas(bitmap)
         vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
         DrawableCompat.setTint(vectorDrawable, color)

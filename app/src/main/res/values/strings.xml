@@ -78,4 +78,8 @@
     <string name="html_youtube" translatable="false">file:///android_asset/youtube_player.html</string>
     <string name="mr_softwaretechnik_logo" translatable="false">MR Softwaretechnik Logo</string>
     <string name="video_thumbnail" translatable="false">Video-Thumbnail</string>
+    <string name="softwaretechnik">SOFTWARETECHNIK</string>
+    <string name="mr_software_outlook_de">mr.software@outlook.de</string>
+    <string name="kg_johannis_uelzen_evlka_de">kg.johannis.uelzen@evlka.de</string>
+    <string name="https_github_com_marcusrunge_stjohannisuelzen">https://github.com/marcusrunge/StJohannisUelzen</string>
 </resources>

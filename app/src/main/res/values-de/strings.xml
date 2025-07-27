@@ -44,4 +44,8 @@
     <string name="longitude">Längengrad</string>
     <string name="speed">(m/s)</string>
     <string name="bearing">Richtung</string>
+    <string name="softwaretechnik">SOFTWARETECHNIK</string>
+    <string name="mr_software_outlook_de">mr.software@outlook.de</string>
+    <string name="kg_johannis_uelzen_evlka_de">kg.johannis.uelzen@evlka.de</string>
+    <string name="https_github_com_marcusrunge_stjohannisuelzen">https://github.com/marcusrunge/StJohannisUelzen</string>
 </resources>

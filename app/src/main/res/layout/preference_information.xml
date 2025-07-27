@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:includeFontPadding="false"
-        android:text="SOFTWARETECHNIK"
+        android:text="@string/softwaretechnik"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mr_logo" />
 
@@ -68,7 +68,7 @@
         android:autoLink="email"
         android:gravity="center_vertical"
         android:minHeight="48dp"
-        android:text="mr.software@outlook.de"
+        android:text="@string/mr_software_outlook_de"
         android:textColor="#00838F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/outro_text" />
@@ -80,7 +80,7 @@
         android:autoLink="email"
         android:gravity="center_vertical"
         android:minHeight="48dp"
-        android:text="kg.johannis.uelzen@evlka.de"
+        android:text="@string/kg_johannis_uelzen_evlka_de"
         android:textColor="#00838F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mr_email_text" />
@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
-        android:text="https://github.com/marcusrunge/StJohannisUelzen"
+        android:text="@string/https_github_com_marcusrunge_stjohannisuelzen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/projecturl_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
