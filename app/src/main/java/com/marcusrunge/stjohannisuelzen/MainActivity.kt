@@ -3,7 +3,6 @@ package com.marcusrunge.stjohannisuelzen
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -16,6 +15,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -55,9 +55,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     @Inject
     lateinit var notification: Notification
-
-    /*@Inject
-    lateinit var newsFeed: NewsFeed*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,10 +127,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                     }
                 })
         }
-        /*CoroutineScope(Dispatchers.IO).launch {
-            val pair = newsFeed.content.parseAsync(getString(R.string.url_stjohannis_uelzen))
-            val first = pair.first;
-        }*/
+        WindowCompat.setDecorFitsSystemWindows(window, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -234,23 +228,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private fun createLinkButtonsArray() {
         linkButtons = arrayOf(
             LinkButton(getString(R.string.current), getString(R.string.url_stjohannis_uelzen)),
-            //LinkButton(getString(R.string.churchservices), getString(R.string.url_churchservices)),
-            //LinkButton(getString(R.string.solution), getString(R.string.url_solution)),
             LinkButton(getString(R.string.thoughts), getString(R.string.url_thoughts)),
-            //LinkButton(getString(R.string.sermon), getString(R.string.url_sermon)),
             LinkButton(getString(R.string.groups), getString(R.string.url_groups)),
             LinkButton(getString(R.string.churchinlife), getString(R.string.url_churchinlife)),
-            //LinkButton(getString(R.string.happy_hour), getString(R.string.url_happy_hour)),
             LinkButton(getString(R.string.gallery), getString(R.string.url_gallery)),
-            //LinkButton(getString(R.string.mission), getString(R.string.url_mission)),
             LinkButton(getString(R.string.history), getString(R.string.url_history)),
-            //LinkButton(getString(R.string.confirmands), getString(R.string.url_confirmands)),
-            //LinkButton(getString(R.string.environment), getString(R.string.url_environment)),
-            LinkButton(getString(R.string.foundation), getString(R.string.url_foundation)),
-            //LinkButton(getString(R.string.volunteering), getString(R.string.url_volunteering)),
-            //LinkButton(getString(R.string.board), getString(R.string.url_board)),
-            //LinkButton(getString(R.string.donations), getString(R.string.url_donations)),
-            //LinkButton(getString(R.string.newsletter), getString(R.string.url_newsletter))
+            LinkButton(getString(R.string.foundation), getString(R.string.url_foundation))
         )
     }
 

@@ -1,8 +1,9 @@
 <resources>
-
-    <style name="Theme.StJohannisUelzen" parent="Theme.MaterialComponents.DayNight">
+    <!-- Base application theme for light mode -->
+    <style name="Base.Theme.StJohannisUelzen" parent="Theme.MaterialComponents.DayNight">
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryTranslucent">@color/purple_500</item>
+        <item name="colorPrimaryTranslucent">@color/purple_500
+        </item> <!-- Review if actually translucent -->
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,11 +15,13 @@
         <item name="stateUnselectedColor">@color/white</item>
     </style>
 
+    <style name="Theme.StJohannisUelzen" parent="Base.Theme.StJohannisUelzen" />
+
+    <!-- App Widget Themes -->
     <style name="Theme.StJohannisUelzen.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
         <item name="appWidgetRadius">8dp</item>
         <item name="appWidgetPadding">0dp</item>
         <item name="appWidgetInnerRadius">4dp</item>
     </style>
-
     <style name="Theme.StJohannisUelzen.AppWidgetContainer" parent="Theme.StJohannisUelzen.AppWidgetContainerParent" />
 </resources>
