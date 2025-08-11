@@ -14,7 +14,7 @@ plugins {
 android {
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
-        versionCode 394
+        versionCode 395
         versionName '1.4.1'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdk 30
