@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     lateinit var notification: Notification
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this)
         val remoteConfig = Firebase.remoteConfig
