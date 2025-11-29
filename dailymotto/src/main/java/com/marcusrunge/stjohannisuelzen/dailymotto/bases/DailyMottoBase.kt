@@ -30,8 +30,8 @@ internal abstract class DailyMottoBase(internal val context: Context?) : DailyMo
                     parser = context?.resources?.getXml(R.xml.losungen2025)
                 }
 
-                2024 -> {
-                    parser = context?.resources?.getXml(R.xml.losungen2024)
+                2026 -> {
+                    parser = context?.resources?.getXml(R.xml.losungen2026)
                 }
             }
             val result = mutableListOf<Losungen?>()
