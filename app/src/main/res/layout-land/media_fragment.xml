@@ -29,7 +29,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:mimeType="@{viewmodel.mimeType}" />
+            app:mimeType="@{viewmodel.mimeType}"
+            app:origin="@{viewmodel.origin}"  />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="0dp"

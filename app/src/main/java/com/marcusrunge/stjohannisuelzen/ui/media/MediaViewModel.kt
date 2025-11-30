@@ -36,10 +36,7 @@ class MediaViewModel @Inject constructor(
     private val _data = MutableLiveData(createHtmlData("M7lc1UVf-VE"))
     private val youtubeItems: MutableList<YoutubeItem> = mutableListOf()
     private var _isRefreshing: Boolean = true
-    private var _mimeType: String = "text/html"
-    private var _encoding: String = "UTF-8"
 
-    private val liveVideoId = MutableLiveData<String>()
     val data: LiveData<String> = _data
 
     @get:Bindable
@@ -60,21 +57,11 @@ class MediaViewModel @Inject constructor(
             notifyPropertyChanged(BR.refreshing)
         }
 
-    @get:Bindable
-    var mimeType: String
-        get() = _mimeType
-        set(value) {
-            _mimeType = value
-            notifyPropertyChanged(BR.mimeType)
-        }
+    val origin: String = "https://app.stjohannisuelzen.marcusrunge.com"
 
-    @get:Bindable
-    var encoding: String
-        get() = _encoding
-        set(value) {
-            _encoding = value
-            notifyPropertyChanged(BR.encoding)
-        }
+    val mimeType: String = "text/html"
+
+    val encoding: String = "UTF-8"
 
     init {
         getYoutubeSearchList()
@@ -93,7 +80,7 @@ class MediaViewModel @Inject constructor(
                         )
                     )
                 }
-                if (youtubeItems.size > 0) _data.value = youtubeItems[0].videoId?.let {
+                if (youtubeItems.isNotEmpty()) _data.value = youtubeItems[0].videoId?.let {
                     createHtmlData(
                         it
                     )
@@ -140,48 +127,55 @@ class MediaViewModel @Inject constructor(
 
     private fun createHtmlData(videoId: String): String {
         return """
-            <html>            
-                <body>            
-                    <div id="player"></div>            
-                    <script>
-                        var tag = document.createElement('script');
-                        tag.src = "https://www.youtube.com/iframe_api";
-                        var firstScriptTag = document.getElementsByTagName('script')[0];
-                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-                        var player;
-                        function onYouTubeIframeAPIReady() {
-                            player = new YT.Player('player', {
-                                height: '100%',
-                                width: '100%',
-                                videoId: '$videoId',
-                                events: {
-                                    'onReady': onPlayerReady,
-                                    'onStateChange': onPlayerStateChange
-                                }
-                            });
-                        }
-                        function onPlayerReady(event) {
-                            event.target.playVideo();
-                        }                       
-                        function onPlayerStateChange(event) {
+        <html>
+            <body style="margin:0">
+                <iframe id="ytplayer"
+                        type="text/html"
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/$videoId?enablejsapi=1&origin=$origin"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+                <script>
+                    var tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                    var player;
+                    function onYouTubeIframeAPIReady() {
+                        player = new YT.Player('ytplayer', {
+                            events: {
+                                'onReady': onPlayerReady,
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
+                    }
+                    function onPlayerReady(event) {
+                        event.target.playVideo();
+                    }
+                    var done = false;
+                    function onPlayerStateChange(event) {
                         if (event.data == YT.PlayerState.PLAYING && !done) {
                             setTimeout(stopVideo, 6000);
                             done = true;
-                            }
                         }
-                        function stopVideo() {
-                            player.stopVideo();
-                        }
-                        window.addEventListener("load", playerSizer);
-                        window.addEventListener("resize", playerSizer);
-                        function playerSizer() {
-                            var player = document.getElementById("player");
-                            var width = player.offsetWidth;
-                            player.style.height = (width * 0.5625) + "px";
-                        }
-                    </script>
-                </body>
-            </html>
-        """
+                    }
+                    function stopVideo() {
+                        player.stopVideo();
+                    }
+                    window.addEventListener("load", playerSizer);
+                    window.addEventListener("resize", playerSizer);
+                    function playerSizer() {
+                        var player = document.getElementById("ytplayer");
+                        var width = player.offsetWidth;
+                        player.style.height = (width * 0.5625) + "px";
+                    }
+                </script>
+            </body>
+        </html>
+    """
     }
 }

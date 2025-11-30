@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -43,6 +44,9 @@ class MediaFragment : Fragment() {
         youtubeWebview.settings.javaScriptEnabled = true
         youtubeWebview.settings.loadWithOverviewMode = true
         youtubeWebview.settings.useWideViewPort = true
+        youtubeWebview.settings.domStorageEnabled = true
+        youtubeWebview.settings.mediaPlaybackRequiresUserGesture = false
+        youtubeWebview.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
     }
 
     override fun onDestroyView() {
