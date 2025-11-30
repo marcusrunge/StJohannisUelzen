@@ -123,12 +123,6 @@ object BindingUtils {
         }
     }
 
-    /*@BindingAdapter(value = ["bind:baseUrl", "bind:data", "bind:mimeType", "bind:encoding"], requireAll = true)
-    @JvmStatic
-    fun bindDataWithBaseURL(view: WebView,baseUrl:String, data: String, mimeType:String, encoding:String) {
-        view.loadDataWithBaseURL(baseUrl, data,mimeType,encoding, null)
-    }*/
-
     @BindingAdapter(value = ["data", "mimeType", "encoding"], requireAll = true)
     @JvmStatic
     fun bindData(view: WebView, data: String, mimeType: String, encoding: String) {
