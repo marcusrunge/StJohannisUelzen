@@ -49,8 +49,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
         viewBinding true
@@ -61,7 +61,7 @@ android {
     }
     tasks.withType(KotlinJvmCompile).configureEach {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
+            jvmTarget.set(JvmTarget.JVM_17)
             freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
         }
     }
@@ -96,7 +96,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.3.0'
-    implementation 'androidx.webkit:webkit:1.14.0'
+    implementation 'androidx.webkit:webkit:1.15.0'
     implementation 'androidx.work:work-runtime-ktx:2.11.0'
     implementation project(path: ':core')
     implementation project(path: ':apiconnect')
