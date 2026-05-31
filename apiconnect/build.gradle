@@ -10,7 +10,6 @@ android {
     defaultConfig {
         minSdk 30
         compileSdk 36
-        targetSdk 36
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -26,6 +25,12 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     namespace 'com.marcusrunge.stjohannisuelzen.apiconnect'
+    lint {
+        targetSdk 36
+    }
+    testOptions {
+        targetSdk 36
+    }
 }
 tasks.withType(KotlinJvmCompile).configureEach {
     compilerOptions {
@@ -34,11 +39,11 @@ tasks.withType(KotlinJvmCompile).configureEach {
     }
 }
 dependencies {
-    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.core:core-ktx:1.18.0'
     implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'com.google.android.material:material:1.14.0'
     implementation 'com.android.volley:volley:1.2.1'
-    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'com.google.code.gson:gson:2.14.0'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
