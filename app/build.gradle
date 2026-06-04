@@ -22,8 +22,8 @@ android {
         versionName '1.4.4'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdk 30
-        compileSdk 36
-        targetSdk 36
+        compileSdk 37
+        targetSdk 37
     }
 
     applicationVariants.configureEach { variant ->
@@ -49,8 +49,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
         viewBinding true
@@ -61,7 +61,7 @@ android {
     }
     tasks.withType(KotlinJvmCompile).configureEach {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
+            jvmTarget.set(JvmTarget.JVM_17)
             freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
         }
     }
@@ -85,18 +85,18 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.18.0'
     implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'com.google.android.material:material:1.14.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.10.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.7'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.9.7'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.9.8'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.9.8'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.preference:preference-ktx:1.2.1'
-    implementation 'com.google.android.gms:play-services-oss-licenses:17.5.0'
-    implementation 'androidx.webkit:webkit:1.15.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.5.1'
+    implementation 'androidx.webkit:webkit:1.16.0'
     implementation 'androidx.work:work-runtime-ktx:2.11.2'
     implementation project(path: ':core')
     implementation project(path: ':apiconnect')
@@ -106,7 +106,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     implementation 'com.google.android.gms:play-services-maps:20.0.0'
     implementation 'com.google.android.gms:play-services-location:21.3.0'
-    implementation 'com.google.firebase:firebase-config:23.0.1'
+    implementation 'com.google.firebase:firebase-config:23.1.0'
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
