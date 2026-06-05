@@ -24,7 +24,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.google.android.gms.oss.licenses.v2.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.Firebase
@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        createLinkButtonsArray()
         setupNavigation()
         setupActionBar()
         setupNotifications()
