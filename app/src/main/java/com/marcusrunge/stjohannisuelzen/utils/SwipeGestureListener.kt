@@ -43,7 +43,8 @@ class SwipeGestureListener(context: Context, private val onSwipeListener: OnSwip
      */
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         view = v
-        return gestureDetector.onTouchEvent(event)
+        gestureDetector.onTouchEvent(event)
+        return false
     }
 
     /**

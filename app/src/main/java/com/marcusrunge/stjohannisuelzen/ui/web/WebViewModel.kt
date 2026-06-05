@@ -54,7 +54,6 @@ class WebViewModel @Inject constructor(
             }
 
             override fun onSingleTapUp(x: Int, y: Int) {
-                tapUpPoint = Point(x, y)
             }
         })
 
