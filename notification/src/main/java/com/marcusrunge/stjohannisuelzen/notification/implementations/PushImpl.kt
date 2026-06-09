@@ -86,7 +86,7 @@ internal class PushImpl(private val notificationBase: NotificationBase) : Push {
             .setContentTitle(textTitle)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
-            .setAutoCancel(false)
+            .setAutoCancel(true)
     }
 
     private fun notifyNotification(notification: Notification) {
