@@ -18,8 +18,8 @@ if (secretsFile.exists()) {
 android {
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
-        versionCode 399
-        versionName '1.4.5'
+        versionCode 400
+        versionName '1.4.6'
         resValue "string", "versionName", versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdk 30
@@ -85,8 +85,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.14.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.10.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.11.0-rc01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0-rc01'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.google.dagger:hilt-android:$hilt_version"
     implementation 'androidx.navigation:navigation-fragment-ktx:2.9.8'

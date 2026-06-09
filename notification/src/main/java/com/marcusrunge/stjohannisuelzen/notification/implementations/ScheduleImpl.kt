@@ -2,7 +2,9 @@ package com.marcusrunge.stjohannisuelzen.notification.implementations
 
 import androidx.work.BackoffPolicy
 import androidx.work.Configuration
+import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
@@ -60,19 +62,29 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
     }
 
     override fun startRecurringNewsFeedNotification() {
-        stopRecurringNewsFeedNotification()
-        val request =
-            PeriodicWorkRequestBuilder<NewsFeedNotificationWorker>(15, TimeUnit.MINUTES)
-                .setBackoffCriteria(
-                    BackoffPolicy.LINEAR,
-                    WorkRequest.MIN_BACKOFF_MILLIS,
-                    TimeUnit.MILLISECONDS
-                )
-                .addTag("newsfeed")
-                .build()
-        WorkManager.getInstance(notificationBase.context!!).enqueueUniquePeriodicWork(
+        // 1. Remove the explicit stop call if it's redundant, and safely handle the context
+        val context = notificationBase?.context ?: return
+
+        // 2. Add Network Constraints (Crucial for a network-backed worker)
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        // 3. Build the request with constraints and backoff policy
+        val request = PeriodicWorkRequestBuilder<NewsFeedNotificationWorker>(15, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .setBackoffCriteria(
+                BackoffPolicy.LINEAR,
+                WorkRequest.MIN_BACKOFF_MILLIS, // 10 seconds default minimum
+                TimeUnit.MILLISECONDS
+            )
+            .addTag("newsfeed")
+            .build()
+
+        // 4. Enqueue using KEEP policy to avoid resetting the 15-minute execution clock
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork(
             "showNews",
-            ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
+            ExistingPeriodicWorkPolicy.KEEP,
             request
         )
     }
