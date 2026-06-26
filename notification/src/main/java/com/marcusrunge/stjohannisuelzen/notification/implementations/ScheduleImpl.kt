@@ -63,7 +63,7 @@ internal class ScheduleImpl(private val notificationBase: NotificationBase) : Sc
 
     override fun startRecurringNewsFeedNotification() {
         // 1. Remove the explicit stop call if it's redundant, and safely handle the context
-        val context = notificationBase?.context ?: return
+        val context = notificationBase.context ?: return
 
         // 2. Add Network Constraints (Crucial for a network-backed worker)
         val constraints = Constraints.Builder()
