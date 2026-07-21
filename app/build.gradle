@@ -18,8 +18,8 @@ if (secretsFile.exists()) {
 android {
     defaultConfig {
         applicationId "com.marcusrunge.stjohannisuelzen"
-        versionCode 401
-        versionName '1.4.7'
+        versionCode 402
+        versionName '1.4.8'
         resValue "string", "versionName", versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdk 30
