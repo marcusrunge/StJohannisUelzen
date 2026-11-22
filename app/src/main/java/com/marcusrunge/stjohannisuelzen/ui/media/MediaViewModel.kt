@@ -137,7 +137,8 @@ class MediaViewModel @Inject constructor(
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
-                        referrerpolicy="strict-origin-when-cross-origin">
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        style="min-height: 315px; width: 100%;">
                 </iframe>
                 <script>
                     var tag = document.createElement('script');
@@ -166,16 +167,23 @@ class MediaViewModel @Inject constructor(
                     function stopVideo() {
                         player.stopVideo();
                     }
-                    window.addEventListener("load", playerSizer);
+                    window.addEventListener("load", function() {
+                        setTimeout(playerSizer, 500);
+                    });
                     window.addEventListener("resize", playerSizer);
                     function playerSizer() {
                         var player = document.getElementById("ytplayer");
-                        var width = player.offsetWidth;
-                        player.style.height = (width * 0.5625) + "px";
+                        if (player) {
+                            var width = player.offsetWidth;
+                            if (width > 0) {
+                                player.style.height = (width * 0.5625) + "px";
+                            }
+                        }
                     }
                 </script>
             </body>
         </html>
     """
+
     }
 }
